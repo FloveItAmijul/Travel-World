@@ -1,0 +1,22 @@
+:root {
+  --color-bg: #02030a;
+  --color-bg-soft: #07111f;
+  --color-card: rgba(255, 255, 255, 0.065);
+
+  --color-text: #f7fbff;
+  --color-muted: rgba(247, 251, 255, 0.64);
+
+  --color-accent: #67e8f9;
+  --color-accent-2: #8b5cf6;
+  --color-luxury: #f8d49a;
+
+  --color-accent-soft: rgba(103, 232, 249, 0.14);
+  --color-luxury-soft: rgba(248, 212, 154, 0.13);
+
+  --border-soft: rgba(255, 255, 255, 0.12);
+
+  --shadow-accent: 0 24px 90px rgba(103, 232, 249, 0.16);
+  --shadow-luxury: 0 24px 90px rgba(248, 212, 154, 0.12);
+
+  --container-width: 1180px;
+}

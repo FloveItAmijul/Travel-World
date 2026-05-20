@@ -1,0 +1,969 @@
+@import "tailwindcss";
+@import "./styles/theme.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  color: #030609;
+  background: var(--color-gold);
+}
+
+
+
+
+
+
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: opacity;
+}
+
+.hero-bg-active {
+  opacity: 1;
+  animation: heroBgFadeIn 900ms ease-in-out both;
+}
+
+.hero-bg-previous {
+  opacity: 0;
+  animation: heroBgFadeOut 900ms ease-in-out both;
+}
+
+.hero-card {
+  transform-origin: bottom left;
+  transition:
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  contain: layout paint;
+}
+
+.hero-copy-enter {
+  animation: heroCopyEnter 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-progress {
+  width: 100%;
+  transform-origin: left;
+  animation: heroProgress 5000ms linear both;
+}
+
+@keyframes heroBgFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroBgFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes heroCopyEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-active,
+  .hero-bg-previous,
+  .hero-card,
+  .hero-copy-enter,
+  .hero-progress {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+
+.hero-mobile-card {
+  contain: layout paint;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (max-width: 420px) {
+  .hero-bg-image {
+    object-position: center;
+  }
+}
+
+@media (min-width: 421px) and (max-width: 1023px) {
+  .hero-bg-image {
+    object-position: center center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-bg-image {
+    object-position: center center;
+  }
+}
+
+.hero-mobile-overlap-card {
+  z-index: var(--mobile-z);
+  opacity: var(--mobile-opacity);
+  transform: translate3d(var(--mobile-x), 0, 0) scale(var(--mobile-scale));
+  transform-origin: bottom left;
+  transition:
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms ease;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  contain: layout paint;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-mobile-overlap-card {
+    z-index: var(--tablet-z);
+    opacity: var(--tablet-opacity);
+    transform: translate3d(var(--tablet-x), 0, 0) scale(var(--tablet-scale));
+  }
+}
+
+
+
+
+
+
+
+.service-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.44;
+  transform: scale(1.04);
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 700ms ease;
+}
+
+.group:hover .service-card-bg {
+  opacity: 0.62;
+  transform: scale(1.1);
+}
+
+.service-bg-andaman {
+  background-image:
+    linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
+    url("/src/assets/destinations/andaman.jpg");
+}
+
+.service-bg-hotel {
+  background-image:
+    linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
+    url("/src/assets/destinations/dubai.jpg");
+}
+
+.service-bg-flight {
+  background-image:
+    linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
+    url("/src/assets/destinations/goa.jpg");
+}
+
+.service-bg-honeymoon {
+  background-image:
+    linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
+    url("/src/assets/destinations/andaman.jpg");
+}
+
+.service-bg-group {
+  background-image:
+    linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
+    url("/src/assets/destinations/kashmir.jpg");
+}
+
+.service-bg-ai {
+  background-image:
+    radial-gradient(circle at 70% 35%, rgba(125, 211, 252, 0.18), transparent 18%),
+    radial-gradient(circle at 30% 65%, rgba(167, 139, 250, 0.16), transparent 22%),
+    linear-gradient(135deg, rgba(7, 11, 22, 0.95), rgba(2, 4, 10, 0.98));
+}
+
+@media (max-width: 767px) {
+  .service-card-bg {
+    opacity: 0.36;
+  }
+}
+
+
+
+
+
+
+
+.destination-card {
+  backface-visibility: hidden;
+  contain: paint;
+}
+
+.destination-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 34%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(125, 211, 252, 0.12) 50%,
+    transparent 62%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: translateX(-120%);
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+  content: "";
+}
+
+.destination-card::after {
+  position: absolute;
+  inset: 1px;
+  z-index: 21;
+  pointer-events: none;
+  border-radius: 1.65rem;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(125, 211, 252, 0.22), transparent 22%),
+    radial-gradient(circle at 84% 18%, rgba(167, 139, 250, 0.18), transparent 24%);
+  opacity: 0;
+  transition: opacity 500ms ease;
+  content: "";
+}
+
+.destination-card:hover::before {
+  opacity: 1;
+  transform: translateX(120%);
+}
+
+.destination-card:hover::after {
+  opacity: 1;
+}
+
+.destination-image-shell {
+  isolation: isolate;
+}
+
+.destination-image-shell::after {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  z-index: 10;
+  height: 5px;
+  background: #050b14;
+  content: "";
+}
+
+.destination-card-image {
+  backface-visibility: hidden;
+  filter: brightness(0.94) saturate(1.02);
+  transform: translateZ(0);
+  transition:
+    filter 650ms ease,
+    opacity 650ms ease;
+}
+
+.destination-card:hover .destination-card-image {
+  filter: brightness(1.1) saturate(1.12) contrast(1.04);
+}
+
+.destination-card button {
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .destination-card::before,
+  .destination-card::after,
+  .destination-card-image {
+    transition: none !important;
+  }
+}
+
+
+
+
+
+
+.premium-reveal-section .premium-reveal-heading {
+  opacity: 0;
+  transform: translate3d(0, 42px, 0);
+  filter: blur(14px);
+}
+
+.premium-reveal-section .premium-reveal-card {
+  opacity: 0;
+  transform: translate3d(0, 54px, 0) scale(0.96);
+  filter: blur(12px);
+}
+
+.premium-reveal-section.is-visible .premium-reveal-heading {
+  animation: premiumHeadingReveal 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.premium-reveal-section.is-visible .premium-reveal-card {
+  animation: premiumCardReveal 850ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes premiumHeadingReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 42px, 0);
+    filter: blur(14px);
+  }
+
+  60% {
+    opacity: 1;
+    filter: blur(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes premiumCardReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 54px, 0) scale(0.96);
+    filter: blur(12px);
+  }
+
+  65% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-reveal-section .premium-reveal-heading,
+  .premium-reveal-section .premium-reveal-card,
+  .premium-reveal-section.is-visible .premium-reveal-heading,
+  .premium-reveal-section.is-visible .premium-reveal-card {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none !important;
+  }
+}
+
+
+
+
+
+
+.ai-dashboard-shell {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.ai-dashboard-shell::before {
+  position: absolute;
+  inset: -1px;
+  border-radius: 2rem;
+  background: linear-gradient(
+    120deg,
+    rgba(56, 189, 248, 0.22),
+    rgba(124, 58, 237, 0.3),
+    rgba(56, 189, 248, 0.12)
+  );
+  opacity: 0.5;
+  content: "";
+  pointer-events: none;
+}
+
+.ai-bot-orb::before {
+  position: absolute;
+  inset: -8px;
+  border-radius: 999px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(56, 189, 248, 0.16),
+    rgba(124, 58, 237, 0.5),
+    rgba(56, 189, 248, 0.16)
+  );
+  filter: blur(2px);
+  animation: aiOrbRotate 6s linear infinite;
+  content: "";
+}
+
+.ai-bot-orb svg {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes aiOrbRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-bot-orb::before {
+    animation: none !important;
+  }
+}
+
+
+
+
+
+
+
+.partner-marquee-mask {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.partner-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  will-change: transform;
+}
+
+.partner-marquee-forward {
+  animation: partnerScrollLeft 34s linear infinite;
+}
+
+.partner-marquee-reverse {
+  animation: partnerScrollRight 36s linear infinite;
+}
+
+.partner-row:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+
+.partner-logo-card {
+  display: grid;
+  width: 170px;
+  height: 78px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 42%),
+    rgba(255, 255, 255, 0.028);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+  transition:
+    border-color 260ms ease,
+    background 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.partner-logo-card:hover {
+  background:
+    linear-gradient(135deg, rgba(125, 211, 252, 0.08), transparent 42%),
+    rgba(255, 255, 255, 0.05);
+  box-shadow: 0 18px 60px rgba(125, 211, 252, 0.12);
+}
+
+@keyframes partnerScrollLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@keyframes partnerScrollRight {
+  from {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 639px) {
+  .partner-marquee-track {
+    gap: 10px;
+  }
+
+  .partner-logo-card {
+    width: 118px;
+    height: 58px;
+    border-radius: 14px;
+  }
+
+  .partner-marquee-forward {
+    animation-duration: 26s;
+  }
+
+  .partner-marquee-reverse {
+    animation-duration: 28s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
+
+
+
+
+.partner-heading-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  padding-inline: 4px;
+}
+
+.partner-heading-star {
+  font-size: 14px;
+  line-height: 1;
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+.partner-heading-line {
+  position: relative;
+  height: 1px;
+  width: min(20vw, 220px);
+  flex: 1 1 auto;
+  opacity: 0.95;
+}
+
+.partner-heading-line::after {
+  position: absolute;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  content: "";
+}
+
+.partner-heading-line:first-child::after {
+  right: 0;
+}
+
+.partner-heading-line:last-child::after {
+  left: 0;
+}
+
+.partner-heading-line-cyan {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(125, 211, 252, 0.25),
+    rgba(125, 211, 252, 0.85)
+  );
+  box-shadow: 0 0 16px rgba(125, 211, 252, 0.28);
+}
+
+.partner-heading-line-cyan:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(125, 211, 252, 0.85),
+    rgba(125, 211, 252, 0.25),
+    transparent
+  );
+}
+
+.partner-heading-line-cyan::after {
+  background: #7dd3fc;
+  box-shadow: 0 0 16px rgba(125, 211, 252, 0.9);
+}
+
+.partner-heading-line-violet {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(167, 139, 250, 0.25),
+    rgba(167, 139, 250, 0.85)
+  );
+  box-shadow: 0 0 16px rgba(167, 139, 250, 0.28);
+}
+
+.partner-heading-line-violet:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(167, 139, 250, 0.85),
+    rgba(167, 139, 250, 0.25),
+    transparent
+  );
+}
+
+.partner-heading-line-violet::after {
+  background: #a78bfa;
+  box-shadow: 0 0 16px rgba(167, 139, 250, 0.9);
+}
+
+@media (max-width: 520px) {
+  .partner-row-heading {
+    gap: 8px;
+  }
+
+  .partner-heading-title {
+    gap: 7px;
+  }
+
+  .partner-heading-line {
+    width: 12vw;
+  }
+
+  .partner-heading-star {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+
+
+
+.testimonial-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: paint;
+}
+
+.testimonial-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.1) 46%,
+    rgba(125, 211, 252, 0.1) 52%,
+    transparent 64%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: translateX(-120%);
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+  content: "";
+}
+
+.testimonial-card:hover::before {
+  opacity: 1;
+  transform: translateX(120%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card::before {
+    transition: none !important;
+  }
+}
+
+
+
+
+.testimonial-slider {
+  cursor: grab;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+.testimonial-slider:active {
+  cursor: grabbing;
+}
+
+.testimonial-slider::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+
+
+
+.gold-sparkle-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gold-sparkle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  background: rgba(251, 191, 36, 0.95);
+  box-shadow:
+    0 0 10px rgba(251, 191, 36, 0.9),
+    0 0 26px rgba(251, 191, 36, 0.38);
+  opacity: 0;
+  animation: goldSparkleFloat var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.global-world-image {
+  filter: drop-shadow(0 0 46px rgba(251, 191, 36, 0.2));
+  animation: worldSoftFloat 8s ease-in-out infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes goldSparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.6);
+  }
+
+  35% {
+    opacity: 0.9;
+  }
+
+  70% {
+    opacity: 0.55;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(28px, -34px, 0) scale(1.15);
+  }
+}
+
+@keyframes worldSoftFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.015);
+  }
+}
+
+@media (max-width: 640px) {
+  .gold-sparkle {
+    opacity: 0.7;
+  }
+
+  .global-world-image {
+    object-position: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-sparkle,
+  .global-world-image {
+    animation: none !important;
+  }
+}
+
+
+
+
+
+
+
+.nav-luxury-shell {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.nav-luxury-shell::before {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(224, 247, 255, 0.18),
+    rgba(186, 230, 253, 0.16),
+    rgba(125, 211, 252, 0.1)
+  );
+  opacity: 0.5;
+  filter: blur(12px);
+  content: "";
+}
+
+.nav-glass-indicator {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 8px;
+  z-index: 1;
+  border: 1px solid rgba(224, 247, 255, 0.42);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 46%),
+    linear-gradient(180deg, rgba(186, 230, 253, 0.13), rgba(240, 249, 255, 0.055));
+  box-shadow:
+    inset 0 0 22px rgba(240, 249, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 22px rgba(186, 230, 253, 0.16);
+  backdrop-filter: blur(20px) saturate(1.35);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.nav-glass-indicator::after {
+  position: absolute;
+  right: 22%;
+  bottom: -1px;
+  left: 22%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(240, 249, 255, 0.95),
+    rgba(125, 211, 252, 0.75),
+    transparent
+  );
+  opacity: 0.9;
+  content: "";
+}
+
+.nav-luxury-item::after {
+  position: absolute;
+  right: 24%;
+  bottom: 6px;
+  left: 24%;
+  z-index: 2;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(240, 249, 255, 0.95),
+    rgba(125, 211, 252, 0.75),
+    transparent
+  );
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
+  content: "";
+}
+
+.nav-luxury-item:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.ai-planner-button::before {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(125, 211, 252, 0.28),
+    rgba(167, 139, 250, 0.36),
+    rgba(245, 158, 11, 0.16)
+  );
+  opacity: 0.5;
+  filter: blur(12px);
+  content: "";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-glass-indicator,
+  .nav-luxury-item::after,
+  .ai-planner-button::before,
+  .nav-luxury-shell::before {
+    transition: none !important;
+  }
+}
