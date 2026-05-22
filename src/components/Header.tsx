@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Compass, Menu, Sparkles, X } from "lucide-react";
+import {  Menu, Sparkles, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import logo from "../assets/brand/logosvg.svg"
