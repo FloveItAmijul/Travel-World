@@ -1,5 +1,3 @@
-
-
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -14,6 +12,7 @@ import {
   Star,
   TrendingUp,
 } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const imageModules = import.meta.glob("../assets/destinations/*.{jpg,jpeg,png,webp}", {
   eager: true,
@@ -33,6 +32,7 @@ const imagesByName = Object.entries(imageModules).reduce<Record<string, string>>
 
 const destinations = [
   {
+    slug: "andaman",
     name: "Andaman",
     country: "India",
     image: imagesByName.andaman,
@@ -42,9 +42,10 @@ const destinations = [
     price: "₹24,999",
     tag: "Popular",
     tagIcon: Flame,
-    accent: "cyan",
+    accent: "gold",
   },
   {
+    slug: "goa",
     name: "Goa",
     country: "India",
     image: imagesByName.goa,
@@ -54,9 +55,10 @@ const destinations = [
     price: "₹15,999",
     tag: "Trending",
     tagIcon: TrendingUp,
-    accent: "violet",
+    accent: "gold",
   },
   {
+    slug: "digha",
     name: "Digha",
     country: "India",
     image: imagesByName.digha,
@@ -66,9 +68,10 @@ const destinations = [
     price: "₹8,999",
     tag: "Best Seller",
     tagIcon: Star,
-    accent: "cyan",
+    accent: "ice",
   },
   {
+    slug: "dubai",
     name: "Dubai",
     country: "UAE",
     image: imagesByName.dubai,
@@ -78,9 +81,10 @@ const destinations = [
     price: "₹39,999",
     tag: "Luxury",
     tagIcon: Crown,
-    accent: "violet",
+    accent: "gold",
   },
   {
+    slug: "kashmir",
     name: "Kashmir",
     country: "India",
     image: imagesByName.kashmir,
@@ -90,11 +94,12 @@ const destinations = [
     price: "₹18,999",
     tag: "Serene",
     tagIcon: Leaf,
-    accent: "cyan",
+    accent: "ice",
   },
 ];
 
 export function Destinations() {
+  const navigate = useNavigate();
 
   useEffect(() => {
     destinations.forEach((destination) => {
@@ -113,64 +118,62 @@ export function Destinations() {
 
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.16,
+    threshold: 0.14,
   });
-
-
 
   return (
     <section
       id="destinations"
       ref={ref}
-      className={`premium-reveal-section relative overflow-hidden bg-[#02040a] px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28 ${
+      className={`premium-reveal-section theme-section-bg relative overflow-hidden px-4 py-14 text-[var(--color-text)] sm:px-5 sm:py-16 md:px-6 md:py-18 lg:px-8 lg:py-22 xl:py-28 ${
         inView ? "is-visible" : ""
       }`}
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-16 h-px w-[520px] -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
-        <div className="absolute left-1/2 top-16 size-1.5 -translate-x-1/2 rounded-full bg-cyan-200 shadow-[0_0_30px_rgba(125,211,252,0.95)]" />
+        <div className="absolute left-1/2 top-10 h-px w-[min(520px,78vw)] -translate-x-1/2 bg-gradient-to-r from-transparent via-[var(--color-primary)]/60 to-transparent md:top-14 xl:top-16" />
+        <div className="absolute left-1/2 top-10 size-1.5 -translate-x-1/2 rounded-full bg-[var(--color-primary)] shadow-[0_0_30px_var(--color-primary-glow)] md:top-14 xl:top-16" />
 
-        <div className="absolute -left-24 top-20 size-80 rounded-full border border-cyan-300/10" />
-        <div className="absolute -left-10 top-32 size-52 rounded-full border border-cyan-300/10" />
-        <div className="absolute -right-24 top-24 size-96 rounded-full border border-violet-300/10" />
-        <div className="absolute right-10 top-40 size-64 rounded-full border border-cyan-300/10" />
+        <div className="absolute -left-20 top-16 size-52 rounded-full border border-[color:var(--color-primary)]/10 md:size-64 xl:-left-24 xl:top-20 xl:size-80" />
+        <div className="absolute -left-8 top-28 size-36 rounded-full border border-[color:var(--color-primary)]/10 md:size-44 xl:-left-10 xl:top-32 xl:size-52" />
+        <div className="absolute -right-24 top-20 size-64 rounded-full border border-[color:var(--color-secondary)]/10 md:size-80 xl:top-24 xl:size-96" />
+        <div className="absolute right-4 top-36 size-44 rounded-full border border-[color:var(--color-primary)]/10 md:size-52 xl:right-10 xl:top-40 xl:size-64" />
 
-        <div className="absolute bottom-0 left-0 h-64 w-full bg-[radial-gradient(circle_at_20%_70%,rgba(34,211,238,0.15),transparent_30%),radial-gradient(circle_at_80%_65%,rgba(167,139,250,0.14),transparent_30%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(125,211,252,0.06),transparent_35%)]" />
+        <div className="absolute bottom-0 left-0 h-56 w-full bg-[radial-gradient(circle_at_20%_70%,rgba(243,201,121,0.13),transparent_30%),radial-gradient(circle_at_80%_65%,rgba(224,247,255,0.09),transparent_30%)] xl:h-64" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(243,201,121,0.045),transparent_35%)]" />
       </div>
 
       <div className="relative mx-auto w-[min(100%,1280px)]">
         <div className="premium-reveal-heading mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.42em] text-cyan-200">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.34em] text-[var(--color-primary)] sm:text-xs sm:tracking-[0.42em]">
             Curated Destinations
           </p>
 
-          <h2 className="mt-5 text-[clamp(2.8rem,8vw,5.4rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-white">
+          <h2 className="mt-4 text-[clamp(2.25rem,8vw,3.7rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-[var(--color-text)] md:mt-5 md:text-[clamp(2.7rem,5.4vw,4.2rem)] xl:text-[clamp(2.8rem,8vw,5.4rem)]">
             Handpicked Journeys
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/62 sm:text-base sm:leading-8">
+          <p className="mx-auto mt-4 max-w-2xl text-xs leading-6 text-[var(--color-text-soft)] sm:text-sm sm:leading-7 md:mt-5 md:text-sm md:leading-7 xl:mt-6 xl:text-base xl:leading-8">
             Explore our most loved escapes, selected for scenery, comfort, and
             unforgettable experiences.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-9 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-4 md:mt-12 md:grid-cols-5 md:gap-3 lg:gap-4 xl:mt-14 xl:gap-5">
           {destinations.map((destination, index) => {
             const TagIcon = destination.tagIcon;
-            const isViolet = destination.accent === "violet";
+            const isIce = destination.accent === "ice";
 
             return (
               <article
                 key={destination.name}
-                style={{ "--reveal-delay": `${index * 90}ms` } as React.CSSProperties}
-                className={`premium-reveal-card destination-card group relative isolate overflow-hidden rounded-[1.7rem] bg-[#050b14] shadow-[0_26px_90px_rgba(0,0,0,0.42)] ring-1 ring-inset transition-shadow duration-500 ${
-                isViolet
-                  ? "ring-violet-300/24 hover:ring-violet-300/55 hover:shadow-[0_26px_95px_rgba(167,139,250,0.18)]"
-                  : "ring-cyan-300/22 hover:ring-cyan-300/55 hover:shadow-[0_26px_95px_rgba(125,211,252,0.16)]"
-              }`}
+                style={{ "--reveal-delay": `${index * 80}ms` } as React.CSSProperties}
+                className={`premium-reveal-card destination-card group relative isolate overflow-hidden rounded-[1.05rem] bg-[var(--color-bg-soft)] shadow-[0_18px_55px_rgba(0,0,0,0.34)] ring-1 ring-inset transition duration-500 hover:-translate-y-1 sm:rounded-[1.25rem] md:rounded-[1.15rem] xl:rounded-[1.7rem] ${
+                  isIce
+                    ? "ring-[color:var(--color-secondary)]/20 hover:ring-[color:var(--color-secondary)]/52 hover:shadow-[var(--shadow-secondary)]"
+                    : "ring-[color:var(--color-primary)]/22 hover:ring-[color:var(--color-primary)]/55 hover:shadow-[var(--shadow-primary)]"
+                }`}
               >
-               <div className="destination-image-shell relative h-64 overflow-hidden bg-[#050b14] sm:h-72 xl:h-60">
+                <div className="destination-image-shell relative h-32 overflow-hidden bg-[var(--color-bg-soft)] sm:h-44 md:h-28 lg:h-36 xl:h-60">
                   {destination.image ? (
                     <img
                       src={destination.image}
@@ -181,39 +184,42 @@ export function Destinations() {
                       draggable={false}
                     />
                   ) : (
-                    <div className="grid h-full place-items-center bg-white/5 text-sm text-white/50">
+                    <div className="grid h-full place-items-center bg-white/5 text-xs text-[var(--color-text-muted)]">
                       Missing image
                     </div>
                   )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#02040a] via-[#02040a]/18 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-[var(--color-bg)]/18 to-transparent" />
 
                   <div
-                    className={`absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-xl ${
-                      isViolet
-                        ? "border-violet-300/35 bg-violet-300/12 text-violet-100"
-                        : "border-cyan-300/35 bg-cyan-300/12 text-cyan-100"
+                    className={`absolute left-2 top-2 inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[8px] font-medium backdrop-blur-xl sm:left-3 sm:top-3 sm:text-[10px] md:left-2 md:top-2 md:px-2 md:py-1 md:text-[8px] lg:text-[9px] xl:left-5 xl:top-5 xl:gap-1.5 xl:px-3 xl:py-1.5 xl:text-xs ${
+                      isIce
+                        ? "border-[color:var(--color-secondary)]/35 bg-[color:rgba(224,247,255,0.1)] text-[var(--color-secondary)]"
+                        : "border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.12)] text-[var(--color-primary-soft)]"
                     }`}
                   >
-                    <TagIcon size={13} />
-                    {destination.tag}
+                    <TagIcon size={10} className="sm:size-[12px] md:size-[10px] xl:size-[13px]" />
+                    <span className="line-clamp-1">{destination.tag}</span>
                   </div>
                 </div>
 
-                <div className="relative z-10 bg-[#050b14] p-5">
-                  <div className="flex items-start gap-2">
+                <div className="relative z-10 bg-[var(--color-bg-soft)] p-3 sm:p-4 md:p-3 lg:p-4 xl:p-5">
+                  <div className="flex items-start gap-1.5 sm:gap-2 md:gap-1.5 xl:gap-2">
                     <MapPin
-                      size={23}
-                      className={isViolet ? "mt-1 text-violet-300" : "mt-1 text-cyan-300"}
+                      size={17}
+                      className={`mt-0.5 shrink-0 sm:size-[20px] md:size-[15px] lg:size-[18px] xl:mt-1 xl:size-[23px] ${
+                        isIce ? "text-[var(--color-secondary)]" : "text-[var(--color-primary)]"
+                      }`}
                     />
 
-                    <div>
-                      <h3 className="text-3xl font-semibold leading-none tracking-[-0.05em] text-white">
+                    <div className="min-w-0">
+                      <h3 className="truncate text-xl font-semibold leading-none tracking-[-0.05em] text-[var(--color-text)] sm:text-2xl md:text-lg lg:text-xl xl:text-3xl">
                         {destination.name}
                       </h3>
+
                       <p
-                        className={`mt-3 text-sm font-medium ${
-                          isViolet ? "text-violet-200" : "text-cyan-200"
+                        className={`mt-2 truncate text-xs font-medium md:mt-1.5 md:text-[10px] lg:text-xs xl:mt-3 xl:text-sm ${
+                          isIce ? "text-[var(--color-secondary)]" : "text-[var(--color-primary)]"
                         }`}
                       >
                         {destination.country}
@@ -221,25 +227,28 @@ export function Destinations() {
                     </div>
                   </div>
 
-                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/72">
+                  <div className="mt-4 grid gap-2 text-[10px] text-[var(--color-text-soft)] sm:text-xs md:mt-3 md:text-[9px] lg:text-[10px] xl:mt-5 xl:flex xl:flex-wrap xl:items-center xl:gap-x-5 xl:gap-y-2 xl:text-sm">
                     <span className="inline-flex items-center gap-1.5">
-                      <Star size={15} className="fill-yellow-400 text-yellow-400" />
-                      {destination.rating} ({destination.reviews})
+                      <Star size={12} className="fill-[var(--color-primary)] text-[var(--color-primary)] md:size-[11px] xl:size-[15px]" />
+                      {destination.rating}
+                      <span className="hidden xl:inline">({destination.reviews})</span>
                     </span>
 
                     <span className="inline-flex items-center gap-1.5">
-                      <Clock3 size={15} className="text-white/48" />
-                      {destination.duration}
+                      <Clock3 size={12} className="text-[var(--color-text-muted)] md:size-[11px] xl:size-[15px]" />
+                      {formatDuration(destination.duration)}
                     </span>
                   </div>
 
-                  <div className="my-5 h-px bg-white/10" />
+                  <div className="my-3 h-px bg-[var(--color-border-soft)] md:my-3 xl:my-5" />
 
-                  <p className="text-sm text-white/58">Starting from</p>
+                  <p className="text-[10px] text-[var(--color-text-muted)] md:text-[9px] lg:text-[10px] xl:text-sm">
+                    Starting from
+                  </p>
 
                   <p
-                    className={`mt-1 text-3xl font-black tracking-[0.04em] ${
-                      isViolet ? "text-violet-200" : "text-cyan-200"
+                    className={`mt-1 truncate text-lg font-black tracking-[0.04em] sm:text-2xl md:text-base lg:text-xl xl:text-3xl ${
+                      isIce ? "text-[var(--color-secondary)]" : "text-[var(--color-primary)]"
                     }`}
                   >
                     {destination.price}
@@ -247,16 +256,20 @@ export function Destinations() {
 
                   <button
                     type="button"
-                    className={`mt-5 flex w-full items-center justify-center gap-3 rounded-full border bg-transparent px-5 py-3 text-sm font-semibold text-white transition duration-300 group-hover:gap-5 ${
-                      isViolet
-                        ? "border-violet-300/45 hover:bg-violet-300/10"
-                        : "border-cyan-300/45 hover:bg-cyan-300/10"
+                    onClick={() => navigate(`/destinations/${destination.slug}`)}
+                    className={`mt-3 flex w-full items-center justify-center gap-2 rounded-full border bg-transparent px-3 py-2 text-[10px] font-semibold text-[var(--color-text)] transition duration-300 group-hover:gap-3 sm:mt-4 sm:py-2.5 sm:text-xs md:mt-3 md:px-2 md:py-2 md:text-[9px] lg:text-[10px] xl:mt-5 xl:gap-3 xl:px-5 xl:py-3 xl:text-sm xl:group-hover:gap-5 ${
+                      isIce
+                        ? "border-[color:var(--color-secondary)]/40 hover:bg-[color:rgba(224,247,255,0.08)]"
+                        : "border-[color:var(--color-primary)]/45 hover:bg-[color:rgba(243,201,121,0.1)]"
                     }`}
                   >
-                    Explore Now
+                    <span className="hidden md:inline xl:hidden">Explore</span>
+                    <span className="md:hidden xl:inline">Explore Now</span>
                     <ArrowRight
-                      size={18}
-                      className={isViolet ? "text-violet-200" : "text-cyan-200"}
+                      size={14}
+                      className={`md:size-[13px] xl:size-[18px] ${
+                        isIce ? "text-[var(--color-secondary)]" : "text-[var(--color-primary)]"
+                      }`}
                     />
                   </button>
                 </div>
@@ -265,22 +278,32 @@ export function Destinations() {
           })}
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 flex justify-center md:mt-9 xl:mt-12">
           <button
             type="button"
-            className="group inline-flex w-full max-w-sm items-center justify-center gap-6 rounded-full border border-cyan-300/35 bg-white/[0.035] px-7 py-4 text-base font-semibold text-white shadow-[0_24px_80px_rgba(125,211,252,0.08)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-200/70 hover:bg-cyan-300/10 sm:max-w-md"
+            onClick={() => navigate("/destinations")}
+            className="group inline-flex w-full max-w-xs items-center justify-center gap-4 rounded-full border border-[color:var(--color-primary)]/35 bg-[var(--color-surface)] px-5 py-3 text-sm font-semibold text-[var(--color-text)] shadow-[var(--shadow-primary)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[color:var(--color-primary-soft)]/70 hover:bg-[color:rgba(243,201,121,0.1)] sm:max-w-sm sm:gap-5 sm:px-6 sm:py-3.5 md:max-w-sm md:gap-5 xl:max-w-md xl:gap-6 xl:px-7 xl:py-4 xl:text-base"
           >
-            <span className="grid size-11 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_35px_rgba(125,211,252,0.22)]">
-              <Navigation size={19} />
+            <span className="grid size-9 place-items-center rounded-full bg-[color:rgba(243,201,121,0.1)] text-[var(--color-primary)] shadow-[0_0_35px_var(--color-primary-glow)] sm:size-10 xl:size-11">
+              <Navigation size={17} className="xl:size-[19px]" />
             </span>
             View All Destinations
             <ArrowRight
-              size={23}
-              className="text-cyan-200 transition group-hover:translate-x-1"
+              size={19}
+              className="text-[var(--color-primary)] transition group-hover:translate-x-1 xl:size-[23px]"
             />
           </button>
         </div>
       </div>
     </section>
   );
+}
+
+function formatDuration(duration: string) {
+  return duration
+    .replace("Nights", "N")
+    .replace("Night", "N")
+    .replace("Days", "D")
+    .replace("Day", "D")
+    .replace(/\s*\/\s*/g, " / ");
 }

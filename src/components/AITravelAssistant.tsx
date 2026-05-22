@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type CSSProperties } from "react";
 import { useInView } from "react-intersection-observer";
 import {
   ArrowRight,
@@ -6,7 +6,7 @@ import {
   CalendarDays,
   MapPin,
   MessageCircle,
-  Send,
+  Route,
   Sparkles,
   Star,
   UserRound,
@@ -30,46 +30,56 @@ const imagesByName = Object.entries(imageModules).reduce<Record<string, string>>
   {}
 );
 
+type AITravelAssistantProps = {
+  onOpenAIChat: () => void;
+};
+
 const aiFeatures = [
   {
-    title: "Personalized",
-    description: "Trip plans based on your style.",
+    title: "Personalized Planning",
+    description: "Trips shaped around your budget, mood, days, and travel style.",
     icon: UserRound,
+    accent: "gold",
   },
   {
-    title: "Instant Ideas",
-    description: "Hotels, routes, food, and activities.",
-    icon: Zap,
+    title: "Instant Itineraries",
+    description: "Get day-wise routes, stays, food spots, and activities quickly.",
+    icon: Route,
+    accent: "ice",
   },
   {
-    title: "Live Help",
-    description: "Refine your plan in real time.",
+    title: "Smart Refinement",
+    description: "Ask follow-ups and upgrade your trip from simple to premium.",
     icon: MessageCircle,
+    accent: "gold",
   },
 ];
 
-const tripPicks = [
+const previewSteps = [
   {
-    title: "Beach Stay",
-    subtitle: "Sea-view",
-    image: imagesByName.goa || imagesByName.andaman,
+    title: "Choose Preferences",
+    description: "Destination, days, budget, travelers, and trip mood.",
+    icon: CalendarDays,
+    accent: "gold",
   },
   {
-    title: "Sunset",
-    subtitle: "Cruise",
-    image: imagesByName.digha || imagesByName.goa,
+    title: "Generate Plan",
+    description: "AI creates a clean itinerary with stay and activity ideas.",
+    icon: Sparkles,
+    accent: "ice",
   },
   {
-    title: "Luxury",
-    subtitle: "Resort",
-    image: imagesByName.andaman || imagesByName.kashmir,
+    title: "Refine by Chat",
+    description: "Make it romantic, luxury, budget-friendly, or adventurous.",
+    icon: Bot,
+    accent: "gold",
   },
 ];
 
-export function AITravelAssistant() {
+export function AITravelAssistant({ onOpenAIChat }: AITravelAssistantProps) {
   const { ref, inView } = useInView({
     triggerOnce: true,
-    threshold: 0.18,
+    threshold: 0.16,
   });
 
   useEffect(() => {
@@ -91,57 +101,68 @@ export function AITravelAssistant() {
     <section
       id="ai-travel-assistant"
       ref={ref}
-      className={`premium-reveal-section relative overflow-hidden bg-[#02040a] px-3 py-12 text-white sm:px-5 sm:py-14 lg:px-8 lg:py-20 ${
+      className={`premium-reveal-section relative overflow-hidden bg-[var(--color-bg)] px-4 py-14 text-[var(--color-text)] sm:px-5 sm:py-16 md:px-6 md:py-18 lg:px-8 lg:py-22 xl:py-24 ${
         inView ? "is-visible" : ""
       }`}
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_32%,rgba(14,165,233,0.16),transparent_30%),radial-gradient(circle_at_78%_44%,rgba(124,58,237,0.16),transparent_34%),linear-gradient(180deg,#02040a_0%,#040817_50%,#02040a_100%)]" />
-        <div className="absolute bottom-0 left-0 h-[220px] w-full bg-[radial-gradient(circle_at_18%_100%,rgba(56,189,248,0.13),transparent_32%),radial-gradient(circle_at_80%_100%,rgba(168,85,247,0.12),transparent_34%)]" />
+        <div className="absolute inset-0 bg-[image:var(--gradient-bg)]" />
+        <div className="absolute left-[4%] top-16 size-[18rem] rounded-full bg-[color:var(--color-primary)]/7 blur-3xl md:left-[8%] md:top-20 md:size-[22rem] xl:left-[10%] xl:size-[24rem]" />
+        <div className="absolute right-[2%] bottom-8 size-[20rem] rounded-full bg-[color:var(--color-secondary)]/7 blur-3xl md:right-[6%] md:size-[24rem] xl:right-[8%] xl:bottom-10 xl:size-[28rem]" />
+        <div className="absolute left-1/2 top-0 h-px w-[min(620px,75vw)] -translate-x-1/2 bg-gradient-to-r from-transparent via-[var(--color-primary)]/55 to-transparent" />
+        <div className="absolute right-[8%] top-16 hidden h-20 w-[340px] bg-[linear-gradient(135deg,transparent,rgba(243,201,121,0.2),rgba(224,247,255,0.12),transparent)] opacity-70 [clip-path:polygon(0_100%,18%_30%,30%_80%,44%_16%,58%_78%,72%_24%,100%_100%)] md:block xl:top-20 xl:h-24 xl:w-[420px]" />
       </div>
 
-      <div className="relative mx-auto grid w-[min(100%,1220px)] grid-cols-[0.42fr_0.58fr] items-center gap-3 sm:gap-5 lg:gap-10">
+      <div className="relative mx-auto grid w-[min(100%,1220px)] gap-7 md:grid-cols-[0.42fr_0.58fr] md:items-center md:gap-6 lg:gap-8 xl:gap-12">
         <div className="premium-reveal-heading min-w-0">
-          <div className="mb-3 inline-flex items-center gap-2 text-[8px] font-semibold uppercase tracking-[0.24em] text-cyan-200 sm:text-[10px] sm:tracking-[0.32em] lg:mb-5 lg:text-xs">
-            <span className="grid size-7 place-items-center rounded-full bg-cyan-300/10 text-cyan-200 shadow-[0_0_28px_rgba(125,211,252,0.22)] sm:size-8 lg:size-9">
-              <Sparkles size={14} />
+          <div className="mb-3 inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.26em] text-[var(--color-primary)] sm:text-[10px] sm:tracking-[0.32em] md:mb-4 md:text-[9px] lg:text-[10px] xl:text-xs">
+            <span className="grid size-8 place-items-center rounded-full border border-[color:var(--color-primary)]/25 bg-[color:rgba(243,201,121,0.1)] text-[var(--color-primary)] shadow-[var(--shadow-primary)] md:size-8 xl:size-9">
+              <Sparkles size={15} />
             </span>
-            Smart Planning
+            AI Powered Travel
           </div>
 
-          <h2 className="text-[clamp(1.55rem,7vw,4.8rem)] font-semibold leading-[0.92] tracking-[-0.065em] text-white">
-            Chat with AI
-            <span className="block bg-gradient-to-r from-violet-300 via-cyan-200 to-sky-300 bg-clip-text text-transparent">
-              Assistant
+          <h2 className="text-[clamp(2.25rem,10vw,4.3rem)] font-semibold leading-[0.92] tracking-[-0.065em] text-[var(--color-text)] md:text-[clamp(2.4rem,5vw,3.8rem)] lg:text-[clamp(3rem,5vw,4.5rem)] xl:text-[clamp(3.4rem,5vw,5rem)]">
+            Plan Smarter
+            <span className="block bg-[image:var(--gradient-primary)] bg-clip-text text-transparent">
+              Travel Better
             </span>
           </h2>
 
-          <div className="mt-3 h-px w-16 bg-gradient-to-r from-violet-300 via-cyan-300 to-transparent sm:mt-4 sm:w-20 lg:mt-6 lg:w-28" />
+          <div className="mt-4 h-px w-20 bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-transparent md:w-24 xl:mt-6 xl:w-28" />
 
-          <p className="mt-3 max-w-xl text-[11px] leading-5 text-white/66 sm:text-sm sm:leading-6 lg:mt-5 lg:text-base lg:leading-8">
-            Plan smarter with an AI companion that creates personalized journeys,
-            recommends experiences, and helps you finalize trips faster.
+          <p className="mt-4 max-w-xl text-xs leading-6 text-[var(--color-text-soft)] sm:text-sm sm:leading-7 md:max-w-sm md:text-xs md:leading-6 lg:max-w-md lg:text-sm lg:leading-7 xl:mt-5 xl:max-w-xl xl:text-base xl:leading-8">
+            Open your personal AI planner, choose quick trip preferences, or type
+            your own request to create a clean itinerary with stays, food,
+            activities, and travel tips.
           </p>
 
-          <div className="mt-4 grid gap-2 sm:mt-5 sm:gap-3 lg:mt-7 lg:gap-4">
+          <div className="mt-5 grid gap-3 md:mt-5 md:gap-3 xl:mt-7 xl:gap-4">
             {aiFeatures.map((feature, index) => {
               const Icon = feature.icon;
+              const isIce = feature.accent === "ice";
 
               return (
                 <div
                   key={feature.title}
-                  style={{ "--reveal-delay": `${index * 80 + 160}ms` } as React.CSSProperties}
-                  className="premium-reveal-card flex gap-2 sm:gap-3"
+                  style={{ "--reveal-delay": `${index * 80 + 160}ms` } as CSSProperties}
+                  className="premium-reveal-card flex gap-3"
                 >
-                  <div className="grid size-8 shrink-0 place-items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 text-cyan-200 shadow-[0_0_28px_rgba(125,211,252,0.12)] sm:size-10 lg:size-12">
-                    <Icon size={16} className="sm:size-[18px] lg:size-[21px]" />
+                  <div
+                    className={`grid size-9 shrink-0 place-items-center rounded-full border bg-[var(--color-surface)] sm:size-10 md:size-9 lg:size-10 xl:size-12 ${
+                      isIce
+                        ? "border-[color:var(--color-secondary)]/25 text-[var(--color-secondary)] shadow-[var(--shadow-secondary)]"
+                        : "border-[color:var(--color-primary)]/25 text-[var(--color-primary)] shadow-[var(--shadow-primary)]"
+                    }`}
+                  >
+                    <Icon size={17} className="md:size-[17px] lg:size-[19px] xl:size-[21px]" />
                   </div>
 
                   <div className="min-w-0">
-                    <h3 className="text-[11px] font-semibold text-white sm:text-sm lg:text-base">
+                    <h3 className="text-sm font-semibold text-[var(--color-text)] md:text-xs lg:text-sm xl:text-base">
                       {feature.title}
                     </h3>
-                    <p className="mt-0.5 max-w-md text-[9px] leading-4 text-white/56 sm:text-xs sm:leading-5 lg:text-sm lg:leading-6">
+                    <p className="mt-1 max-w-md text-[10px] leading-4 text-[var(--color-text-muted)] sm:text-xs sm:leading-5 md:text-[10px] md:leading-4 lg:text-xs lg:leading-5 xl:text-sm xl:leading-6">
                       {feature.description}
                     </p>
                   </div>
@@ -150,23 +171,22 @@ export function AITravelAssistant() {
             })}
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2 sm:mt-6 lg:mt-8">
-            <button
-              type="button"
-              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 via-blue-500 to-violet-600 px-3 py-2 text-[10px] font-semibold text-white shadow-[0_18px_55px_rgba(56,189,248,0.18)] transition duration-300 hover:-translate-y-1 sm:px-4 sm:py-3 sm:text-xs lg:rounded-2xl lg:px-6 lg:py-4 lg:text-sm"
-            >
-              <WandSparkles size={14} />
-              Start
-              <ArrowRight size={14} className="transition group-hover:translate-x-1" />
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={onOpenAIChat}
+            className="group mt-6 inline-flex items-center gap-2 rounded-xl bg-[image:var(--gradient-primary)] px-4 py-3 text-xs font-semibold text-[#140d04] shadow-[var(--shadow-primary)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_90px_var(--color-primary-glow)] md:mt-6 md:px-4 md:py-3 md:text-xs lg:px-5 lg:py-3.5 xl:mt-8 xl:rounded-2xl xl:px-6 xl:py-4 xl:text-sm"
+          >
+            <WandSparkles size={16} />
+            Start AI Planner
+            <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+          </button>
 
-          <div className="mt-4 hidden items-center gap-3 sm:flex lg:mt-7">
+          <div className="mt-5 flex items-center gap-3 md:mt-5 xl:mt-7">
             <div className="flex -space-x-3">
               {[imagesByName.andaman, imagesByName.goa, imagesByName.kashmir].map((image, index) => (
                 <div
                   key={index}
-                  className="size-8 overflow-hidden rounded-full border-2 border-[#02040a] bg-white/10 lg:size-10"
+                  className="size-8 overflow-hidden rounded-full border-2 border-[var(--color-bg)] bg-[var(--color-surface)] md:size-8 xl:size-10"
                 >
                   {image ? (
                     <img src={image} alt="" className="h-full w-full object-cover" />
@@ -176,12 +196,12 @@ export function AITravelAssistant() {
             </div>
 
             <div>
-              <div className="flex items-center gap-1 text-yellow-400">
+              <div className="flex items-center gap-1 text-[var(--color-primary)]">
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={index} size={12} className="fill-current lg:size-[14px]" />
+                  <Star key={index} size={12} className="fill-current md:size-[12px] xl:size-[14px]" />
                 ))}
               </div>
-              <p className="mt-0.5 text-[10px] text-white/50 lg:text-sm">
+              <p className="mt-0.5 text-[10px] text-[var(--color-text-muted)] md:text-[10px] xl:text-sm">
                 Trusted by 50K+
               </p>
             </div>
@@ -190,241 +210,115 @@ export function AITravelAssistant() {
 
         <div
           className="premium-reveal-card min-w-0"
-          style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
+          style={{ "--reveal-delay": "220ms" } as CSSProperties}
         >
-          <div className="ai-dashboard-shell relative mx-auto overflow-hidden rounded-2xl border border-white/12 bg-[#050b16]/82 p-2 shadow-[0_28px_95px_rgba(0,0,0,0.62)] backdrop-blur-2xl sm:p-3 lg:rounded-[2rem] lg:p-5">
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(125,211,252,0.12),transparent_28%,transparent_72%,rgba(167,139,250,0.13))]" />
+          <div className="relative mx-auto overflow-hidden rounded-[1.45rem] border border-[color:var(--color-primary)]/18 bg-[var(--color-glass)] p-3.5 shadow-[var(--shadow-card)] backdrop-blur-2xl sm:rounded-[1.7rem] sm:p-4 md:rounded-[1.5rem] md:p-4 lg:rounded-[1.8rem] lg:p-5 xl:rounded-[2.2rem] xl:p-6">
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_36%,rgba(243,201,121,0.05))]" />
+              <div className="absolute right-4 top-6 h-12 w-44 bg-[linear-gradient(135deg,transparent,rgba(243,201,121,0.24),rgba(224,247,255,0.12),transparent)] opacity-80 [clip-path:polygon(0_100%,20%_30%,34%_75%,50%_16%,66%_72%,82%_30%,100%_100%)] sm:w-56 md:right-4 md:top-6 md:h-12 md:w-52 xl:right-6 xl:top-8 xl:h-16 xl:w-64" />
+            </div>
 
-            <div className="relative z-10 grid gap-3 lg:grid-cols-[1fr_245px] xl:grid-cols-[1fr_275px]">
-              <div className="min-w-0">
-                <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-3">
-                  <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-                    <div className="ai-bot-orb relative grid size-9 shrink-0 place-items-center rounded-full border border-cyan-300/25 bg-cyan-300/10 text-cyan-100 shadow-[0_0_35px_rgba(125,211,252,0.2)] sm:size-11 lg:size-13">
-                      <Sparkles size={17} className="sm:size-[20px] lg:size-[24px]" />
-                    </div>
-
-                    <div className="min-w-0">
-                      <h3 className="truncate text-xs font-semibold text-white sm:text-sm lg:text-lg">
-                        AI Travel Assistant
-                      </h3>
-                      <p className="mt-0.5 flex items-center gap-1.5 text-[9px] text-white/55 sm:text-xs lg:text-sm">
-                        <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
-                        Online
-                      </p>
-                    </div>
+            <div className="relative z-10">
+              <div className="flex items-center justify-between gap-3 border-b border-[color:var(--color-border-soft)] pb-3 md:pb-3 xl:gap-4 xl:pb-4">
+                <div className="flex min-w-0 items-center gap-3">
+                  <div className="relative grid size-10 shrink-0 place-items-center rounded-full border border-[color:var(--color-primary)]/25 bg-[color:rgba(243,201,121,0.1)] text-[var(--color-primary)] shadow-[var(--shadow-primary)] sm:size-12 md:size-10 lg:size-12 xl:size-14">
+                    <span className="absolute inset-[-7px] rounded-full bg-[color:var(--color-primary)]/8 blur-md" />
+                    <Sparkles className="relative" size={19} />
                   </div>
 
-                  <div className="hidden items-center gap-2 md:flex">
-                    <MiniCircle icon={<CalendarDays size={14} />} />
-                    <MiniCircle icon={<Sparkles size={14} />} />
-                  </div>
-                </div>
-
-                <div className="mt-3 space-y-3 lg:mt-4">
-                  <div className="ml-auto max-w-[86%] rounded-2xl rounded-tr-md border border-cyan-300/20 bg-blue-600/24 px-3 py-2 text-[10px] leading-4 text-white shadow-[0_18px_60px_rgba(37,99,235,0.12)] sm:text-xs sm:leading-5 lg:px-5 lg:py-3.5 lg:text-sm lg:leading-6">
-                    Plan a romantic 4-day trip to Goa with sunsets and sea-view stays.
-                    <div className="mt-1 text-right text-[8px] text-white/45 sm:text-[10px]">
-                      10:30 AM ✓
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <div className="hidden size-8 shrink-0 place-items-center rounded-full border border-violet-300/25 bg-violet-300/10 text-violet-200 sm:grid">
-                      <Sparkles size={15} />
-                    </div>
-
-                    <div className="max-w-[88%] rounded-2xl rounded-tl-md border border-white/10 bg-white/[0.075] px-3 py-2 text-[10px] leading-4 text-white/88 sm:text-xs sm:leading-5 lg:px-5 lg:py-3.5 lg:text-sm lg:leading-6">
-                      Perfect! I created a compact plan with romantic stays, beach experiences,
-                      and relaxed day-by-day ideas.
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl border border-white/10 bg-black/18 p-2.5 lg:p-3">
-                    <p className="mb-2 text-[9px] font-semibold text-white/74 sm:text-xs">
-                      Top picks
+                  <div className="min-w-0">
+                    <h3 className="truncate text-base font-semibold text-[var(--color-text)] md:text-sm lg:text-base xl:text-xl">
+                      AI Planner Preview
+                    </h3>
+                    <p className="mt-1 line-clamp-1 text-xs text-[var(--color-text-muted)] md:text-[10px] lg:text-xs xl:text-sm">
+                      A premium chat experience for smart trip planning.
                     </p>
-
-                    <div className="grid grid-cols-3 gap-2">
-                      {tripPicks.map((item) => (
-                        <div
-                          key={item.title}
-                          className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.045] lg:rounded-2xl"
-                        >
-                          {item.image ? (
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="h-12 w-full object-cover sm:h-14 lg:h-20"
-                              loading="eager"
-                              decoding="async"
-                              draggable={false}
-                            />
-                          ) : (
-                            <div className="h-12 bg-white/5" />
-                          )}
-
-                          <div className="p-2">
-                            <h4 className="truncate text-[9px] font-semibold text-white sm:text-[11px] lg:text-sm">
-                              {item.title}
-                            </h4>
-                            <p className="mt-0.5 truncate text-[8px] text-white/50 sm:text-[10px] lg:text-xs">
-                              {item.subtitle}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl border border-white/10 bg-white/[0.055] p-2.5 sm:flex sm:items-center sm:gap-3">
-                    {imagesByName.goa ? (
-                      <img
-                        src={imagesByName.goa}
-                        alt="Suggested itinerary"
-                        className="hidden h-20 w-24 rounded-xl object-cover sm:block lg:h-24 lg:w-28"
-                        loading="eager"
-                        decoding="async"
-                        draggable={false}
-                      />
-                    ) : null}
-
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between gap-2">
-                        <h4 className="truncate text-[10px] font-semibold text-white sm:text-xs lg:text-base">
-                          Goa · 4 Days Itinerary
-                        </h4>
-
-                        <button
-                          type="button"
-                          className="hidden rounded-full bg-violet-300/12 px-3 py-1.5 text-[10px] font-medium text-violet-100 lg:block"
-                        >
-                          View Plan
-                        </button>
-                      </div>
-
-                      <div className="mt-2 grid gap-1 text-[9px] text-white/64 sm:text-[10px] lg:text-sm">
-                        <ItineraryRow day="Day 1" text="Arrival · Sunset Dinner" />
-                        <ItineraryRow day="Day 2" text="North Goa · Cafes" />
-                        <ItineraryRow day="Day 3" text="South Goa · Cruise" />
-                      </div>
-                    </div>
                   </div>
                 </div>
 
-                <div className="mt-3">
-                  <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-black/22 p-1.5 lg:rounded-2xl">
-                    <input
-                      aria-label="Ask AI travel assistant"
-                      placeholder="Ask anything..."
-                      className="min-w-0 flex-1 bg-transparent px-2 text-[10px] text-white outline-none placeholder:text-white/38 sm:text-xs lg:text-sm"
-                    />
-
-                    <button
-                      type="button"
-                      className="grid size-8 shrink-0 place-items-center rounded-full bg-gradient-to-r from-sky-500 to-violet-600 text-white shadow-[0_12px_35px_rgba(125,211,252,0.2)] transition hover:scale-105 sm:size-9 lg:size-11"
-                      aria-label="Send message"
-                    >
-                      <Send size={14} />
-                    </button>
-                  </div>
+                <div className="hidden items-center gap-2 rounded-full border border-[color:var(--color-success)]/20 bg-[color:rgba(110,231,183,0.1)] px-3 py-1.5 text-xs text-[var(--color-success)] sm:flex md:px-2.5 md:py-1 md:text-[10px] lg:px-3 lg:py-1.5 xl:text-xs">
+                  <span className="size-1.5 rounded-full bg-[var(--color-success)] shadow-[0_0_12px_rgba(110,231,183,0.9)]" />
+                  Online
                 </div>
               </div>
 
-              <aside className="hidden border-l border-white/10 pl-4 lg:block">
-                <TripSummary />
-                <PlanIncludes />
-              </aside>
+              <div className="mt-4 space-y-3 md:mt-4 md:space-y-3 xl:mt-5 xl:space-y-4">
+                <div className="flex gap-3">
+                  <div className="grid size-9 shrink-0 place-items-center rounded-full border border-[color:var(--color-primary)]/20 bg-[color:rgba(243,201,121,0.08)] text-[var(--color-primary)] md:size-8 lg:size-9 xl:size-10">
+                    <Sparkles size={16} />
+                  </div>
+
+                  <div className="max-w-[80%] rounded-2xl rounded-tl-md border border-[color:var(--color-border)] bg-[var(--color-surface)] px-3 py-2.5 text-[11px] leading-5 text-[var(--color-text-soft)] md:text-[10px] md:leading-5 lg:text-xs xl:rounded-3xl xl:px-4 xl:py-3 xl:text-sm xl:leading-6">
+                    Hello! Choose preferences or type your trip idea. I’ll create
+                    a clean travel plan for you.
+                  </div>
+                </div>
+
+                <div className="ml-auto max-w-[74%] rounded-2xl rounded-tr-md border border-[color:var(--color-primary)]/24 bg-[color:rgba(243,201,121,0.12)] px-3 py-2.5 text-[11px] leading-5 text-[var(--color-primary-soft)] md:text-[10px] md:leading-5 lg:text-xs xl:rounded-3xl xl:px-4 xl:py-3 xl:text-sm xl:leading-6">
+                  Plan a 5-day Bali trip for a couple.
+                </div>
+              </div>
+
+              <div className="mt-4 grid gap-2.5 md:mt-4 md:gap-2.5 xl:mt-5 xl:gap-3">
+                {previewSteps.map((step) => {
+                  const Icon = step.icon;
+                  const isIce = step.accent === "ice";
+
+                  return (
+                    <div
+                      key={step.title}
+                      className="flex items-center gap-3 rounded-2xl border border-[color:var(--color-border)] bg-[var(--color-surface)] p-2.5 transition hover:border-[color:var(--color-primary)]/35 hover:bg-[var(--color-surface-strong)] md:gap-2.5 md:p-2.5 lg:p-3"
+                    >
+                      <div
+                        className={`grid size-9 shrink-0 place-items-center rounded-xl md:size-9 xl:size-10 ${
+                          isIce
+                            ? "bg-[color:rgba(224,247,255,0.1)] text-[var(--color-secondary)]"
+                            : "bg-[color:rgba(243,201,121,0.11)] text-[var(--color-primary)]"
+                        }`}
+                      >
+                        <Icon size={17} className="xl:size-[18px]" />
+                      </div>
+
+                      <div className="min-w-0">
+                        <h4 className="truncate text-xs font-semibold text-[var(--color-text)] md:text-xs lg:text-sm xl:text-base">
+                          {step.title}
+                        </h4>
+                        <p className="mt-1 line-clamp-1 text-[10px] leading-4 text-[var(--color-text-muted)] md:text-[9px] lg:text-[10px] xl:text-sm">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={onOpenAIChat}
+                className="group mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[image:var(--gradient-primary)] px-4 py-3 text-xs font-semibold text-[#140d04] shadow-[var(--shadow-primary)] transition hover:scale-[1.01] md:mt-4 md:py-2.5 lg:py-3 xl:mt-5 xl:rounded-2xl xl:px-5 xl:text-sm"
+              >
+                Open AI Chat
+                <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+              </button>
+
+              <div className="mt-3 rounded-xl border border-[color:var(--color-border)] bg-black/18 p-3 md:mt-3 md:p-2.5 xl:mt-4 xl:rounded-2xl xl:p-3">
+                <div className="flex items-center gap-2 text-[10px] text-[var(--color-text-muted)] md:text-[9px] lg:text-[10px] xl:text-xs">
+                  <MapPin size={14} className="shrink-0 text-[var(--color-primary)] xl:size-[15px]" />
+                  <span className="line-clamp-1">
+                    Example: “Plan a honeymoon in Kashmir for 6 days.”
+                  </span>
+                </div>
+              </div>
+
+              <Zap
+                className="pointer-events-none absolute bottom-5 right-5 text-[var(--color-primary)]/10"
+                size={70}
+                strokeWidth={1}
+              />
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function TripSummary() {
-  return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.045] p-4">
-      <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-white">
-        <CalendarDays size={17} className="text-cyan-200" />
-        Trip Summary
-      </div>
-
-      <div className="space-y-2.5">
-        <SummaryRow icon={<MapPin size={15} />} label="Destination" value="Goa, India" />
-        <SummaryRow icon={<CalendarDays size={15} />} label="Duration" value="3 Nights / 4 Days" />
-        <SummaryRow icon={<Sparkles size={15} />} label="Style" value="Romantic" />
-      </div>
-    </div>
-  );
-}
-
-function PlanIncludes() {
-  return (
-    <div className="mt-3 rounded-3xl border border-white/10 bg-white/[0.045] p-4">
-      <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-white">
-        <Bot size={17} className="text-violet-200" />
-        Plan Includes
-      </div>
-
-      <div className="grid grid-cols-3 gap-2 text-center text-[11px] text-white/58">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-2.5">
-          Stay
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-2.5">
-          Food
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-2.5">
-          Cruise
-        </div>
-      </div>
-
-      <button
-        type="button"
-        className="mt-3 w-full rounded-2xl bg-gradient-to-r from-sky-500 to-violet-600 px-4 py-2.5 text-xs font-semibold text-white shadow-[0_18px_60px_rgba(125,211,252,0.16)] transition hover:scale-[1.02]"
-      >
-        Customize
-      </button>
-    </div>
-  );
-}
-
-function SummaryRow({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex gap-2 border-b border-white/10 pb-2 last:border-b-0 last:pb-0">
-      <span className="mt-0.5 text-white/40">{icon}</span>
-      <div>
-        <p className="text-[10px] text-white/42">{label}</p>
-        <p className="mt-0.5 text-xs font-medium text-white/88">{value}</p>
-      </div>
-    </div>
-  );
-}
-
-function MiniCircle({ icon }: { icon: React.ReactNode }) {
-  return (
-    <button
-      type="button"
-      className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white/55 transition hover:border-cyan-300/35 hover:bg-cyan-300/10 hover:text-white"
-    >
-      {icon}
-    </button>
-  );
-}
-
-function ItineraryRow({ day, text }: { day: string; text: string }) {
-  return (
-    <div className="grid grid-cols-[42px_1fr] gap-2 lg:grid-cols-[52px_1fr]">
-      <span className="font-medium text-white/86">{day}</span>
-      <span className="truncate">{text}</span>
-    </div>
   );
 }

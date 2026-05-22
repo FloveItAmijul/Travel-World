@@ -90,7 +90,7 @@ export function Hero() {
             try {
               await image.decode();
             } catch {
-              // Safe to ignore decode failure for cached/local images.
+              // Safe to ignore decode failure.
             }
           }
         })
@@ -128,6 +128,14 @@ export function Hero() {
     }, BACKGROUND_FADE_DURATION);
   }, []);
 
+  const goNext = useCallback(() => {
+    changeSlide(activeIndexRef.current + 1);
+  }, [changeSlide]);
+
+  const goPrev = useCallback(() => {
+    changeSlide(activeIndexRef.current - 1);
+  }, [changeSlide]);
+
   function scrollToDestinations() {
     const element = document.getElementById("destinations");
     if (!element) return;
@@ -139,16 +147,7 @@ export function Hero() {
       top: elementTop - headerOffset,
       behavior: "smooth",
     });
-
   }
-
-  const goNext = useCallback(() => {
-    changeSlide(activeIndexRef.current + 1);
-  }, [changeSlide]);
-
-  const goPrev = useCallback(() => {
-    changeSlide(activeIndexRef.current - 1);
-  }, [changeSlide]);
 
   useEffect(() => {
     if (destinations.length <= 1) return;
@@ -181,19 +180,35 @@ export function Hero() {
     });
   }, [activeIndex]);
 
-  const cardSlots = [
-    { x: 0, scale: 1.06, opacity: 1, zIndex: 4 },
-    { x: 176, scale: 1, opacity: 0.92, zIndex: 3 },
-    { x: 352, scale: 0.94, opacity: 0.78, zIndex: 2 },
-    { x: 528, scale: 0.88, opacity: 0.62, zIndex: 1 },
+  const desktopCardSlots = [
+    { x: 0, y: 0, width: 330, height: 510, scale: 1, opacity: 1, zIndex: 5 },
+    { x: 255, y: 42, width: 300, height: 450, scale: 0.96, opacity: 0.9, zIndex: 4 },
+    { x: 470, y: 82, width: 270, height: 390, scale: 0.92, opacity: 0.78, zIndex: 3 },
+    { x: 650, y: 118, width: 245, height: 335, scale: 0.88, opacity: 0.64, zIndex: 2 },
+  ];
+
+  const tabletCardSlots = [
+    { x: 0, y: 0, width: 220, height: 335, scale: 1, opacity: 1, zIndex: 5 },
+    { x: 150, y: 34, width: 198, height: 292, scale: 0.95, opacity: 0.86, zIndex: 4 },
+    { x: 270, y: 62, width: 176, height: 246, scale: 0.9, opacity: 0.68, zIndex: 3 },
+    { x: 362, y: 84, width: 154, height: 210, scale: 0.84, opacity: 0.46, zIndex: 2 },
+  ];
+
+  const mobileCardSlots = [
+    { x: 0, y: 0, width: 188, height: 246, scale: 1, opacity: 1, zIndex: 4 },
+    { x: 125, y: 28, width: 164, height: 210, scale: 0.94, opacity: 0.78, zIndex: 3 },
+    { x: 222, y: 54, width: 140, height: 174, scale: 0.88, opacity: 0.56, zIndex: 2 },
+    { x: 300, y: 74, width: 118, height: 146, scale: 0.84, opacity: 0.38, zIndex: 1 },
   ];
 
   if (destinations.length === 0) {
     return (
-      <section className="grid min-h-screen place-items-center bg-[#02040a] px-6 text-center text-white">
+      <section className="grid min-h-[560px] place-items-center bg-[var(--color-bg)] px-6 text-center text-[var(--color-text)]">
         <div>
-          <h1 className="text-3xl font-bold sm:text-4xl">No destination images found</h1>
-          <p className="mt-4 text-white/60">
+          <h1 className="text-3xl font-bold sm:text-4xl">
+            No destination images found
+          </h1>
+          <p className="mt-4 text-[var(--color-text-soft)]">
             Add images inside <code>src/assets/destinations</code>.
           </p>
         </div>
@@ -203,9 +218,9 @@ export function Hero() {
 
   return (
     <section
-    id="home"
-    className="relative min-h-svh overflow-hidden bg-[#02040a] pt-24 sm:pt-28 lg:min-h-screen lg:pt-24"
-  >
+      id="home"
+      className="relative min-h-[690px] overflow-hidden bg-[var(--color-bg)] pt-20 sm:min-h-[710px] sm:pt-24 md:min-h-[640px] md:pt-24 lg:min-h-[720px] xl:min-h-screen"
+    >
       <div className="absolute inset-0">
         {previousDestination && (
           <img
@@ -228,230 +243,275 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.48)_0%,rgba(2,4,10,0.28)_35%,rgba(2,4,10,0.68)_100%)] sm:bg-[linear-gradient(90deg,rgba(2,4,10,0.68)_0%,rgba(2,4,10,0.38)_45%,rgba(2,4,10,0.08)_100%)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#02040a]/48 via-transparent to-[#02040a]/10" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_75%,rgba(125,211,252,0.1),transparent_34%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.58)_0%,rgba(2,4,10,0.42)_42%,rgba(2,4,10,0.86)_100%)] md:bg-[linear-gradient(90deg,rgba(2,4,10,0.84)_0%,rgba(2,4,10,0.54)_46%,rgba(2,4,10,0.12)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-black/24" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_20%,rgba(243,201,121,0.15),transparent_28%),radial-gradient(circle_at_18%_76%,rgba(224,247,255,0.1),transparent_32%)]" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-96px)] w-[min(100%-28px,1180px)] flex-col justify-center pb-8 sm:w-[min(100%-40px,1180px)] lg:min-h-[calc(100vh-96px)]">
-        <div className="grid items-center gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:gap-10">
-          <div className="max-w-2xl pt-4 sm:pt-8">
+      <div className="relative z-10 mx-auto flex w-[min(100%-28px,1360px)] flex-col pb-8 sm:w-[min(100%-40px,1360px)] md:min-h-[calc(640px-96px)] md:justify-center lg:min-h-[calc(720px-96px)] xl:min-h-[calc(100vh-96px)]">
+        <div className="grid items-center gap-7 md:grid-cols-[0.42fr_0.58fr] md:gap-6 lg:gap-8 xl:gap-10">
+          <div className="relative max-w-2xl pt-8 sm:pt-10 md:pt-0 md:pl-12 lg:pl-16 xl:pl-20">
+            <div className="absolute left-0 top-1/2 hidden -translate-y-1/2 md:block">
+              <button
+                type="button"
+                onClick={goPrev}
+                aria-label="Previous destination"
+                className="grid size-10 place-items-center rounded-full border border-[color:var(--color-border)] bg-black/30 text-white/82 backdrop-blur-xl transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.1)] hover:text-white lg:size-12 xl:size-14"
+              >
+                <ChevronLeft size={20} className="xl:size-6" />
+              </button>
+
+              <div className="mt-6 flex flex-col items-center gap-3 xl:mt-8 xl:gap-4">
+                {destinations.map((destination, index) => (
+                  <button
+                    key={destination.image}
+                    type="button"
+                    onClick={() => changeSlide(index)}
+                    aria-label={`Go to ${destination.title}`}
+                    className={`rounded-full transition duration-300 ${
+                      index === activeIndex
+                        ? "h-2.5 w-2.5 bg-[var(--color-primary)] shadow-[0_0_18px_var(--color-primary-glow)]"
+                        : "h-1.5 w-1.5 bg-white/35 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
             <p
               key={`eyebrow-${activeIndex}`}
-              className="hero-copy-enter mb-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-cyan-100 sm:mb-5 sm:text-xs sm:tracking-[0.38em]"
+              className="hero-copy-enter mb-3 text-[9px] font-semibold uppercase tracking-[0.34em] text-[var(--color-primary)] sm:mb-4 sm:text-xs sm:tracking-[0.42em] md:text-[9px] lg:text-[10px] xl:text-xs"
             >
               Explore the world
             </p>
 
             <h1
               key={`title-${activeIndex}`}
-              className="hero-copy-enter max-w-[12ch] text-[clamp(3.2rem,16vw,5.8rem)] font-black uppercase leading-[0.88] tracking-[-0.07em] text-white drop-shadow-[0_10px_35px_rgba(0,0,0,0.45)] sm:text-[clamp(5rem,12vw,7rem)] lg:text-8xl"
+              className="hero-copy-enter max-w-[12ch] text-[clamp(3.2rem,15vw,5.4rem)] font-semibold uppercase leading-[0.9] tracking-[-0.075em] text-[var(--color-text)] drop-shadow-[0_14px_45px_rgba(0,0,0,0.52)] sm:text-[clamp(4.2rem,11vw,6.5rem)] md:text-[clamp(3.1rem,7vw,4.6rem)] lg:text-[clamp(4rem,7vw,6rem)] xl:text-8xl"
             >
               {activeDestination.title}
             </h1>
 
             <p
               key={`description-${activeIndex}`}
-              className="hero-copy-enter mt-5 max-w-lg text-sm leading-7 text-white/88 drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)] sm:mt-7 sm:text-base sm:leading-8 lg:text-lg"
+              className="hero-copy-enter mt-4 max-w-lg text-sm leading-7 text-[var(--color-text-soft)] drop-shadow-[0_8px_24px_rgba(0,0,0,0.4)] sm:mt-5 sm:text-base sm:leading-8 md:max-w-sm md:text-xs md:leading-6 lg:max-w-md lg:text-sm lg:leading-7 xl:mt-7 xl:max-w-lg xl:text-lg xl:leading-8"
             >
               {activeDestination.description}
             </p>
 
-            <div className="mt-7 flex flex-wrap gap-3 sm:mt-9 sm:gap-4">
+            <div className="mt-6 flex flex-wrap gap-3 sm:mt-7 sm:gap-4 lg:mt-8 xl:mt-9">
               <button
                 type="button"
                 onClick={scrollToDestinations}
-                className="group inline-flex items-center gap-3 rounded-full bg-white px-5 py-3.5 text-sm font-semibold text-[#02040a] shadow-[0_18px_70px_rgba(255,255,255,0.18)] transition duration-300 hover:-translate-y-1 hover:bg-cyan-100 sm:gap-4 sm:px-6 sm:py-4">
-                Discover Location
-                <span className="grid size-8 place-items-center rounded-full bg-[#02040a] text-white transition group-hover:translate-x-1 sm:size-9">
-                  →
+                className="group inline-flex items-center gap-3 rounded-full bg-[image:var(--gradient-primary)] px-5 py-3.5 text-sm font-semibold text-[#140d04] shadow-[var(--shadow-primary)] transition duration-300 hover:-translate-y-1 md:px-4 md:py-3 md:text-xs lg:px-5 lg:py-3.5 xl:px-6 xl:py-4 xl:text-sm"
+              >
+                Discover Now
+                <span className="grid size-8 place-items-center rounded-full bg-black/20 text-[#140d04] transition group-hover:translate-x-1 md:size-7 xl:size-9">
+                  <ChevronRight size={18} />
                 </span>
               </button>
             </div>
           </div>
 
-          <div className="relative hidden min-h-[560px] items-end lg:flex">
-            <div className="absolute bottom-24 left-0 right-0">
-              <div className="relative h-[300px] overflow-visible">
-                {visibleCards.map((destination) => {
-                  const slot = cardSlots[destination.position];
+          <div className="relative hidden min-h-[385px] items-center md:flex lg:min-h-[455px] xl:min-h-[620px]">
+            <div className="relative h-[360px] w-full lg:h-[430px] xl:hidden">
+              {visibleCards.map((card) => {
+                const slot = tabletCardSlots[card.position];
 
-                  return (
-                    <button
-                      key={destination.image}
-                      type="button"
-                      onClick={() => changeSlide(destination.index)}
-                      className="hero-card absolute bottom-0 h-[270px] w-[172px] overflow-hidden rounded-[1.8rem] border border-white/16 bg-white/10 text-left shadow-[0_28px_90px_rgba(0,0,0,0.56)] outline-none backdrop-blur-xl transition-[border-color] duration-300 hover:border-cyan-200/45"
-                      style={{
-                        transform: `translate3d(${slot.x}px, 0, 0) scale(${slot.scale})`,
-                        opacity: slot.opacity,
-                        zIndex: slot.zIndex,
-                      }}
-                    >
-                      <img
-                        src={destination.image}
-                        alt={destination.title}
-                        className="h-full w-full object-cover"
-                        draggable={false}
-                        loading="eager"
-                      />
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                      <div className="absolute inset-0 rounded-[1.8rem] ring-1 ring-inset ring-white/10" />
-
-                      <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/20 px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-white/85 backdrop-blur-xl">
-                        {String(destination.index + 1).padStart(2, "0")}
-                      </div>
-
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-lg font-bold leading-tight text-white">
-                          {destination.title}
-                        </h3>
-
-                        <p className="mt-1.5 flex items-center gap-1.5 text-xs text-white/72">
-                          <MapPin size={13} />
-                          {destination.location}
-                        </p>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="mt-9 flex items-center gap-4">
-                <button
-                  type="button"
-                  onClick={goPrev}
-                  className="grid size-11 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-xl transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
-                  aria-label="Previous destination"
-                >
-                  <ChevronLeft size={21} />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={goNext}
-                  className="grid size-11 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-xl transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
-                  aria-label="Next destination"
-                >
-                  <ChevronRight size={21} />
-                </button>
-
-                <div className="relative h-px flex-1 overflow-hidden bg-white/28">
-                  <div
-                    key={progressKey}
-                    className="hero-progress absolute left-0 top-0 h-full bg-cyan-100 shadow-[0_0_20px_rgba(125,211,252,0.9)]"
+                return (
+                  <HeroStackCard
+                    key={card.image}
+                    card={card}
+                    slot={slot}
+                    size="tablet"
                   />
-                </div>
+                );
+              })}
+            </div>
 
-                <span className="min-w-10 text-right text-2xl font-bold text-white">
-                  {String(activeIndex + 1).padStart(2, "0")}
-                </span>
+            <div className="relative hidden h-[560px] w-full xl:block">
+              {visibleCards.map((card) => {
+                const slot = desktopCardSlots[card.position];
+
+                return (
+                  <HeroStackCard
+                    key={card.image}
+                    card={card}
+                    slot={slot}
+                    size="desktop"
+                  />
+                );
+              })}
+            </div>
+
+            <button
+              type="button"
+              onClick={goNext}
+              aria-label="Next destination"
+              className="absolute right-2 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-[color:var(--color-border)] bg-black/30 text-white/82 backdrop-blur-xl transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.1)] hover:text-white lg:size-12 xl:right-6 xl:size-14"
+            >
+              <ChevronRight size={20} className="xl:size-6" />
+            </button>
+          </div>
+
+          <div className="relative mt-4 min-h-[292px] overflow-hidden sm:min-h-[318px] md:hidden">
+            <div className="relative h-[255px] w-full sm:h-[280px]">
+              {visibleCards.map((card) => {
+                const slot = mobileCardSlots[card.position];
+
+                return (
+                  <HeroStackCard
+                    key={card.image}
+                    card={card}
+                    slot={slot}
+                    size="mobile"
+                  />
+                );
+              })}
+            </div>
+
+            <div className="mt-3 flex items-center gap-4">
+              <button
+                type="button"
+                onClick={goPrev}
+                className="grid size-11 shrink-0 place-items-center rounded-full border border-white/12 bg-white/[0.045] text-white"
+                aria-label="Previous destination"
+              >
+                <ChevronLeft size={20} />
+              </button>
+
+              <div className="relative h-px flex-1 overflow-hidden bg-white/18">
+                <div
+                  key={progressKey}
+                  className="hero-progress h-full bg-[var(--color-primary)]"
+                />
               </div>
+
+              <button
+                type="button"
+                onClick={goNext}
+                className="grid size-11 shrink-0 place-items-center rounded-full border border-white/12 bg-white/[0.045] text-white"
+                aria-label="Next destination"
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </div>
-
-          <div className="pt-6 lg:hidden">
-  <div className="relative mx-auto h-[230px] max-w-[380px] overflow-visible sm:h-[280px] sm:max-w-[560px]">
-    {visibleCards.map((destination) => {
-      const mobileSlots = [
-        { x: 0, scale: 1.04, opacity: 1, zIndex: 4 },
-        { x: 112, scale: 0.95, opacity: 0.84, zIndex: 3 },
-        { x: 218, scale: 0.86, opacity: 0.66, zIndex: 2 },
-        { x: 310, scale: 0.78, opacity: 0.46, zIndex: 1 },
-      ];
-
-      const tabletSlots = [
-        { x: 0, scale: 1.06, opacity: 1, zIndex: 4 },
-        { x: 150, scale: 0.98, opacity: 0.88, zIndex: 3 },
-        { x: 295, scale: 0.9, opacity: 0.7, zIndex: 2 },
-        { x: 430, scale: 0.82, opacity: 0.5, zIndex: 1 },
-      ];
-
-      const slot = mobileSlots[destination.position];
-
-      return (
-        <button
-          key={destination.image}
-          type="button"
-          onClick={() => changeSlide(destination.index)}
-          className="hero-mobile-overlap-card absolute bottom-0 h-[210px] w-[135px] overflow-hidden rounded-[1.5rem] border border-white/16 bg-white/10 text-left shadow-[0_24px_70px_rgba(0,0,0,0.5)] outline-none backdrop-blur-xl transition-[border-color] duration-300 hover:border-cyan-200/45 sm:h-[255px] sm:w-[165px]"
-          style={
-            {
-              "--mobile-x": `${slot.x}px`,
-              "--mobile-scale": slot.scale,
-              "--mobile-opacity": slot.opacity,
-              "--mobile-z": slot.zIndex,
-              "--tablet-x": `${tabletSlots[destination.position].x}px`,
-              "--tablet-scale": tabletSlots[destination.position].scale,
-              "--tablet-opacity": tabletSlots[destination.position].opacity,
-              "--tablet-z": tabletSlots[destination.position].zIndex,
-            } as React.CSSProperties
-          }
-        >
-          <img
-            src={destination.image}
-            alt={destination.title}
-            className="h-full w-full object-cover"
-            loading="eager"
-            draggable={false}
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/76 via-black/10 to-transparent" />
-          <div className="absolute inset-0 rounded-[1.5rem] ring-1 ring-inset ring-white/10" />
-
-          <div className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/20 px-2.5 py-1 text-[9px] font-semibold tracking-[0.16em] text-white/85 backdrop-blur-xl sm:left-4 sm:top-4 sm:px-3 sm:text-[10px]">
-            {String(destination.index + 1).padStart(2, "0")}
-          </div>
-
-          <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
-            <h3 className="text-base font-bold leading-tight text-white sm:text-lg">
-              {destination.title}
-            </h3>
-
-            <p className="mt-1.5 flex items-center gap-1.5 text-[11px] text-white/72 sm:text-xs">
-              <MapPin size={12} />
-              {destination.location}
-            </p>
-          </div>
-        </button>
-      );
-    })}
-  </div>
-
-  <div className="mx-auto mt-6 flex max-w-[380px] items-center gap-3 sm:max-w-[560px]">
-    <button
-      type="button"
-      onClick={goPrev}
-      className="grid size-10 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-xl transition hover:border-cyan-300/50 hover:bg-cyan-300/10 sm:size-11"
-      aria-label="Previous destination"
-    >
-      <ChevronLeft size={20} />
-    </button>
-
-    <button
-      type="button"
-      onClick={goNext}
-      className="grid size-10 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-xl transition hover:border-cyan-300/50 hover:bg-cyan-300/10 sm:size-11"
-      aria-label="Next destination"
-    >
-      <ChevronRight size={20} />
-    </button>
-
-    <div className="relative h-px flex-1 overflow-hidden bg-white/25">
-      <div
-        key={`mobile-${progressKey}`}
-        className="hero-progress absolute left-0 top-0 h-full bg-cyan-100"
-      />
-    </div>
-
-    <span className="min-w-8 text-right text-lg font-bold text-white sm:text-xl">
-      {String(activeIndex + 1).padStart(2, "0")}
-    </span>
-  </div>
-</div>
-
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroStackCard({
+  card,
+  slot,
+  size,
+}: {
+  card: {
+    image: string;
+    title: string;
+    location: string;
+    index: number;
+    position: number;
+  };
+  slot: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    scale: number;
+    opacity: number;
+    zIndex: number;
+  };
+  size: "mobile" | "tablet" | "desktop";
+}) {
+  const isDesktop = size === "desktop";
+  const isTablet = size === "tablet";
+
+  return (
+    <article
+      className={`hero-card absolute overflow-hidden border border-white/14 bg-white/[0.045] text-left shadow-[0_30px_110px_rgba(0,0,0,0.62)] backdrop-blur-xl ${
+        isDesktop ? "rounded-[1.8rem]" : isTablet ? "rounded-[1.45rem]" : "rounded-[1.25rem]"
+      }`}
+      style={{
+        width: `${slot.width}px`,
+        height: `${slot.height}px`,
+        transform: `translate3d(${slot.x}px, ${slot.y}px, 0) scale(${slot.scale})`,
+        opacity: slot.opacity,
+        zIndex: slot.zIndex,
+      }}
+    >
+      <img
+        src={card.image}
+        alt={card.title}
+        className="h-full w-full object-cover"
+        draggable={false}
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/84 via-black/18 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.2),transparent_24%)]" />
+
+      <div
+        className={
+          isDesktop
+            ? "absolute left-6 top-6 flex items-center gap-3"
+            : isTablet
+              ? "absolute left-4 top-4 flex items-center gap-2"
+              : "absolute left-4 top-4 flex items-center gap-2"
+        }
+      >
+        <span
+          className={
+            isDesktop
+              ? "text-sm font-medium text-white/88"
+              : "text-xs font-medium text-white/88"
+          }
+        >
+          {String(card.index + 1).padStart(2, "0")}
+        </span>
+
+        {card.position === 0 && (
+          <span className="rounded-full border border-[color:var(--color-primary)]/25 bg-[color:rgba(243,201,121,0.12)] px-2.5 py-1 text-[10px] font-semibold text-[var(--color-primary-soft)] sm:text-xs">
+            Popular
+          </span>
+        )}
+      </div>
+
+      <div
+        className={
+          isDesktop
+            ? "absolute bottom-7 left-6 right-6"
+            : isTablet
+              ? "absolute bottom-5 left-4 right-4"
+              : "absolute bottom-4 left-4 right-4"
+        }
+      >
+        <h3
+          className={
+            isDesktop
+              ? "text-4xl font-semibold tracking-[-0.06em] text-white"
+              : isTablet
+                ? "text-2xl font-semibold tracking-[-0.05em] text-white"
+                : "text-xl font-semibold tracking-[-0.04em] text-white"
+          }
+        >
+          {card.title}
+        </h3>
+
+        <p
+          className={
+            isDesktop
+              ? "mt-4 flex items-center gap-2 text-sm text-white/68"
+              : "mt-2 flex items-center gap-1.5 text-xs text-white/68"
+          }
+        >
+          <MapPin
+            size={isDesktop ? 16 : 13}
+            className="text-[var(--color-primary)]"
+          />
+          {card.location}
+        </p>
+      </div>
+    </article>
   );
 }

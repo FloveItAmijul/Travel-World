@@ -1,22 +1,196 @@
 :root {
-  --color-bg: #02030a;
-  --color-bg-soft: #07111f;
-  --color-card: rgba(255, 255, 255, 0.065);
+  /*
+    =========================================================
+    ACTIVE THEME: Luxury Gold + Ice
+    Best for premium travel agency look
+    =========================================================
+  */
 
-  --color-text: #f7fbff;
-  --color-muted: rgba(247, 251, 255, 0.64);
+  /* Base */
+  --color-bg: #02040a;
+  --color-bg-soft: #050914;
+  --color-bg-deep: #010208;
 
-  --color-accent: #67e8f9;
-  --color-accent-2: #8b5cf6;
-  --color-luxury: #f8d49a;
+  /* Surfaces */
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-soft: rgba(255, 255, 255, 0.03);
+  --color-surface-strong: rgba(255, 255, 255, 0.07);
+  --color-glass: rgba(7, 16, 29, 0.58);
 
-  --color-accent-soft: rgba(103, 232, 249, 0.14);
-  --color-luxury-soft: rgba(248, 212, 154, 0.13);
+  /* Borders */
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-soft: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
 
-  --border-soft: rgba(255, 255, 255, 0.12);
+  /* Text */
+  --color-text: #ffffff;
+  --color-text-soft: rgba(255, 255, 255, 0.68);
+  --color-text-muted: rgba(255, 255, 255, 0.48);
+  --color-text-faint: rgba(255, 255, 255, 0.34);
 
-  --shadow-accent: 0 24px 90px rgba(103, 232, 249, 0.16);
-  --shadow-luxury: 0 24px 90px rgba(248, 212, 154, 0.12);
+  /* Main luxury accent */
+  --color-primary: #f3c979;
+  --color-primary-soft: #ffe4a8;
+  --color-primary-dark: #b88734;
+  --color-primary-glow: rgba(243, 201, 121, 0.2);
 
-  --container-width: 1180px;
+  /* Secondary ice accent */
+  --color-secondary: #e0f7ff;
+  --color-secondary-soft: #f0fbff;
+  --color-secondary-dark: #7dd3fc;
+  --color-secondary-glow: rgba(125, 211, 252, 0.18);
+
+  /* AI accent */
+  --color-ai-cyan: #7dd3fc;
+  --color-ai-blue: #3b82f6;
+  --color-ai-violet: #a78bfa;
+  --color-ai-glow: rgba(167, 139, 250, 0.22);
+
+  /* Status */
+  --color-success: #6ee7b7;
+  --color-warning: #facc15;
+  --color-error: #fca5a5;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #ffe4a8, #f3c979, #b88734);
+  --gradient-secondary: linear-gradient(135deg, #ffffff, #e0f7ff, #7dd3fc);
+  --gradient-ai: linear-gradient(135deg, #38bdf8, #3b82f6, #a78bfa);
+  --gradient-bg: linear-gradient(180deg, #02040a 0%, #030817 50%, #02040a 100%);
+
+  /* Shadows */
+  --shadow-card: 0 26px 90px rgba(0, 0, 0, 0.42);
+  --shadow-primary: 0 22px 80px rgba(243, 201, 121, 0.18);
+  --shadow-secondary: 0 22px 80px rgba(125, 211, 252, 0.16);
+  --shadow-ai: 0 22px 80px rgba(167, 139, 250, 0.18);
+
+  /*
+    =========================================================
+    SAVED OLD THEME: Cyan + Violet Modern AI Look
+    Use these later if you want to switch back.
+    =========================================================
+  */
+
+  --old-color-bg: #02040a;
+  --old-color-bg-soft: #040817;
+  --old-color-surface: rgba(255, 255, 255, 0.04);
+  --old-color-border: rgba(255, 255, 255, 0.12);
+
+  --old-color-text: #ffffff;
+  --old-color-text-soft: rgba(255, 255, 255, 0.68);
+  --old-color-text-muted: rgba(255, 255, 255, 0.48);
+
+  --old-color-cyan: #7dd3fc;
+  --old-color-cyan-soft: #bae6fd;
+  --old-color-sky: #38bdf8;
+  --old-color-blue: #3b82f6;
+  --old-color-violet: #a78bfa;
+  --old-color-purple: #8b5cf6;
+
+  --old-gradient-main: linear-gradient(135deg, #38bdf8, #3b82f6, #a78bfa);
+  --old-gradient-ice: linear-gradient(135deg, #ffffff, #e0f7ff, #7dd3fc);
+  --old-gradient-bg: linear-gradient(180deg, #02040a 0%, #040817 50%, #02040a 100%);
+
+  --old-shadow-cyan: 0 22px 80px rgba(125, 211, 252, 0.16);
+  --old-shadow-violet: 0 22px 80px rgba(167, 139, 250, 0.18);
+
+  /*
+    =========================================================
+    SAVED PREMIUM GOLD DARK THEME
+    More warm luxury, less ice.
+    =========================================================
+  */
+
+  --gold-theme-bg: #030303;
+  --gold-theme-bg-soft: #090806;
+  --gold-theme-surface: rgba(255, 228, 168, 0.045);
+  --gold-theme-border: rgba(243, 201, 121, 0.18);
+
+  --gold-theme-primary: #f3c979;
+  --gold-theme-primary-soft: #ffe7b8;
+  --gold-theme-primary-dark: #9f6b24;
+  --gold-theme-text: #fffaf0;
+  --gold-theme-text-soft: rgba(255, 250, 240, 0.68);
+  --gold-theme-text-muted: rgba(255, 250, 240, 0.48);
+
+  --gold-theme-gradient: linear-gradient(135deg, #fff1c7, #f3c979, #9f6b24);
+  --gold-theme-shadow: 0 22px 80px rgba(243, 201, 121, 0.2);
+
+  /*
+    =========================================================
+    SAVED GLACIER / ICE THEME
+    More cold, clean, premium winter look.
+    =========================================================
+  */
+
+  --ice-theme-bg: #010611;
+  --ice-theme-bg-soft: #061022;
+  --ice-theme-surface: rgba(224, 247, 255, 0.045);
+  --ice-theme-border: rgba(224, 247, 255, 0.2);
+
+  --ice-theme-primary: #e0f7ff;
+  --ice-theme-primary-soft: #ffffff;
+  --ice-theme-primary-dark: #7dd3fc;
+  --ice-theme-text: #f8fdff;
+  --ice-theme-text-soft: rgba(248, 253, 255, 0.68);
+  --ice-theme-text-muted: rgba(248, 253, 255, 0.46);
+
+  --ice-theme-gradient: linear-gradient(135deg, #ffffff, #e0f7ff, #7dd3fc);
+  --ice-theme-shadow: 0 22px 80px rgba(224, 247, 255, 0.16);
+}
+
+/*
+  Useful reusable classes.
+  Use these slowly while replacing hardcoded Tailwind colors.
+*/
+
+.theme-bg {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.theme-section-bg {
+  background: var(--gradient-bg);
+  color: var(--color-text);
+}
+
+.theme-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(18px);
+}
+
+.theme-card-soft {
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-surface-soft);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(18px);
+}
+
+.theme-text-soft {
+  color: var(--color-text-soft);
+}
+
+.theme-text-muted {
+  color: var(--color-text-muted);
+}
+
+.theme-primary-text {
+  color: var(--color-primary);
+}
+
+.theme-secondary-text {
+  color: var(--color-secondary);
+}
+
+.theme-primary-button {
+  background: var(--gradient-primary);
+  color: #140d04;
+  box-shadow: var(--shadow-primary);
+}
+
+.theme-ai-button {
+  background: var(--gradient-ai);
+  color: white;
+  box-shadow: var(--shadow-ai);
 }

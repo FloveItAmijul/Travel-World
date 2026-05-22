@@ -33,10 +33,6 @@ button {
 }
 
 
-
-
-
-
 .hero-bg-image {
   position: absolute;
   inset: 0;
@@ -132,7 +128,6 @@ button {
 }
 
 
-
 .hero-mobile-card {
   contain: layout paint;
   transform: translateZ(0);
@@ -178,11 +173,6 @@ button {
     transform: translate3d(var(--tablet-x), 0, 0) scale(var(--tablet-scale));
   }
 }
-
-
-
-
-
 
 
 .service-card-bg {
@@ -244,11 +234,6 @@ button {
     opacity: 0.36;
   }
 }
-
-
-
-
-
 
 
 .destination-card {
@@ -342,10 +327,6 @@ button {
 }
 
 
-
-
-
-
 .premium-reveal-section .premium-reveal-heading {
   opacity: 0;
   transform: translate3d(0, 42px, 0);
@@ -418,10 +399,6 @@ button {
 }
 
 
-
-
-
-
 .ai-dashboard-shell {
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -480,14 +457,18 @@ button {
 
 
 
+/* =========================================================
+   09. PARTNERS LOGO MARQUEE
+   ========================================================= */
+
 .partner-marquee-mask {
   position: relative;
   overflow: hidden;
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    black 8%,
-    black 92%,
+    black 7%,
+    black 93%,
     transparent 100%
   );
 }
@@ -513,28 +494,44 @@ button {
 
 .partner-logo-card {
   display: grid;
-  width: 170px;
-  height: 78px;
+  width: 174px;
+  height: 82px;
   flex: 0 0 auto;
   place-items: center;
   padding: 14px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  border-radius: 20px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 42%),
-    rgba(255, 255, 255, 0.028);
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, white 7%, transparent),
+      transparent 44%
+    ),
+    color-mix(in srgb, var(--color-surface) 80%, transparent);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
   transition:
+    transform 260ms ease,
     border-color 260ms ease,
     background 260ms ease,
     box-shadow 260ms ease;
 }
 
 .partner-logo-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
   background:
-    linear-gradient(135deg, rgba(125, 211, 252, 0.08), transparent 42%),
-    rgba(255, 255, 255, 0.05);
-  box-shadow: 0 18px 60px rgba(125, 211, 252, 0.12);
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, white 9%, transparent),
+      transparent 44%
+    ),
+    color-mix(in srgb, var(--color-surface-strong) 78%, transparent);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
+}
+
+.partner-logo-card img {
+  filter: none !important;
+  opacity: 1 !important;
 }
 
 @keyframes partnerScrollLeft {
@@ -563,9 +560,10 @@ button {
   }
 
   .partner-logo-card {
-    width: 118px;
-    height: 58px;
-    border-radius: 14px;
+    width: 124px;
+    height: 62px;
+    padding: 10px 12px;
+    border-radius: 16px;
   }
 
   .partner-marquee-forward {
@@ -582,124 +580,11 @@ button {
     animation: none !important;
     transform: none !important;
   }
-}
 
-
-
-
-
-
-.partner-heading-title {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-width: 0;
-  padding-inline: 4px;
-}
-
-.partner-heading-star {
-  font-size: 14px;
-  line-height: 1;
-  filter: drop-shadow(0 0 12px currentColor);
-}
-
-.partner-heading-line {
-  position: relative;
-  height: 1px;
-  width: min(20vw, 220px);
-  flex: 1 1 auto;
-  opacity: 0.95;
-}
-
-.partner-heading-line::after {
-  position: absolute;
-  top: 50%;
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  transform: translateY(-50%);
-  content: "";
-}
-
-.partner-heading-line:first-child::after {
-  right: 0;
-}
-
-.partner-heading-line:last-child::after {
-  left: 0;
-}
-
-.partner-heading-line-cyan {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(125, 211, 252, 0.25),
-    rgba(125, 211, 252, 0.85)
-  );
-  box-shadow: 0 0 16px rgba(125, 211, 252, 0.28);
-}
-
-.partner-heading-line-cyan:last-child {
-  background: linear-gradient(
-    90deg,
-    rgba(125, 211, 252, 0.85),
-    rgba(125, 211, 252, 0.25),
-    transparent
-  );
-}
-
-.partner-heading-line-cyan::after {
-  background: #7dd3fc;
-  box-shadow: 0 0 16px rgba(125, 211, 252, 0.9);
-}
-
-.partner-heading-line-violet {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(167, 139, 250, 0.25),
-    rgba(167, 139, 250, 0.85)
-  );
-  box-shadow: 0 0 16px rgba(167, 139, 250, 0.28);
-}
-
-.partner-heading-line-violet:last-child {
-  background: linear-gradient(
-    90deg,
-    rgba(167, 139, 250, 0.85),
-    rgba(167, 139, 250, 0.25),
-    transparent
-  );
-}
-
-.partner-heading-line-violet::after {
-  background: #a78bfa;
-  box-shadow: 0 0 16px rgba(167, 139, 250, 0.9);
-}
-
-@media (max-width: 520px) {
-  .partner-row-heading {
-    gap: 8px;
-  }
-
-  .partner-heading-title {
-    gap: 7px;
-  }
-
-  .partner-heading-line {
-    width: 12vw;
-  }
-
-  .partner-heading-star {
-    font-size: 11px;
+  .partner-logo-card {
+    transition: none !important;
   }
 }
-
-
-
-
-
 
 
 
@@ -743,8 +628,6 @@ button {
 }
 
 
-
-
 .testimonial-slider {
   cursor: grab;
   scrollbar-width: none;
@@ -765,12 +648,6 @@ button {
 .testimonial-slider::-webkit-scrollbar {
   display: none;
 }
-
-
-
-
-
-
 
 
 .gold-sparkle-layer {
@@ -853,10 +730,15 @@ button {
 }
 
 
+.nav-luxury-shell {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
 
-
-
-
+/* ==========================================================================
+   12. NAVBAR / HEADER — Theme Variable Version
+   Change colors from src/styles/theme.css
+   ========================================================================== */
 
 .nav-luxury-shell {
   transform: translateZ(0);
@@ -870,9 +752,9 @@ button {
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    rgba(224, 247, 255, 0.18),
-    rgba(186, 230, 253, 0.16),
-    rgba(125, 211, 252, 0.1)
+    color-mix(in srgb, var(--color-primary) 18%, transparent),
+    color-mix(in srgb, var(--color-secondary) 14%, transparent),
+    color-mix(in srgb, var(--color-primary) 10%, transparent)
   );
   opacity: 0.5;
   filter: blur(12px);
@@ -885,16 +767,24 @@ button {
   bottom: 10px;
   left: 8px;
   z-index: 1;
-  border: 1px solid rgba(224, 247, 255, 0.42);
+  border: 1px solid color-mix(in srgb, var(--color-primary-soft) 42%, transparent);
   border-radius: 999px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 46%),
-    linear-gradient(180deg, rgba(186, 230, 253, 0.13), rgba(240, 249, 255, 0.055));
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, white 18%, transparent),
+      transparent 46%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-primary) 14%, transparent),
+      color-mix(in srgb, var(--color-secondary) 7%, transparent)
+    );
   box-shadow:
-    inset 0 0 22px rgba(240, 249, 255, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 0 22px rgba(186, 230, 253, 0.16);
-  backdrop-filter: blur(20px) saturate(1.35);
+    inset 0 0 22px color-mix(in srgb, var(--color-primary-soft) 12%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 0 22px color-mix(in srgb, var(--color-primary) 14%, transparent);
+  backdrop-filter: blur(20px) saturate(1.25);
   transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
@@ -908,11 +798,11 @@ button {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(240, 249, 255, 0.95),
-    rgba(125, 211, 252, 0.75),
+    var(--color-primary-soft),
+    var(--color-secondary),
     transparent
   );
-  opacity: 0.9;
+  opacity: 0.85;
   content: "";
 }
 
@@ -926,8 +816,8 @@ button {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(240, 249, 255, 0.95),
-    rgba(125, 211, 252, 0.75),
+    var(--color-primary-soft),
+    var(--color-secondary),
     transparent
   );
   opacity: 0;
@@ -948,13 +838,8 @@ button {
   inset: -1px;
   z-index: -1;
   border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    rgba(125, 211, 252, 0.28),
-    rgba(167, 139, 250, 0.36),
-    rgba(245, 158, 11, 0.16)
-  );
-  opacity: 0.5;
+  background: var(--gradient-primary);
+  opacity: 0.48;
   filter: blur(12px);
   content: "";
 }
@@ -965,5 +850,48 @@ button {
   .ai-planner-button::before,
   .nav-luxury-shell::before {
     transition: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   13. DESTINATION DETAIL MANUAL SLIDERS
+   ========================================================= */
+
+.destination-manual-slider {
+  cursor: grab;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+}
+
+.destination-manual-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.destination-manual-slider:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 639px) {
+  .destination-manual-slider {
+    mask-image: linear-gradient(
+      90deg,
+      black 0%,
+      black 92%,
+      transparent 100%
+    );
   }
 }

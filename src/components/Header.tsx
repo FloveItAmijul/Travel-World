@@ -15,7 +15,11 @@ const navItems = [
 
 const HEADER_OFFSET = 92;
 
-export function Header() {
+type HeaderProps = {
+  onOpenAIChat: () => void;
+};
+
+export function Header({ onOpenAIChat }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,9 +37,7 @@ export function Header() {
     function updateHeaderState() {
       setIsScrolled(window.scrollY > 24);
 
-      if (scrollLockTargetRef.current) {
-        return;
-      }
+      if (scrollLockTargetRef.current) return;
 
       const pageBottom =
         window.innerHeight + window.scrollY >=
@@ -83,13 +85,8 @@ export function Header() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", updateHeaderState);
 
-      if (frameId) {
-        window.cancelAnimationFrame(frameId);
-      }
-
-      if (scrollLockTimerRef.current) {
-        window.clearTimeout(scrollLockTimerRef.current);
-      }
+      if (frameId) window.cancelAnimationFrame(frameId);
+      if (scrollLockTimerRef.current) window.clearTimeout(scrollLockTimerRef.current);
     };
   }, [sectionIds]);
 
@@ -118,8 +115,7 @@ export function Header() {
     if (!element) return;
 
     const elementTop = element.getBoundingClientRect().top + window.scrollY;
-    const maxScrollTop =
-      document.documentElement.scrollHeight - window.innerHeight;
+    const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
 
     const targetTop =
       target === "contact"
@@ -139,12 +135,15 @@ export function Header() {
       behavior: "smooth",
     });
 
-    window.history.replaceState(null, "", `#${target}`);
-
     scrollLockTimerRef.current = window.setTimeout(() => {
       scrollLockTargetRef.current = null;
       setActiveSection(target);
     }, 1200);
+  }
+
+  function openAIFromMenu() {
+    setIsMenuOpen(false);
+    onOpenAIChat();
   }
 
   return (
@@ -152,7 +151,7 @@ export function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-[#02040a]/76 shadow-[0_16px_70px_rgba(0,0,0,0.3)] backdrop-blur-2xl"
+            ? "bg-[color:rgba(2,4,10,0.76)] shadow-[0_16px_70px_rgba(0,0,0,0.3)] backdrop-blur-2xl"
             : "bg-transparent"
         }`}
       >
@@ -160,31 +159,31 @@ export function Header() {
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            className="group flex shrink-0 items-center gap-3 rounded-full text-left outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#02040a]"
+            className="group flex shrink-0 items-center gap-3 rounded-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
             aria-label="Traveluxe home"
           >
-            <span className="relative grid size-12 place-items-center overflow-hidden rounded-full border border-cyan-300/30 bg-white/[0.035] text-cyan-200 shadow-[0_0_45px_rgba(125,211,252,0.16)] transition duration-500 group-hover:border-cyan-200/65 group-hover:shadow-[0_0_70px_rgba(125,211,252,0.3)]">
-              <span className="absolute inset-0 bg-[conic-gradient(from_180deg,rgba(125,211,252,0),rgba(125,211,252,0.34),rgba(167,139,250,0.38),rgba(125,211,252,0))] opacity-70 transition duration-500 group-hover:rotate-180" />
-              <span className="absolute inset-[5px] rounded-full bg-[#050914]" />
+            <span className="relative grid size-12 place-items-center overflow-hidden rounded-full border border-[color:var(--color-primary)]/30 bg-[var(--color-surface)] text-[var(--color-primary-soft)] shadow-[0_0_45px_var(--color-primary-glow)] transition duration-500 group-hover:border-[color:var(--color-primary-soft)]/65 group-hover:shadow-[0_0_70px_var(--color-primary-glow)]">
+              <span className="absolute inset-0 bg-[conic-gradient(from_180deg,transparent,rgba(243,201,121,0.38),rgba(224,247,255,0.28),transparent)] opacity-70 transition duration-500 group-hover:rotate-180" />
+              <span className="absolute inset-[5px] rounded-full bg-[var(--color-bg-soft)]" />
               <Compass className="relative" size={25} strokeWidth={1.45} />
             </span>
 
             <span className="hidden sm:block">
-              <strong className="block text-base tracking-[0.28em] text-white">
+              <strong className="block text-base tracking-[0.28em] text-[var(--color-text)]">
                 TRAVELUXE
               </strong>
-              <small className="mt-1 block text-[9px] tracking-[0.34em] text-white/48">
+              <small className="mt-1 block text-[9px] tracking-[0.34em] text-[var(--color-text-muted)]">
                 JOURNEYS BEYOND LIMITS
               </small>
             </span>
           </button>
 
           <nav
-            className="nav-luxury-shell relative hidden min-w-[770px] grid-cols-8 items-center rounded-full border border-white/12 bg-[#07101d]/52 p-2 shadow-[0_20px_90px_rgba(0,0,0,0.36)] backdrop-blur-2xl lg:grid xl:min-w-[860px]"
+            className="nav-luxury-shell relative hidden min-w-[770px] grid-cols-8 items-center rounded-full border border-[color:var(--color-border)] bg-[var(--color-glass)] p-2 shadow-[0_20px_90px_rgba(0,0,0,0.36)] backdrop-blur-2xl lg:grid xl:min-w-[860px]"
             aria-label="Main navigation"
           >
-            <span className="pointer-events-none absolute -bottom-px left-[9%] h-px w-[24%] bg-gradient-to-r from-transparent via-cyan-300 to-transparent shadow-[0_0_22px_rgba(125,211,252,0.85)]" />
-            <span className="pointer-events-none absolute -top-px right-[14%] h-px w-[22%] bg-gradient-to-r from-transparent via-violet-300 to-transparent shadow-[0_0_22px_rgba(167,139,250,0.85)]" />
+            <span className="pointer-events-none absolute -bottom-px left-[9%] h-px w-[24%] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent shadow-[0_0_22px_var(--color-primary-glow)]" />
+            <span className="pointer-events-none absolute -top-px right-[14%] h-px w-[22%] bg-gradient-to-r from-transparent via-[var(--color-secondary)] to-transparent shadow-[0_0_22px_var(--color-secondary-glow)]" />
 
             <span
               className="nav-glass-indicator"
@@ -203,8 +202,10 @@ export function Header() {
                   type="button"
                   onClick={() => scrollToSection(item.target)}
                   aria-current={isActive ? "page" : undefined}
-                  className={`nav-luxury-item relative z-10 rounded-full px-2.5 py-2.5 text-center text-sm outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-cyan-300/70 xl:px-3 ${
-                    isActive ? "text-white" : "text-white/62 hover:text-white"
+                  className={`nav-luxury-item relative z-10 rounded-full px-2.5 py-2.5 text-center text-sm outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 xl:px-3 ${
+                    isActive
+                      ? "text-[var(--color-text)]"
+                      : "text-[var(--color-text-soft)] hover:text-[var(--color-text)]"
                   }`}
                 >
                   {item.label}
@@ -216,12 +217,12 @@ export function Header() {
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
-              onClick={() => scrollToSection("ai-travel-assistant")}
-              className="group ai-planner-button relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-violet-300/35 bg-[#07101d]/58 px-4 py-3 text-xs font-semibold text-white shadow-[0_0_44px_rgba(167,139,250,0.14)] outline-none backdrop-blur-2xl transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200/55 hover:shadow-[0_0_60px_rgba(125,211,252,0.22)] focus-visible:ring-2 focus-visible:ring-violet-300/70 sm:px-5 sm:text-sm"
+              onClick={onOpenAIChat}
+              className="group ai-planner-button relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.1)] px-4 py-3 text-xs font-semibold text-[var(--color-text)] shadow-[var(--shadow-primary)] outline-none backdrop-blur-2xl transition duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-primary-soft)]/60 hover:bg-[color:rgba(243,201,121,0.16)]  focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 sm:px-5 sm:text-sm"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/18 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(167,139,250,0.25),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(125,211,252,0.18),transparent_42%)]" />
-              <Sparkles className="relative text-violet-100" size={18} />
+              <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(243,201,121,0.22),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(224,247,255,0.12),transparent_42%)]" />
+              <Sparkles className="relative text-[var(--color-primary)]" size={18} />
               <span className="relative hidden sm:inline">AI Planner</span>
               <span className="relative sm:hidden">AI</span>
             </button>
@@ -232,9 +233,9 @@ export function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setIsMenuOpen((current) => !current)}
-              className="relative grid size-12 place-items-center overflow-hidden rounded-full border border-cyan-300/20 bg-white/[0.035] text-white shadow-[0_0_38px_rgba(125,211,252,0.08)] outline-none backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-cyan-300/50 hover:bg-cyan-300/10 focus-visible:ring-2 focus-visible:ring-cyan-300/70 lg:hidden"
+              className="relative grid size-12 place-items-center overflow-hidden rounded-full border border-[color:var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] shadow-[0_0_38px_var(--color-secondary-glow)] outline-none backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-primary)]/50 hover:bg-[var(--color-surface-strong)] focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 lg:hidden"
             >
-              <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(125,211,252,0.24),transparent_55%)]" />
+              <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(243,201,121,0.2),transparent_55%)]" />
               <motion.span
                 className="relative"
                 animate={{
@@ -274,20 +275,20 @@ export function Header() {
                 damping: 22,
                 mass: 0.82,
               }}
-              className="fixed right-4 top-24 z-50 w-[min(430px,calc(100%-32px))] origin-right overflow-hidden rounded-[2rem] border border-white/12 bg-[#060b16]/90 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.72)] backdrop-blur-2xl lg:hidden"
+              className="fixed right-4 top-24 z-50 w-[min(430px,calc(100%-32px))] origin-right overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-[color:rgba(6,11,22,0.92)] p-4 shadow-[0_30px_120px_rgba(0,0,0,0.72)] backdrop-blur-2xl lg:hidden"
               style={{ perspective: 1200 }}
             >
               <div className="pointer-events-none absolute inset-0">
-                <div className="absolute -right-20 -top-20 size-56 rounded-full bg-cyan-300/18 blur-3xl" />
-                <div className="absolute -bottom-24 left-0 size-64 rounded-full bg-violet-500/18 blur-3xl" />
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),transparent_35%,rgba(125,211,252,0.08))]" />
+                <div className="absolute -right-20 -top-20 size-56 rounded-full bg-[color:var(--color-primary)]/18 blur-3xl" />
+                <div className="absolute -bottom-24 left-0 size-64 rounded-full bg-[color:var(--color-secondary)]/14 blur-3xl" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.1),transparent_35%,rgba(243,201,121,0.06))]" />
               </div>
 
-              <div className="relative mb-5 rounded-3xl border border-white/10 bg-white/[0.045] p-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-cyan-200/80">
+              <div className="relative mb-5 rounded-3xl border border-[color:var(--color-border-soft)] bg-[var(--color-surface)] p-4">
+                <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-primary)]">
                   Navigation
                 </p>
-                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--color-text)]">
                   Explore Traveluxe
                 </h2>
               </div>
@@ -305,18 +306,18 @@ export function Header() {
                       initial={{ opacity: 0, x: 28 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.06 + index * 0.04 }}
-                      className={`group flex items-center justify-between rounded-2xl border px-4 py-4 text-sm outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-cyan-300/70 ${
+                      className={`group flex items-center justify-between rounded-2xl border px-4 py-4 text-sm outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 ${
                         isActive
-                          ? "border-cyan-300/40 bg-cyan-300/10 text-white shadow-[0_0_28px_rgba(125,211,252,0.12)]"
-                          : "border-white/8 bg-white/[0.035] text-white/72 hover:border-cyan-300/35 hover:bg-cyan-300/10 hover:text-white"
+                          ? "border-[color:var(--color-primary)]/40 bg-[color:rgba(243,201,121,0.1)] text-[var(--color-text)] shadow-[var(--shadow-primary)]"
+                          : "border-[color:var(--color-border-soft)] bg-[var(--color-surface-soft)] text-[var(--color-text-soft)] hover:border-[color:var(--color-primary)]/35 hover:bg-[color:rgba(243,201,121,0.08)] hover:text-[var(--color-text)]"
                       }`}
                     >
                       <span>{item.label}</span>
                       <span
                         className={`size-1.5 rounded-full transition ${
                           isActive
-                            ? "bg-cyan-200"
-                            : "bg-cyan-200/0 group-hover:bg-cyan-200"
+                            ? "bg-[var(--color-primary)]"
+                            : "bg-transparent group-hover:bg-[var(--color-primary)]"
                         }`}
                       />
                     </motion.button>
@@ -326,11 +327,11 @@ export function Header() {
 
               <motion.button
                 type="button"
-                onClick={() => scrollToSection("ai-travel-assistant")}
+                onClick={openAIFromMenu}
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.36 }}
-                className="relative mt-5 flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl border border-violet-300/35 bg-violet-300/10 px-5 py-4 text-sm font-medium text-white shadow-[0_18px_60px_rgba(167,139,250,0.12)] outline-none transition hover:border-cyan-200/70 hover:bg-cyan-300/12 focus-visible:ring-2 focus-visible:ring-violet-300/70"
+                className="relative mt-5 flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[color:var(--color-ai-violet)]/35 bg-[color:rgba(167,139,250,0.1)] px-5 py-4 text-sm font-medium text-[var(--color-text)] shadow-[var(--shadow-ai)] outline-none transition hover:border-[color:var(--color-secondary)]/70 hover:bg-[color:rgba(125,211,252,0.1)] focus-visible:ring-2 focus-visible:ring-[var(--color-ai-violet)]/70"
               >
                 <Sparkles size={18} />
                 Start AI Trip Planning
