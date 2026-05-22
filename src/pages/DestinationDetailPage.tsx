@@ -8,12 +8,14 @@ import {
   ChevronRight,
   Compass,
   Hotel,
+  Map,
   MapPin,
   Martini,
   Music,
   Sailboat,
   ShieldCheck,
   Sparkles,
+  Sun,
   Utensils,
   Waves,
 } from "lucide-react";
@@ -22,6 +24,12 @@ import { updateSeo } from "../utils/seo";
 
 type DestinationDetailPageProps = {
   onOpenAIChat: () => void;
+};
+
+type GalleryPhoto = {
+  title: string;
+  description?: string;
+  image: string;
 };
 
 const experiences = [
@@ -57,6 +65,29 @@ const experiences = [
   },
 ];
 
+const photographerTips = [
+  {
+    title: "Golden Hour Magic",
+    description: "Best light at sunrise and sunset along the coastline.",
+    icon: Sun,
+  },
+  {
+    title: "Heritage Focus",
+    description: "Architecture, streets, and local corners add timeless character.",
+    icon: Hotel,
+  },
+  {
+    title: "Nature’s Best Angles",
+    description: "Cliffs, beaches, gardens, valleys, and viewpoints frame the journey.",
+    icon: Waves,
+  },
+  {
+    title: "Local Life & Colors",
+    description: "Markets, cafés, lanes, and culture bring stories to your frame.",
+    icon: Camera,
+  },
+];
+
 export function DestinationDetailPage({
   onOpenAIChat,
 }: DestinationDetailPageProps) {
@@ -75,7 +106,7 @@ export function DestinationDetailPage({
 
     updateSeo({
       title: `${destination.name}, ${destination.country} Travel Guide | Traveluxe`,
-      description: `${destination.description} Explore stays, places, selfie spots, itinerary ideas, and premium travel planning.`,
+      description: `${destination.description} Explore stays, places, photo spots, itinerary ideas, and premium travel planning.`,
     });
   }, [destination]);
 
@@ -101,6 +132,8 @@ export function DestinationDetailPage({
       </main>
     );
   }
+
+  const galleryPhotos = buildGalleryPhotos(destination);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[var(--color-bg)] text-[var(--color-text)]">
@@ -201,22 +234,28 @@ export function DestinationDetailPage({
           </div>
 
           <div className="mt-7 grid gap-6 pb-5 md:mt-8 md:gap-6 lg:gap-7">
-            <section className="grid gap-5 md:grid-cols-[0.55fr_0.45fr]">
-              <div className="grid gap-5 md:grid-cols-[0.3fr_0.7fr] lg:grid-cols-[0.28fr_0.72fr]">
+            <section className="grid gap-5">
+              <div className="grid gap-5 md:grid-cols-[0.22fr_0.78fr] lg:grid-cols-[0.2fr_0.8fr]">
                 <SectionIntro
                   eyebrow="Where You'll Stay"
-                  title="Stay in places that define luxury"
+                  title="Stay in destinations designed for unforgettable luxury"
                   description="Curated luxury stays with breathtaking views, world-class service, and unforgettable experiences."
-                  linkText="View all stays"
+                  
                 />
 
                 <ManualCardRail>
                   {({ scrollRef, scrollCards }) => (
                     <>
-                      <RailControls
-                        onPrevious={() => scrollCards("left")}
-                        onNext={() => scrollCards("right")}
-                      />
+                      <div className="mb-4 flex items-center justify-end gap-4">
+                        <p className="text-xs font-semibold text-[var(--color-primary)] transition hover:text-[var(--color-primary-soft)] lg:text-sm">
+                          View all stays →
+                        </p>
+
+                        <RailControls
+                          onPrevious={() => scrollCards("left")}
+                          onNext={() => scrollCards("right")}
+                        />
+                      </div>
 
                       <div
                         ref={scrollRef}
@@ -244,7 +283,9 @@ export function DestinationDetailPage({
                   )}
                 </ManualCardRail>
               </div>
+            </section>
 
+            <section className="grid gap-5 md:grid-cols-[0.56fr_0.44fr]">
               <ManualSection
                 eyebrow="Places To Explore"
                 action="View all places"
@@ -261,27 +302,9 @@ export function DestinationDetailPage({
                   />
                 ))}
               </ManualSection>
-            </section>
-
-            <section className="grid gap-5 md:grid-cols-[0.5fr_0.5fr]">
-              <ManualSection
-                eyebrow="Where You'll Capture Memories"
-                icon={<Camera size={16} />}
-              >
-                {destination.selfieSpots.map((spot) => (
-                  <DestinationCard
-                    key={spot.title}
-                    image={spot.image}
-                    label="Photo Spot"
-                    title={spot.title}
-                    description={spot.description}
-                    meta="Perfect for clicks"
-                  />
-                ))}
-              </ManualSection>
 
               <section className="rounded-[1.25rem] border border-[color:var(--color-primary)]/18 bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card)] backdrop-blur-xl md:rounded-[1.35rem] md:p-4 lg:rounded-[1.5rem] lg:p-5 xl:rounded-[1.6rem]">
-                <SectionTitle eyebrow="Signature Experiences" />
+                <SectionTitle eyebrow="Signature Experiences" icon={<Sparkles size={16} />} />
 
                 <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6 md:grid-cols-3 md:gap-3 lg:grid-cols-6 lg:gap-4">
                   {experiences.map((experience) => {
@@ -306,6 +329,11 @@ export function DestinationDetailPage({
                 </div>
               </section>
             </section>
+
+            <PhotoCollageSection
+              destinationName={destination.name}
+              photos={galleryPhotos}
+            />
 
             <section className="grid gap-5 md:grid-cols-[1fr_220px] lg:grid-cols-[1fr_240px] xl:grid-cols-[1fr_260px]">
               <div>
@@ -356,42 +384,204 @@ export function DestinationDetailPage({
               </div>
             </section>
 
-            <footer className="overflow-hidden rounded-[1.4rem] border border-[color:var(--color-primary)]/20 bg-[var(--color-glass)] p-4 shadow-[var(--shadow-card)] backdrop-blur-2xl md:rounded-[1.6rem] lg:rounded-[2rem]">
-              <div className="grid items-center gap-4 md:grid-cols-[1fr_0.9fr]">
-                <div>
-                  <h3 className="text-[clamp(1.5rem,7vw,2.3rem)] font-semibold tracking-[-0.055em] text-[var(--color-text)] md:text-[clamp(1.5rem,3vw,2.2rem)] xl:text-[clamp(1.6rem,4vw,2.8rem)]">
-                    Your {destination.name} Escape Awaits
-                  </h3>
+      
 
-                  <p className="mt-1 text-xs text-[var(--color-text-muted)] lg:text-sm">
-                    Let our travel experts craft a journey that’s uniquely yours.
-                  </p>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-3 md:gap-2 lg:gap-3">
-                  <FooterMiniCard
-                    icon={<Hotel size={18} />}
-                    title="Handpicked Stays"
-                    text="Curated comfort"
-                  />
-                  <FooterMiniCard
-                    icon={<MapPin size={18} />}
-                    title="Smart Route"
-                    text="Easy travel flow"
-                  />
-                  <FooterMiniCard
-                    icon={<ShieldCheck size={18} />}
-                    title="Assisted Trip"
-                    text="Reliable support"
-                  />
-                </div>
-              </div>
-            </footer>
+            <div className="grid gap-3 border-t border-[color:var(--color-border-soft)] pt-5 sm:grid-cols-2 lg:grid-cols-4">
+              <FooterMiniCard
+                icon={<Hotel size={18} />}
+                title="Handpicked Stays"
+                text="Curated for comfort and luxury"
+              />
+              <FooterMiniCard
+                icon={<Map size={18} />}
+                title="Smart Route Planning"
+                text="Optimized travel with smooth experience"
+              />
+              <FooterMiniCard
+                icon={<ShieldCheck size={18} />}
+                title="Safe & Secure"
+                text="Your safety is our priority always"
+              />
+              <FooterMiniCard
+                icon={<Sparkles size={18} />}
+                title="Personalized Journey"
+                text="Every plan is crafted for you"
+              />
+            </div>
           </div>
         </div>
       </section>
     </main>
   );
+}
+
+function PhotoCollageSection({
+  destinationName,
+  photos,
+}: {
+  destinationName: string;
+  photos: GalleryPhoto[];
+}) {
+  return (
+    <section className="destination-photo-section grid gap-5 lg:grid-cols-[0.24fr_0.56fr_0.2fr]">
+      <div className="destination-photo-intro relative overflow-hidden rounded-[1.6rem] border border-[color:var(--color-border-soft)] bg-[var(--color-surface-soft)] p-5 shadow-[var(--shadow-card)] backdrop-blur-xl">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -bottom-24 -left-16 size-64 rounded-full bg-[color:var(--color-primary)]/8 blur-3xl" />
+          <div className="absolute bottom-6 left-6 h-px w-24 rotate-[-8deg] bg-gradient-to-r from-[var(--color-primary)]/60 to-transparent" />
+        </div>
+
+        <div className="relative">
+          <div className="mb-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+            <Camera size={16} />
+            Picture-perfect {destinationName}
+          </div>
+
+          <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-semibold leading-[0.95] tracking-[-0.07em] text-[var(--color-text)]">
+            Where Every Corner Becomes a{" "}
+            <span className="bg-[image:var(--gradient-primary)] bg-clip-text text-transparent">
+              Memory
+            </span>
+          </h2>
+
+          <div className="mt-5 flex items-center gap-3">
+            <span className="h-px w-16 bg-[var(--color-primary)]" />
+            <Sparkles size={15} className="text-[var(--color-primary)]" />
+          </div>
+
+          <p className="mt-6 text-sm leading-7 text-[var(--color-text-soft)]">
+            From golden-hour beaches and heritage corners to hidden cafés,
+            viewpoints, and local colors — every frame tells a story worth
+            keeping.
+          </p>
+
+          <div
+            
+            className="group mt-7 inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.06)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.11)]"
+          >
+            <Camera size={17} />
+            Explore Photo Spots
+            <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+          </div>
+        </div>
+      </div>
+
+      <div className="destination-photo-collage">
+        {photos.map((photo, index) => (
+          <article
+            key={`${photo.title}-${index}`}
+            className={`destination-photo-tile ${
+              index % 9 === 1 || index % 9 === 6 || index % 9 === 8
+                ? "destination-photo-tile-wide"
+                : ""
+            } ${index % 7 === 0 || index % 11 === 4 ? "destination-photo-tile-large" : ""}`}
+          >
+            <img
+              src={photo.image}
+              alt={photo.title}
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+
+            <span className="absolute left-3 top-3 grid size-8 place-items-center rounded-full bg-[var(--color-bg)]/85 text-xs font-semibold text-[var(--color-primary)] backdrop-blur-xl">
+              {index + 1}
+            </span>
+          </article>
+        ))}
+      </div>
+
+      <aside className="destination-photo-tips relative overflow-hidden rounded-[1.6rem] border border-[color:var(--color-primary)]/22 bg-[var(--color-surface)] p-5 shadow-[var(--shadow-card)] backdrop-blur-xl">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-20 top-0 size-56 rounded-full bg-[color:var(--color-primary)]/8 blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_42%,rgba(243,201,121,0.045))]" />
+        </div>
+
+        <div className="relative">
+          <div className="mx-auto grid size-20 place-items-center rounded-3xl border border-[color:var(--color-primary)]/20 bg-[color:rgba(243,201,121,0.07)] text-[var(--color-primary)]">
+            <Camera size={42} strokeWidth={1.4} />
+          </div>
+
+          <h3 className="mt-5 text-center text-3xl font-semibold leading-tight tracking-[-0.055em] text-[var(--color-text)]">
+            Photographer’s Picks
+          </h3>
+
+          <div className="mx-auto mt-5 flex max-w-[170px] items-center justify-center gap-3">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[var(--color-primary)]/60" />
+            <Sparkles size={14} className="text-[var(--color-primary)]" />
+            <span className="h-px flex-1 bg-gradient-to-r from-[var(--color-primary)]/60 to-transparent" />
+          </div>
+
+          <div className="mt-7 grid gap-5">
+            {photographerTips.map((tip) => {
+              const Icon = tip.icon;
+
+              return (
+                <div key={tip.title} className="flex gap-4">
+                  <div className="grid size-11 shrink-0 place-items-center rounded-2xl border border-[color:var(--color-primary)]/16 bg-[color:rgba(243,201,121,0.07)] text-[var(--color-primary)]">
+                    <Icon size={23} strokeWidth={1.5} />
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-semibold text-[var(--color-text)]">
+                      {tip.title}
+                    </h4>
+                    <p className="mt-1 text-xs leading-5 text-[var(--color-text-muted)]">
+                      {tip.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div
+           
+            className="group mt-7 inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.06)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.11)]"
+          >
+            <MapPin size={17} />
+            View Map
+            <ArrowRight size={15} className="transition group-hover:translate-x-1" />
+          </div>
+        </div>
+      </aside>
+    </section>
+  );
+}
+
+function buildGalleryPhotos(destination: ReturnType<typeof getDestinationBySlug>) {
+  if (!destination) return [];
+
+  const customGallery = (destination as unknown as { galleryImages?: GalleryPhoto[] })
+    .galleryImages;
+
+  if (customGallery && customGallery.length > 0) {
+    return customGallery;
+  }
+
+  const generatedPhotos: GalleryPhoto[] = [
+    ...destination.selfieSpots.map((spot) => ({
+      title: spot.title,
+      description: spot.description,
+      image: spot.image,
+    })),
+    ...destination.places.map((place) => ({
+      title: place.title,
+      description: place.description,
+      image: place.image,
+    })),
+    ...destination.stays.map((stay) => ({
+      title: stay.title,
+      description: stay.description,
+      image: stay.image,
+    })),
+  ];
+
+  return [
+    ...generatedPhotos,
+    ...generatedPhotos,
+    ...generatedPhotos,
+  ].slice(0, 24);
 }
 
 function ManualCardRail({
@@ -439,9 +629,9 @@ function ManualSection({
 
             <div className="flex items-center gap-2">
               {action && (
-                <button className="hidden text-xs font-semibold text-[var(--color-primary)] transition hover:text-[var(--color-primary-soft)] sm:block">
+                <p className="hidden text-xs font-semibold text-[var(--color-primary)] transition hover:text-[var(--color-primary-soft)] sm:block">
                   {action} →
-                </button>
+                </p>
               )}
 
               <RailControls
@@ -505,12 +695,10 @@ function SectionIntro({
   eyebrow,
   title,
   description,
-  linkText,
 }: {
   eyebrow: string;
   title: string;
   description: string;
-  linkText: string;
 }) {
   return (
     <div>
@@ -526,9 +714,6 @@ function SectionIntro({
         {description}
       </p>
 
-      <button className="mt-3 text-xs font-semibold text-[var(--color-primary)] transition hover:text-[var(--color-primary-soft)] lg:text-sm">
-        {linkText} →
-      </button>
     </div>
   );
 }

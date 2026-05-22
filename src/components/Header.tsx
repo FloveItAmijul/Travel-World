@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Compass, Menu, Sparkles, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import logo from "../assets/brand/logosvg.svg"
+
 const navItems = [
   { label: "Home", target: "home" },
   { label: "Services", target: "services" },
@@ -165,15 +167,22 @@ export function Header({ onOpenAIChat }: HeaderProps) {
             <span className="relative grid size-12 place-items-center overflow-hidden rounded-full border border-[color:var(--color-primary)]/30 bg-[var(--color-surface)] text-[var(--color-primary-soft)] shadow-[0_0_45px_var(--color-primary-glow)] transition duration-500 group-hover:border-[color:var(--color-primary-soft)]/65 group-hover:shadow-[0_0_70px_var(--color-primary-glow)]">
               <span className="absolute inset-0 bg-[conic-gradient(from_180deg,transparent,rgba(243,201,121,0.38),rgba(224,247,255,0.28),transparent)] opacity-70 transition duration-500 group-hover:rotate-180" />
               <span className="absolute inset-[5px] rounded-full bg-[var(--color-bg-soft)]" />
-              <Compass className="relative" size={25} strokeWidth={1.45} />
+              <img
+                src={logo}
+                alt="Traveluxe"
+                className="relative h-8 w-8 object-contain"
+                loading="eager"
+                decoding="async"
+                draggable={false}
+              />
             </span>
 
             <span className="hidden sm:block">
               <strong className="block text-base tracking-[0.28em] text-[var(--color-text)]">
-                TRAVELUXE
+                DIA FESTIVO
               </strong>
               <small className="mt-1 block text-[9px] tracking-[0.34em] text-[var(--color-text-muted)]">
-                JOURNEYS BEYOND LIMITS
+                DISCOVER MORE. LIVE MORE
               </small>
             </span>
           </button>

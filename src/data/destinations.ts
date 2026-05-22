@@ -63,6 +63,11 @@ import kashmirStay1 from "../assets/destination-details/kashmir/stay-1.png";
 import kashmirStay2 from "../assets/destination-details/kashmir/stay-2.png";
 import kashmirStay3 from "../assets/destination-details/kashmir/stay-3.png";
 
+export type DestinationGalleryImage = {
+  title: string;
+  image: string;
+};
+
 export type DestinationDetail = {
   slug: string;
   name: string;
@@ -92,12 +97,63 @@ export type DestinationDetail = {
     description: string;
     image: string;
   }[];
+  galleryImages?: DestinationGalleryImage[];
   itinerary: {
     day: string;
     title: string;
     description: string;
   }[];
 };
+
+const galleryModules = import.meta.glob(
+  "../assets/destination-details/*/gallery/*.{png,jpeg,png,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  }
+);
+
+function getGalleryImages(slug: string): DestinationGalleryImage[] {
+  return Object.entries(galleryModules)
+    .filter(([path]) => path.includes(`/destination-details/${slug}/gallery/`))
+    .sort(([a], [b]) => {
+      const numberA = getImageNumber(a);
+      const numberB = getImageNumber(b);
+
+      if (numberA !== numberB) return numberA - numberB;
+
+      return a.localeCompare(b);
+    })
+    .map(([path, image], index) => ({
+      title: createGalleryTitle(path, index),
+      image: image as string,
+    }));
+}
+
+function getImageNumber(path: string) {
+  const fileName = path.split("/").pop() ?? "";
+  const match = fileName.match(/(\d+)/);
+
+  return match ? Number(match[1]) : 9999;
+}
+
+function createGalleryTitle(path: string, index: number) {
+  const fileName = path.split("/").pop()?.split(".")[0] ?? `Photo ${index + 1}`;
+
+  const cleanName = fileName
+    .replace(/^\d+[-_\s]*/, "")
+    .replace(/^gallery[-_\s]*/i, "")
+    .replaceAll("-", " ")
+    .replaceAll("_", " ")
+    .trim();
+
+  if (!cleanName || /^\d+$/.test(cleanName)) {
+    return `Gallery Photo ${index + 1}`;
+  }
+
+  return cleanName.replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
 
 export const destinationDetails: DestinationDetail[] = [
   {
@@ -193,6 +249,7 @@ export const destinationDetails: DestinationDetail[] = [
         image: goaSelfie4,
       },
     ],
+    galleryImages: getGalleryImages("goa"),
     itinerary: [
       {
         day: "Day 1",
@@ -313,6 +370,7 @@ export const destinationDetails: DestinationDetail[] = [
         image: andamanSelfie4,
       },
     ],
+    galleryImages: getGalleryImages("andaman"),
     itinerary: [
       {
         day: "Day 1",
@@ -439,6 +497,7 @@ export const destinationDetails: DestinationDetail[] = [
         image: dubaiSelfie4,
       },
     ],
+    galleryImages: getGalleryImages("dubai"),
     itinerary: [
       {
         day: "Day 1",
@@ -565,6 +624,7 @@ export const destinationDetails: DestinationDetail[] = [
         image: kashmirSelfie4,
       },
     ],
+    galleryImages: getGalleryImages("kashmir"),
     itinerary: [
       {
         day: "Day 1",
@@ -691,6 +751,7 @@ export const destinationDetails: DestinationDetail[] = [
         image: dighaSelfie4,
       },
     ],
+    galleryImages: getGalleryImages("digha"),
     itinerary: [
       {
         day: "Day 1",
