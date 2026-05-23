@@ -20,9 +20,9 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:4173",
   "http://localhost:5174",
-  "https://your-vercel-domain.vercel.app",
-  "https://your-custom-domain.com",
+  "https://travel-world-wheat-five.vercel.app",
 ];
+
 
 app.use(
   cors({
@@ -179,6 +179,10 @@ Return this exact JSON shape:
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`AI server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`AI server running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
