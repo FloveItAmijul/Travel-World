@@ -41,7 +41,7 @@ const testimonials = [
     avatar: "JC",
   },
   {
-    name: "Sophia Nguyen",
+    name: "Arijit Roy",
     destination: "Andaman, India",
     date: "Apr 22 – Apr 29, 2024",
     travelers: "2 Travelers",
@@ -49,10 +49,10 @@ const testimonials = [
     quote:
       "Our romantic escape was straight out of a dream. The accommodations, views, and thoughtful touches made it unforgettable.",
     accent: "ice",
-    avatar: "SN",
+    avatar: "AR",
   },
   {
-    name: "Daniel Brooks",
+    name: "Ankit Kumar",
     destination: "Kashmir, India",
     date: "Jun 5 – Jun 12, 2024",
     travelers: "4 Travelers",
@@ -60,12 +60,12 @@ const testimonials = [
     quote:
       "An incredible family vacation. The itinerary was perfect for our kids and us, with seamless planning and amazing support throughout.",
     accent: "gold",
-    avatar: "DB",
+    avatar: "AK",
   },
   {
     name: "Aarav Mehta",
     destination: "Dubai, UAE",
-    date: "Jul 8 – Jul 13, 2024",
+    date: "Jul 8 – Jul 13, 2025",
     travelers: "2 Travelers",
     tripType: "Premium City Break",
     quote:
@@ -76,7 +76,7 @@ const testimonials = [
   {
     name: "Priya Sharma",
     destination: "Andaman, India",
-    date: "Aug 3 – Aug 9, 2024",
+    date: "Jan 3 – Jan 9, 2026",
     travelers: "3 Travelers",
     tripType: "Island Escape",
     quote:
@@ -84,17 +84,84 @@ const testimonials = [
     accent: "gold",
     avatar: "PS",
   },
+
+    {
+    name: "Anika Nair",
+    destination: "Andaman, India",
+    date: "Aug 5 – Aug 9, 2025",
+    travelers: "3 Travelers",
+    tripType: "Island Escape",
+    quote:
+      "The beaches, stays, and private experiences were amazing. It felt like every part of the journey was thoughtfully planned for us.",
+    accent: "gold",
+    avatar: "AN",
+  },
+
+
+    {
+    name: "Meera Mehta",
+    destination: "Andaman, India",
+    date: "Jun 15 – Jun 20, 2026",
+    travelers: "3 Travelers",
+    tripType: "Island Escape",
+    quote:
+      "The beaches, stays, and private experiences were amazing. It felt like every part of the journey was thoughtfully planned for us.",
+    accent: "gold",
+    avatar: "MM",
+  },
+
+
+
+    {
+    name: "Isha Singh",
+    destination: "Andaman, India",
+    date: "Sep 23 – Sep 28, 2025",
+    travelers: "3 Travelers",
+    tripType: "Island Escape",
+    quote:
+      "The beaches, stays, and private experiences were amazing. It felt like every part of the journey was thoughtfully planned for us.",
+    accent: "gold",
+    avatar: "IS",
+  },
+
+
+
+    {
+    name: "Vihaan Patel",
+    destination: "Andaman, India",
+    date: "Aug 3 – Aug 9, 2024",
+    travelers: "3 Travelers",
+    tripType: "Island Escape",
+    quote:
+      "The beaches, stays, and private experiences were amazing. It felt like every part of the journey was thoughtfully planned for us.",
+    accent: "gold",
+    avatar: "VP",
+  },
+
+
+    {
+    name: "Sarbani Agarwal",
+    destination: "Andaman, India",
+    date: "Aug 3 – Aug 9, 2024",
+    travelers: "3 Travelers",
+    tripType: "Island Escape",
+    quote:
+      "The beaches, stays, and private experiences were amazing. It felt like every part of the journey was thoughtfully planned for us.",
+    accent: "gold",
+    avatar: "SA",
+  },
+
 ];
 
 const trustStats = [
   {
-    value: "4.9 / 5",
+    value: "4.7 / 5",
     label: "Average Rating",
     icon: Star,
     accent: "gold",
   },
   {
-    value: "50K+",
+    value: "3K+",
     label: "Happy Travelers",
     icon: UsersRound,
     accent: "ice",

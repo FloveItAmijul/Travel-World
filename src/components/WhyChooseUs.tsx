@@ -59,13 +59,13 @@ const reasons = [
 
 const stats = [
   {
-    value: "50K+",
+    value: "3K+",
     label: "Happy Travelers",
     icon: UsersRound,
     accent: "gold",
   },
   {
-    value: "98%",
+    value: "94%",
     label: "Satisfaction Rate",
     icon: Star,
     accent: "ice",

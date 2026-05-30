@@ -27,11 +27,14 @@ button {
   cursor: pointer;
 }
 
-::selection {
-  color: #030609;
-  background: var(--color-gold);
-}
+/* =========================================================
+   GLOBAL TEXT SELECTION
+   ========================================================= */
 
+::selection {
+  background: rgba(243, 201, 121, 0.35);
+  color: #ffffff;
+}
 
 .hero-bg-image {
   position: absolute;

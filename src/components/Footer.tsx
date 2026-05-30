@@ -77,11 +77,9 @@ const socialLinks = [
   { label: "Facebook", short: "f" },
   { label: "Instagram", short: "◎" },
   { label: "Twitter / X", short: "𝕏" },
-  { label: "YouTube", short: "▶" },
-  { label: "LinkedIn", short: "in" },
 ];
 
-const payments = ["VISA", "MC", "AMEX", "UPI", "G Pay", "NetBanking"];
+const payments = ["VISA", "AMEX", "UPI", "NetBanking"];
 
 function footerLinkTarget(link: string) {
   const map: Record<string, string> = {
@@ -158,7 +156,7 @@ export function Footer() {
             <div className="mt-5 grid gap-3 text-xs leading-5 text-[var(--color-text-soft)] md:mt-5 md:gap-2 md:text-[10px] md:leading-4 lg:mt-6 lg:gap-3 lg:text-xs lg:leading-5 xl:mt-7 xl:gap-4 xl:text-sm">
               <FooterContact
                 icon={<MapPin size={14} />}
-                text="Dia Festivo Leisure Pvt Ltd"
+                text="1462/1, Ramkrishnapur, Barasat, Kol-700124"
               />
               <FooterContact
                 icon={<Phone size={14} />}
@@ -167,12 +165,12 @@ export function Footer() {
               />
               <FooterContact
                 icon={<Mail size={14} />}
-                text="support@diafestivo.com"
-                href="mailto:support@diafestivo.com"
+                text="info@diafestivoindia.com"
+                href=""
               />
               <FooterContact
                 icon={<Clock3 size={14} />}
-                text="Mon – Sat: 9 AM – 7 PM"
+                text="Mon – Sat: 11:30 AM – 07:30 PM"
               />
             </div>
 
@@ -309,21 +307,6 @@ export function Footer() {
               <p className="text-xs text-[var(--color-text-muted)] md:text-[10px] lg:text-xs xl:text-sm">
                 © 2026 Dia Festivo Leisure Pvt Ltd. All rights reserved.
               </p>
-
-              <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] text-[var(--color-text-faint)] md:justify-start lg:text-xs">
-                <a
-                  href="/refund-policy"
-                  className="transition hover:text-[var(--color-primary)]"
-                >
-                  Cancellation Policy
-                </a>
-                <a
-                  href="/employee-login"
-                  className="transition hover:text-[var(--color-primary)]"
-                >
-                  Employee Login
-                </a>
-              </div>
             </div>
 
             <div className="order-1 text-center md:order-2">

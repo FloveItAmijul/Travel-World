@@ -202,7 +202,7 @@ export function AITravelAssistant({ onOpenAIChat }: AITravelAssistantProps) {
                 ))}
               </div>
               <p className="mt-0.5 text-[10px] text-[var(--color-text-muted)] md:text-[10px] xl:text-sm">
-                Trusted by 50K+
+                Trusted by 3K+
               </p>
             </div>
           </div>

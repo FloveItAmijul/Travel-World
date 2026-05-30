@@ -43,6 +43,12 @@ type OptionGroup = {
   title: string;
   subtitle: string;
   options: string[];
+  customOption?: {
+    label: string;
+    placeholder: string;
+    suffix?: string;
+    inputMode?: "text" | "numeric";
+  };
 };
 
 const initialOptions: SelectedOptions = {
@@ -57,32 +63,64 @@ const optionGroups: OptionGroup[] = [
   {
     key: "destination",
     title: "Where do you want to go?",
-    subtitle: "Choose your dream destination.",
-    options: ["Goa", "Kashmir", "Andaman", "Dubai", "Bali", "Thailand"],
+    subtitle: "Choose a popular destination or type your own.",
+    options: ["Goa", "Kashmir", "Andaman", "Dubai", "Thailand", "Maldives"],
+    customOption: {
+      label: "Custom Destination",
+      placeholder: "Type any destination...",
+      inputMode: "text",
+    },
   },
   {
     key: "tripType",
     title: "Who is traveling?",
     subtitle: "Pick your travel style.",
-    options: ["Couple", "Family", "Friends", "Solo", "Honeymoon"],
+    options: [
+      "Couple",
+      "Family",
+      "Friends",
+      "Solo",
+      "Honeymoon",
+      "Group",
+      "Business",
+    ],
   },
   {
     key: "duration",
     title: "How long is the trip?",
-    subtitle: "Choose your ideal duration.",
-    options: ["3 Days", "5 Days", "7 Days", "10 Days"],
+    subtitle: "Choose your ideal duration or enter custom days.",
+    options: ["3 Days", "5 Days", "7 Days", "10 Days", "14 Days"],
+    customOption: {
+      label: "Custom Days",
+      placeholder: "Enter number of days...",
+      suffix: "Days",
+      inputMode: "numeric",
+    },
   },
   {
     key: "budget",
     title: "Choose your budget",
-    subtitle: "Select your comfort level.",
+    subtitle: "Select your comfort level or enter your budget.",
     options: ["Budget", "Standard", "Premium", "Luxury"],
+    customOption: {
+      label: "Custom Budget",
+      placeholder: "Example: ₹50,000 or $1,200",
+      inputMode: "text",
+    },
   },
   {
     key: "mood",
     title: "Choose your mood",
     subtitle: "Select the experience you want.",
-    options: ["Relaxing", "Adventure", "Romantic", "Food", "Nature"],
+    options: [
+      "Relaxing",
+      "Adventure",
+      "Romantic",
+      "Food",
+      "Nature",
+      "Luxury",
+      "Mixed Experience",
+    ],
   },
 ];
 
@@ -104,16 +142,19 @@ export function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
     },
   ]);
 
-  const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>(initialOptions);
+  const [selectedOptions, setSelectedOptions] =
+    useState<SelectedOptions>(initialOptions);
   const [editingKey, setEditingKey] = useState<OptionKey | null>("destination");
   const [isOptionBuilderVisible, setIsOptionBuilderVisible] = useState(true);
   const [input, setInput] = useState("");
+  const [customInput, setCustomInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isOnline, setIsOnline] = useState<boolean | null>(null);
 
   const chatEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const customInputRef = useRef<HTMLInputElement | null>(null);
 
   const selectedCount = useMemo(() => {
     return Object.values(selectedOptions).filter(Boolean).length;
@@ -159,6 +200,10 @@ export function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
   }, [isOpen, onClose]);
 
   useEffect(() => {
+    setCustomInput("");
+  }, [editingKey]);
+
+  useEffect(() => {
     chatEndRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "end",
@@ -184,17 +229,45 @@ export function AIChatModal({ isOpen, onClose }: AIChatModalProps) {
     const nextGroup = optionGroups[currentIndex + 1];
 
     setEditingKey(nextGroup?.key ?? null);
+    setCustomInput("");
+  }
+
+  function selectCustomOption(key: OptionKey, value: string, suffix?: string) {
+    const cleanValue = value.trim();
+
+    if (!cleanValue) return;
+
+    const finalValue =
+      suffix && !cleanValue.toLowerCase().includes(suffix.toLowerCase())
+        ? `${cleanValue} ${suffix}`
+        : cleanValue;
+
+    selectOption(key, finalValue);
+  }
+
+  function handleCustomSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!currentGroup?.customOption) return;
+
+    selectCustomOption(
+      currentGroup.key,
+      customInput,
+      currentGroup.customOption.suffix
+    );
   }
 
   function editOption(key: OptionKey) {
     setIsOptionBuilderVisible(true);
     setEditingKey(key);
+    setCustomInput("");
   }
 
   function clearOptions() {
     setSelectedOptions(initialOptions);
     setEditingKey("destination");
     setIsOptionBuilderVisible(true);
+    setCustomInput("");
   }
 
   function buildPromptFromOptions() {
@@ -345,6 +418,7 @@ Keep it short, clean, and easy to read.
     setEditingKey("destination");
     setIsOptionBuilderVisible(true);
     setInput("");
+    setCustomInput("");
     setErrorMessage("");
   }
 
@@ -366,7 +440,7 @@ Keep it short, clean, and easy to read.
             role="dialog"
             aria-modal="true"
             aria-label="AI Travel Planner"
-            className="fixed bottom-0 right-0 top-0 z-[100] w-full overflow-hidden border-l border-[color:var(--color-primary)]/25 bg-[color:rgba(2,4,10,0.98)] shadow-[0_0_180px_rgba(0,0,0,0.96)] backdrop-blur-2xl sm:w-[min(820px,70vw)] lg:w-[min(920px,56vw)]"
+            className="fixed bottom-0 right-0 top-0 z-[100] w-full overflow-hidden border-l border-[color:var(--color-primary)]/25 bg-[color:rgba(2,4,10,0.98)] shadow-[0_0_180px_rgba(0,0,0,0.96)] backdrop-blur-2xl sm:w-[min(820px,74vw)] lg:w-[min(920px,58vw)] xl:w-[min(980px,54vw)]"
             initial={{ x: "100%", opacity: 0.5 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: "100%", opacity: 0.5 }}
@@ -410,7 +484,11 @@ Keep it short, clean, and easy to read.
                                 : "bg-[var(--color-error)]"
                           }`}
                         />
-                        {isOnline === null ? "Checking server" : isOnline ? "Online" : "Offline"}
+                        {isOnline === null
+                          ? "Checking server"
+                          : isOnline
+                            ? "Online"
+                            : "Offline"}
                       </div>
                     </div>
                   </div>
@@ -453,7 +531,8 @@ Keep it short, clean, and easy to read.
                               Build your trip in seconds
                             </h3>
                             <p className="mt-1 text-xs leading-5 text-white/58 sm:text-sm">
-                              Pick a few options, then generate your custom travel plan.
+                              Pick quick options or type custom details for your
+                              travel plan.
                             </p>
                           </div>
 
@@ -461,7 +540,7 @@ Keep it short, clean, and easy to read.
                             <button
                               type="button"
                               onClick={clearOptions}
-                              className="rounded-full border border-white/12 px-3 py-1.5 text-xs text-white/60 transition hover:border-[color:var(--color-primary)]/35 hover:text-white"
+                              className="shrink-0 rounded-full border border-white/12 px-3 py-1.5 text-xs text-white/60 transition hover:border-[color:var(--color-primary)]/35 hover:text-white"
                             >
                               Clear
                             </button>
@@ -479,10 +558,13 @@ Keep it short, clean, and easy to read.
                                   key={group.key}
                                   type="button"
                                   onClick={() => editOption(group.key)}
-                                  className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-primary)]/24 bg-[color:rgba(243,201,121,0.1)] px-3 py-1.5 text-xs font-medium text-white transition hover:border-[color:var(--color-primary)]/50"
+                                  className="inline-flex max-w-full items-center gap-2 rounded-full border border-[color:var(--color-primary)]/24 bg-[color:rgba(243,201,121,0.1)] px-3 py-1.5 text-xs font-medium text-white transition hover:border-[color:var(--color-primary)]/50"
                                 >
-                                  <Check size={13} className="text-[var(--color-primary)]" />
-                                  {value}
+                                  <Check
+                                    size={13}
+                                    className="shrink-0 text-[var(--color-primary)]"
+                                  />
+                                  <span className="truncate">{value}</span>
                                 </button>
                               );
                             })}
@@ -524,17 +606,22 @@ Keep it short, clean, and easy to read.
                                   <button
                                     key={option}
                                     type="button"
-                                    onClick={() => selectOption(currentGroup.key, option)}
-                                    className={`group relative overflow-hidden rounded-2xl border px-4 py-3 text-left text-sm font-medium transition ${
+                                    onClick={() =>
+                                      selectOption(currentGroup.key, option)
+                                    }
+                                    className={`group relative min-h-[46px] overflow-hidden rounded-2xl border px-3 py-3 text-left text-xs font-medium transition sm:px-4 sm:text-sm ${
                                       isSelected
                                         ? "border-[color:var(--color-primary)]/55 bg-[color:rgba(243,201,121,0.16)] text-white shadow-[var(--shadow-primary)]"
                                         : "border-white/10 bg-white/[0.04] text-white/72 hover:border-[color:var(--color-primary)]/35 hover:bg-[color:rgba(243,201,121,0.08)] hover:text-white"
                                     }`}
                                   >
                                     <span className="relative z-10 flex items-center justify-between gap-2">
-                                      {option}
+                                      <span className="line-clamp-1">{option}</span>
                                       {isSelected && (
-                                        <Check size={15} className="text-[var(--color-primary)]" />
+                                        <Check
+                                          size={15}
+                                          className="shrink-0 text-[var(--color-primary)]"
+                                        />
                                       )}
                                     </span>
                                     <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition duration-700 group-hover:translate-x-[120%]" />
@@ -542,6 +629,52 @@ Keep it short, clean, and easy to read.
                                 );
                               })}
                             </div>
+
+                            {currentGroup.customOption && (
+                              <form
+                                onSubmit={handleCustomSubmit}
+                                className="mt-4 rounded-2xl border border-[color:var(--color-primary)]/20 bg-[color:rgba(243,201,121,0.055)] p-3 sm:p-4"
+                              >
+                                <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                                  <div>
+                                    <p className="text-xs font-semibold text-[var(--color-primary)]">
+                                      {currentGroup.customOption.label}
+                                    </p>
+                                    <p className="mt-1 text-[11px] leading-4 text-white/45">
+                                      Use this if your choice is not listed above.
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="mt-3 grid gap-2 sm:grid-cols-[1fr_auto]">
+                                  <input
+                                    ref={customInputRef}
+                                    value={customInput}
+                                    onChange={(event) =>
+                                      setCustomInput(event.target.value)
+                                    }
+                                    inputMode={
+                                      currentGroup.customOption.inputMode ===
+                                      "numeric"
+                                        ? "numeric"
+                                        : "text"
+                                    }
+                                    placeholder={
+                                      currentGroup.customOption.placeholder
+                                    }
+                                    className="min-w-0 rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none placeholder:text-white/36 focus:border-[color:var(--color-primary)]/45"
+                                  />
+
+                                  <button
+                                    type="submit"
+                                    disabled={!customInput.trim()}
+                                    className="rounded-xl bg-[image:var(--gradient-primary)] px-5 py-3 text-sm font-semibold text-[#140d04] shadow-[var(--shadow-primary)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-45 sm:min-w-[92px]"
+                                  >
+                                    Add
+                                  </button>
+                                </div>
+                              </form>
+                            )}
                           </motion.div>
                         ) : (
                           <motion.div
@@ -556,7 +689,8 @@ Keep it short, clean, and easy to read.
                                 Your preferences are ready.
                               </p>
                               <p className="mt-1 text-sm text-white/62">
-                                Generate a clean itinerary or type anything else below.
+                                Generate a clean itinerary or type anything else
+                                below.
                               </p>
                             </div>
                           </motion.div>
@@ -595,7 +729,10 @@ Keep it short, clean, and easy to read.
 
                         <div className="rounded-3xl rounded-tl-md border border-white/10 bg-white/[0.055] px-5 py-4 text-sm text-white/80">
                           <span className="inline-flex items-center gap-2">
-                            <Loader2 size={16} className="animate-spin text-[var(--color-primary)]" />
+                            <Loader2
+                              size={16}
+                              className="animate-spin text-[var(--color-primary)]"
+                            />
                             Creating your travel plan...
                           </span>
                         </div>
