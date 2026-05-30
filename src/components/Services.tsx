@@ -13,49 +13,62 @@ import {
 
 const services = [
   {
-    title: "Tailor-Made Trips",
-    description:
-      "Personalized itineraries crafted around your passions, pace, and preferences.",
+    title: "Outings & Activities",
+    items: ["Day Out", "Dineout", "Summer Camp", "Event", "Clubbing"],
     icon: Map,
     image: "andaman",
     featured: true,
     accent: "gold",
   },
   {
-    title: "Luxury Hotel Booking",
-    description:
-      "Handpicked luxury stays that blend comfort, style, and exclusive experiences.",
+    title: "Travel & Leisure",
+    items: ["Hotels", "Cruise", "Spa", "Golf", "Luxury Holidays"],
     icon: Building2,
     image: "hotel",
     accent: "gold",
   },
   {
     title: "Flight & Visa Assistance",
-    description:
-      "Seamless travel arrangements and visa support for a stress-free journey.",
+    items: [
+      "Domestic Flights",
+      "International Flights",
+      "Visa Support",
+      "Travel Documents",
+      "Airport Help",
+    ],
     icon: Plane,
     image: "flight",
     accent: "ice",
   },
   {
     title: "Honeymoon Packages",
-    description: "Romantic getaways designed to create timeless memories together.",
+    items: [
+      "Romantic Stays",
+      "Couple Experiences",
+      "Candlelight Dinner",
+      "Private Transfers",
+      "Custom Itinerary",
+    ],
     icon: Heart,
     image: "honeymoon",
     accent: "gold",
   },
   {
-    title: "Group Tours",
-    description:
-      "Curated group experiences that bring people together through unforgettable journeys.",
+    title: "Fitness & Dance Classes",
+    items: ["Yoga", "Zumba", "Dance", "Aerobic"],
     icon: UsersRound,
     image: "group",
     accent: "ice",
   },
   {
     title: "AI Trip Planning",
-    description:
-      "Smart recommendations and real-time planning tailored just for you.",
+    items: [
+      "Smart Itinerary",
+      "Destination Ideas",
+      "Budget Planning",
+      "Hotel Suggestions",
+      "Instant Travel Help",
+    ],
     icon: Bot,
     image: "ai",
     accent: "gold",
@@ -98,7 +111,7 @@ export function Services() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-xs leading-6 text-[var(--color-text-soft)] sm:text-sm sm:leading-7 md:mt-5 md:text-sm md:leading-7 xl:mt-6 xl:text-base xl:leading-8">
-            From custom itineraries to premium stays, we design every detail of
+            From custom experiences to premium stays, we design every detail of
             your journey with care.
           </p>
         </div>
@@ -164,13 +177,26 @@ export function Services() {
 
                     <div
                       className={`mt-3 h-px w-8 sm:w-9 xl:mt-4 xl:w-10 ${
-                        isIce ? "bg-[var(--color-secondary)]" : "bg-[var(--color-primary)]"
+                        isIce
+                          ? "bg-[var(--color-secondary)]"
+                          : "bg-[var(--color-primary)]"
                       }`}
                     />
 
-                    <p className="mt-3 line-clamp-3 max-w-sm text-[10px] leading-4 text-[var(--color-text-soft)] sm:text-xs sm:leading-5 md:text-xs md:leading-5 lg:text-sm lg:leading-6 xl:mt-4 xl:text-sm xl:leading-7">
-                      {service.description}
-                    </p>
+                    <ul className="mt-3 grid grid-cols-1 gap-1.5 text-[10px] leading-4 text-[var(--color-text-soft)] sm:grid-cols-2 sm:text-xs sm:leading-5 md:text-xs md:leading-5 lg:text-sm lg:leading-6 xl:mt-4 xl:text-sm xl:leading-6">
+                      {service.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span
+                            className={`mt-1.5 size-1.5 shrink-0 rounded-full ${
+                              isIce
+                                ? "bg-[var(--color-secondary)]"
+                                : "bg-[var(--color-primary)]"
+                            }`}
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </article>

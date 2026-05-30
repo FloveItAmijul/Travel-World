@@ -9,6 +9,10 @@ import { AIChatModal } from "./components/AIChatModal";
 import { DestinationDetailPage } from "./pages/DestinationDetailPage";
 import { HomePage } from "./pages/HomePage";
 import { AllDestinationsPage } from "./pages/AllDestinationsPage";
+import { MembershipPage } from "./pages/MembershipPage";
+import { EmployeeLoginPage } from "./pages/EmployeeLoginPage";
+import { RefundPolicyPage } from "./pages/RefundPolicyPage";
+import { AboutUsPage } from "./pages/AboutUsPage";
 
 
 
@@ -50,6 +54,8 @@ function App() {
   return (
     <>
       <Routes>
+
+
         <Route path="/" element={<HomePage onOpenAIChat={openAIChat} />} />
 
         <Route 
@@ -60,6 +66,26 @@ function App() {
           path="/destinations/:slug"
           element={<DestinationDetailPage onOpenAIChat={openAIChat} />}
         />
+
+        <Route
+          path="/membership"
+          element={<MembershipPage  />}
+        />
+
+        <Route
+          path="/employee-login"
+          element={<EmployeeLoginPage/>} />
+
+        <Route 
+          path="/refund-policy" 
+          element={<RefundPolicyPage />} />
+
+        <Route 
+          path="/about-us"
+          element={<AboutUsPage />} />
+
+
+
       </Routes>
 
       <AIChatModal isOpen={isAIChatOpen} onClose={closeAIChat} />

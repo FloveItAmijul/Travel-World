@@ -992,3 +992,128 @@ button {
     grid-column: span 2;
   }
 }
+
+
+
+
+
+/* =========================================================
+   15. MEMBERSHIP PREVIEW CARDS
+   ========================================================= */
+
+.membership-card-bronze {
+  border-color: rgba(251, 146, 60, 0.42);
+  box-shadow:
+    0 36px 110px rgba(0, 0, 0, 0.62),
+    0 0 0 1px rgba(251, 146, 60, 0.13),
+    0 0 42px rgba(205, 127, 50, 0.16);
+}
+
+.membership-card-bronze::before,
+.membership-card-silver::before,
+.membership-card-gold::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.54;
+  content: "";
+}
+
+.membership-card-bronze::before {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(205, 127, 50, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(205, 127, 50, 0.12), transparent 42%);
+}
+
+.membership-card-silver {
+  border-color: rgba(226, 232, 240, 0.58);
+  box-shadow:
+    0 44px 130px rgba(0, 0, 0, 0.68),
+    0 0 0 1px rgba(226, 232, 240, 0.18),
+    0 0 48px rgba(226, 232, 240, 0.18);
+}
+
+.membership-card-silver::before {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(226, 232, 240, 0.18), transparent 35%),
+    linear-gradient(135deg, rgba(226, 232, 240, 0.1), transparent 42%);
+}
+
+.membership-card-gold {
+  border-color: rgba(243, 201, 121, 0.52);
+  box-shadow:
+    0 36px 110px rgba(0, 0, 0, 0.62),
+    0 0 0 1px rgba(243, 201, 121, 0.15),
+    0 0 42px rgba(243, 201, 121, 0.16);
+}
+
+.membership-card-gold::before {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(243, 201, 121, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(243, 201, 121, 0.12), transparent 42%);
+}
+
+@media (max-width: 767px) {
+  .membership-card-silver {
+    transform: none !important;
+  }
+}
+
+
+
+/* =========================================================
+   16. FULL MEMBERSHIP PAGE
+   ========================================================= */
+
+.membership-page-card-bronze {
+  border-color: rgba(251, 146, 60, 0.42);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.58),
+    0 0 0 1px rgba(251, 146, 60, 0.14),
+    0 0 48px rgba(205, 127, 50, 0.16);
+}
+
+.membership-page-card-bronze::before,
+.membership-page-card-silver::before,
+.membership-page-card-gold::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+}
+
+.membership-page-card-bronze::before {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(205, 127, 50, 0.16), transparent 36%),
+    linear-gradient(135deg, rgba(205, 127, 50, 0.09), transparent 44%);
+}
+
+.membership-page-card-silver {
+  border-color: rgba(226, 232, 240, 0.5);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.58),
+    0 0 0 1px rgba(226, 232, 240, 0.16),
+    0 0 48px rgba(226, 232, 240, 0.14);
+}
+
+.membership-page-card-silver::before {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(226, 232, 240, 0.16), transparent 36%),
+    linear-gradient(135deg, rgba(226, 232, 240, 0.08), transparent 44%);
+}
+
+.membership-page-card-gold {
+  border-color: rgba(243, 201, 121, 0.5);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.58),
+    0 0 0 1px rgba(243, 201, 121, 0.16),
+    0 0 48px rgba(243, 201, 121, 0.16);
+}
+
+.membership-page-card-gold::before {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(243, 201, 121, 0.16), transparent 36%),
+    linear-gradient(135deg, rgba(243, 201, 121, 0.09), transparent 44%);
+}
+
+

@@ -3,7 +3,6 @@ import { useInView } from "react-intersection-observer";
 
 import {
   ArrowRight,
-  Clock3,
   Crown,
   Flame,
   Leaf,
@@ -38,8 +37,6 @@ const destinations = [
     image: imagesByName.andaman,
     rating: "4.8",
     reviews: "330+",
-    duration: "4 Nights / 5 Days",
-    price: "₹24,999",
     tag: "Popular",
     tagIcon: Flame,
     accent: "gold",
@@ -51,8 +48,6 @@ const destinations = [
     image: imagesByName.goa,
     rating: "4.7",
     reviews: "280+",
-    duration: "3 Nights / 4 Days",
-    price: "₹15,999",
     tag: "Trending",
     tagIcon: TrendingUp,
     accent: "gold",
@@ -64,8 +59,6 @@ const destinations = [
     image: imagesByName.digha,
     rating: "4.6",
     reviews: "210+",
-    duration: "2 Nights / 3 Days",
-    price: "₹8,999",
     tag: "Best Seller",
     tagIcon: Star,
     accent: "ice",
@@ -77,8 +70,6 @@ const destinations = [
     image: imagesByName.dubai,
     rating: "4.9",
     reviews: "450+",
-    duration: "4 Nights / 5 Days",
-    price: "₹39,999",
     tag: "Luxury",
     tagIcon: Crown,
     accent: "gold",
@@ -90,8 +81,6 @@ const destinations = [
     image: imagesByName.kashmir,
     rating: "4.8",
     reviews: "310+",
-    duration: "4 Nights / 5 Days",
-    price: "₹18,999",
     tag: "Serene",
     tagIcon: Leaf,
     accent: "ice",
@@ -234,25 +223,14 @@ export function Destinations() {
                       <span className="hidden xl:inline">({destination.reviews})</span>
                     </span>
 
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock3 size={12} className="text-[var(--color-text-muted)] md:size-[11px] xl:size-[15px]" />
-                      {formatDuration(destination.duration)}
-                    </span>
+                    
                   </div>
 
                   <div className="my-3 h-px bg-[var(--color-border-soft)] md:my-3 xl:my-5" />
 
-                  <p className="text-[10px] text-[var(--color-text-muted)] md:text-[9px] lg:text-[10px] xl:text-sm">
-                    Starting from
-                  </p>
+                
 
-                  <p
-                    className={`mt-1 truncate text-lg font-black tracking-[0.04em] sm:text-2xl md:text-base lg:text-xl xl:text-3xl ${
-                      isIce ? "text-[var(--color-secondary)]" : "text-[var(--color-primary)]"
-                    }`}
-                  >
-                    {destination.price}
-                  </p>
+                 
 
                   <button
                     type="button"
@@ -299,11 +277,3 @@ export function Destinations() {
   );
 }
 
-function formatDuration(duration: string) {
-  return duration
-    .replace("Nights", "N")
-    .replace("Night", "N")
-    .replace("Days", "D")
-    .replace("Day", "D")
-    .replace(/\s*\/\s*/g, " / ");
-}

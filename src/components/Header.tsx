@@ -1,18 +1,105 @@
 import { AnimatePresence, motion } from "framer-motion";
-import {  Menu, Sparkles, X } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  CircleHelp,
+  FileText,
+  Handshake,
+  Home,
+  Info,
+  LogIn,
+  Menu,
+  MessageCircle,
+  PlaneTakeoff,
+  Quote,
+  Sparkles,
+  X,
+} from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router";
 
-import logo from "../assets/brand/logosvg.svg"
+import logo from "../assets/brand/logosvg.svg";
 
 const navItems = [
-  { label: "Home", target: "home" },
-  { label: "Services", target: "services" },
-  { label: "Destinations", target: "destinations" },
-  { label: "AI Planner", target: "ai-travel-assistant" },
-  { label: "Why Us", target: "why-choose-us" },
-  { label: "Partners", target: "partners" },
-  { label: "Stories", target: "testimonials" },
-  { label: "Contact", target: "contact" },
+  {
+    label: "Home",
+    target: "home",
+    type: "section",
+    icon: Home,
+    description: "Back to main welcome section",
+  },
+  {
+    label: "Services",
+    target: "services",
+    type: "section",
+    icon: BriefcaseBusiness,
+    description: "Travel support and booking services",
+  },
+  {
+    label: "Destinations",
+    target: "destinations",
+    type: "section",
+    icon: PlaneTakeoff,
+    description: "Explore handpicked destinations",
+  },
+  {
+    label: "AI Planner",
+    target: "ai-travel-assistant",
+    type: "section",
+    icon: Sparkles,
+    description: "Smart trip planning assistant",
+  },
+  {
+    label: "Why Us",
+    target: "why-choose-us",
+    type: "section",
+    icon: CircleHelp,
+    description: "Why travelers choose Dia Festivo",
+  },
+  {
+    label: "Partners",
+    target: "partners",
+    type: "section",
+    icon: Handshake,
+    description: "Trusted travel and hospitality partners",
+  },
+  {
+    label: "Stories",
+    target: "testimonials",
+    type: "section",
+    icon: Quote,
+    description: "Guest memories and testimonials",
+  },
+  {
+    label: "Contact",
+    target: "contact",
+    type: "section",
+    icon: MessageCircle,
+    description: "Reach our travel support team",
+  },
+];
+
+const utilityMenuItems = [
+  {
+    label: "About Us",
+    target: "/about-us",
+    type: "route",
+    icon: Info,
+    description: "Our background, vision, and services",
+  },
+  {
+    label: "Employee Login",
+    target: "/employee-login",
+    type: "route",
+    icon: LogIn,
+    description: "Internal secure access",
+  },
+  {
+    label: "Cancellation Policy",
+    target: "/refund-policy",
+    type: "route",
+    icon: FileText,
+    description: "Refund terms & conditions",
+  },
 ];
 
 const HEADER_OFFSET = 92;
@@ -21,7 +108,17 @@ type HeaderProps = {
   onOpenAIChat: () => void;
 };
 
+type MenuItem = {
+  label: string;
+  target: string;
+  type: string;
+  icon: React.ElementType;
+  description: string;
+};
+
 export function Header({ onOpenAIChat }: HeaderProps) {
+  const navigate = useNavigate();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,7 +185,9 @@ export function Header({ onOpenAIChat }: HeaderProps) {
       window.removeEventListener("resize", updateHeaderState);
 
       if (frameId) window.cancelAnimationFrame(frameId);
-      if (scrollLockTimerRef.current) window.clearTimeout(scrollLockTimerRef.current);
+      if (scrollLockTimerRef.current) {
+        window.clearTimeout(scrollLockTimerRef.current);
+      }
     };
   }, [sectionIds]);
 
@@ -114,7 +213,12 @@ export function Header({ onOpenAIChat }: HeaderProps) {
 
   function scrollToSection(target: string) {
     const element = document.getElementById(target);
-    if (!element) return;
+
+    if (!element) {
+      navigate(`/#${target}`);
+      setIsMenuOpen(false);
+      return;
+    }
 
     const elementTop = element.getBoundingClientRect().top + window.scrollY;
     const maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
@@ -143,6 +247,16 @@ export function Header({ onOpenAIChat }: HeaderProps) {
     }, 1200);
   }
 
+  function handleMenuItemClick(item: MenuItem) {
+    if (item.type === "route") {
+      setIsMenuOpen(false);
+      navigate(item.target);
+      return;
+    }
+
+    scrollToSection(item.target);
+  }
+
   function openAIFromMenu() {
     setIsMenuOpen(false);
     onOpenAIChat();
@@ -162,14 +276,14 @@ export function Header({ onOpenAIChat }: HeaderProps) {
             type="button"
             onClick={() => scrollToSection("home")}
             className="group flex shrink-0 items-center gap-3 rounded-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
-            aria-label="Traveluxe home"
+            aria-label="Dia Festivo home"
           >
             <span className="relative grid size-12 place-items-center overflow-hidden rounded-full border border-[color:var(--color-primary)]/30 bg-[var(--color-surface)] text-[var(--color-primary-soft)] shadow-[0_0_45px_var(--color-primary-glow)] transition duration-500 group-hover:border-[color:var(--color-primary-soft)]/65 group-hover:shadow-[0_0_70px_var(--color-primary-glow)]">
               <span className="absolute inset-0 bg-[conic-gradient(from_180deg,transparent,rgba(243,201,121,0.38),rgba(224,247,255,0.28),transparent)] opacity-70 transition duration-500 group-hover:rotate-180" />
               <span className="absolute inset-[5px] rounded-full bg-[var(--color-bg-soft)]" />
               <img
                 src={logo}
-                alt="Traveluxe"
+                alt="Dia Festivo"
                 className="relative h-8 w-8 object-contain"
                 loading="eager"
                 decoding="async"
@@ -227,7 +341,7 @@ export function Header({ onOpenAIChat }: HeaderProps) {
             <button
               type="button"
               onClick={onOpenAIChat}
-              className="group ai-planner-button relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.1)] px-4 py-3 text-xs font-semibold text-[var(--color-text)] shadow-[var(--shadow-primary)] outline-none backdrop-blur-2xl transition duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-primary-soft)]/60 hover:bg-[color:rgba(243,201,121,0.16)]  focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 sm:px-5 sm:text-sm"
+              className="group ai-planner-button relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.1)] px-4 py-3 text-xs font-semibold text-[var(--color-text)] shadow-[var(--shadow-primary)] outline-none backdrop-blur-2xl transition duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-primary-soft)]/60 hover:bg-[color:rgba(243,201,121,0.16)] focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 sm:px-5 sm:text-sm"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/18 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               <span className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(243,201,121,0.22),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(224,247,255,0.12),transparent_42%)]" />
@@ -284,7 +398,7 @@ export function Header({ onOpenAIChat }: HeaderProps) {
                 damping: 22,
                 mass: 0.82,
               }}
-              className="fixed right-4 top-24 z-50 w-[min(430px,calc(100%-32px))] origin-right overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-[color:rgba(6,11,22,0.92)] p-4 shadow-[0_30px_120px_rgba(0,0,0,0.72)] backdrop-blur-2xl lg:hidden"
+              className="fixed bottom-4 right-4 top-24 z-50 flex w-[min(430px,calc(100%-32px))] origin-right flex-col overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-[color:rgba(6,11,22,0.92)] p-4 shadow-[0_30px_120px_rgba(0,0,0,0.72)] backdrop-blur-2xl lg:hidden"
               style={{ perspective: 1200 }}
             >
               <div className="pointer-events-none absolute inset-0">
@@ -293,62 +407,126 @@ export function Header({ onOpenAIChat }: HeaderProps) {
                 <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.1),transparent_35%,rgba(243,201,121,0.06))]" />
               </div>
 
-              <div className="relative mb-5 rounded-3xl border border-[color:var(--color-border-soft)] bg-[var(--color-surface)] p-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-primary)]">
-                  Navigation
+              <div className="relative shrink-0 rounded-3xl border border-[color:var(--color-border-soft)] bg-[var(--color-surface)] p-4">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+                  Menu
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[var(--color-text)]">
-                  Explore Traveluxe
+                  Explore Dia Festivo
                 </h2>
               </div>
 
-              <nav className="relative grid gap-2" aria-label="Mobile navigation">
-                {navItems.map((item, index) => {
-                  const isActive = activeSection === item.target;
-
-                  return (
-                    <motion.button
+              <div className="relative mt-4 min-h-0 flex-1 overflow-y-auto pr-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                <nav className="grid gap-2 pb-4" aria-label="Mobile navigation">
+                  {navItems.map((item, index) => (
+                    <PremiumMobileMenuButton
                       key={item.target}
-                      type="button"
-                      onClick={() => scrollToSection(item.target)}
-                      aria-current={isActive ? "page" : undefined}
-                      initial={{ opacity: 0, x: 28 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.06 + index * 0.04 }}
-                      className={`group flex items-center justify-between rounded-2xl border px-4 py-4 text-sm outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 ${
-                        isActive
-                          ? "border-[color:var(--color-primary)]/40 bg-[color:rgba(243,201,121,0.1)] text-[var(--color-text)] shadow-[var(--shadow-primary)]"
-                          : "border-[color:var(--color-border-soft)] bg-[var(--color-surface-soft)] text-[var(--color-text-soft)] hover:border-[color:var(--color-primary)]/35 hover:bg-[color:rgba(243,201,121,0.08)] hover:text-[var(--color-text)]"
-                      }`}
-                    >
-                      <span>{item.label}</span>
-                      <span
-                        className={`size-1.5 rounded-full transition ${
-                          isActive
-                            ? "bg-[var(--color-primary)]"
-                            : "bg-transparent group-hover:bg-[var(--color-primary)]"
-                        }`}
-                      />
-                    </motion.button>
-                  );
-                })}
-              </nav>
+                      item={item}
+                      index={index}
+                      isActive={activeSection === item.target}
+                      onClick={() => handleMenuItemClick(item)}
+                    />
+                  ))}
+                </nav>
 
-              <motion.button
-                type="button"
-                onClick={openAIFromMenu}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.36 }}
-                className="relative mt-5 flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[color:var(--color-ai-violet)]/35 bg-[color:rgba(167,139,250,0.1)] px-5 py-4 text-sm font-medium text-[var(--color-text)] shadow-[var(--shadow-ai)] outline-none transition hover:border-[color:var(--color-secondary)]/70 hover:bg-[color:rgba(125,211,252,0.1)] focus-visible:ring-2 focus-visible:ring-[var(--color-ai-violet)]/70"
-              >
-                <Sparkles size={18} />
-                Start AI Trip Planning
-              </motion.button>
+                <div className="border-t border-[color:var(--color-border-soft)] pt-4">
+                  <p className="mb-3 px-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-primary)]">
+                    Utility Links
+                  </p>
+
+                  <div className="grid gap-2">
+                    {utilityMenuItems.map((item, index) => (
+                      <PremiumMobileMenuButton
+                        key={item.target}
+                        item={item}
+                        index={index + navItems.length}
+                        isActive={false}
+                        onClick={() => handleMenuItemClick(item)}
+                        isUtility
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative shrink-0 border-t border-[color:var(--color-border-soft)] pt-4">
+                <motion.button
+                  type="button"
+                  onClick={openAIFromMenu}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.36 }}
+                  className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.1)] px-5 py-4 text-sm font-semibold text-[var(--color-text)] shadow-[var(--shadow-primary)] outline-none transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.14)] focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70"
+                >
+                  <Sparkles size={18} className="text-[var(--color-primary)]" />
+                  Start AI Trip Planning
+                </motion.button>
+              </div>
             </motion.aside>
           </>
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function PremiumMobileMenuButton({
+  item,
+  index,
+  isActive,
+  onClick,
+  isUtility = false,
+}: {
+  item: MenuItem;
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+  isUtility?: boolean;
+}) {
+  const Icon = item.icon;
+
+  return (
+    <motion.button
+      type="button"
+      onClick={onClick}
+      aria-current={isActive ? "page" : undefined}
+      initial={{ opacity: 0, x: 28 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.06 + index * 0.025 }}
+      className={`group flex items-center gap-3 rounded-2xl border px-4 py-3.5 text-left outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]/70 ${
+        isActive
+          ? "border-[color:var(--color-primary)]/42 bg-[color:rgba(243,201,121,0.1)] text-[var(--color-text)] shadow-[var(--shadow-primary)]"
+          : isUtility
+            ? "border-[color:var(--color-primary)]/18 bg-[color:rgba(243,201,121,0.06)] text-[var(--color-text)] hover:border-[color:var(--color-primary)]/42 hover:bg-[color:rgba(243,201,121,0.1)]"
+            : "border-[color:var(--color-border-soft)] bg-[var(--color-surface-soft)] text-[var(--color-text)] hover:border-[color:var(--color-primary)]/35 hover:bg-[color:rgba(243,201,121,0.08)]"
+      }`}
+    >
+      <span
+        className={`grid size-10 shrink-0 place-items-center rounded-xl border transition ${
+          isActive || isUtility
+            ? "border-[color:var(--color-primary)]/24 text-[var(--color-primary)]"
+            : "border-[color:var(--color-border)] text-[var(--color-primary)] group-hover:border-[color:var(--color-primary)]/24"
+        }`}
+      >
+        <Icon size={18} />
+      </span>
+
+      <span className="min-w-0 flex-1">
+        <span className="block text-sm font-semibold text-[var(--color-text)]">
+          {item.label}
+        </span>
+        <span className="mt-0.5 block truncate text-xs text-[var(--color-text-muted)]">
+          {item.description}
+        </span>
+      </span>
+
+      <span
+        className={`size-1.5 shrink-0 rounded-full transition ${
+          isActive
+            ? "bg-[var(--color-primary)]"
+            : "bg-transparent group-hover:bg-[var(--color-primary)]"
+        }`}
+      />
+    </motion.button>
   );
 }

@@ -11,6 +11,7 @@ import { Partners } from "../components/Partners";
 import { Services } from "../components/Services";
 import { Testimonials } from "../components/Testimonials";
 import { WhyChooseUs } from "../components/WhyChooseUs";
+import { MembershipPreview } from "../components/MembershipPreview";
 
 type HomePageProps = {
   onOpenAIChat: () => void;
@@ -34,6 +35,7 @@ export function HomePage({ onOpenAIChat }: HomePageProps) {
       <main>
         <Hero />
         <Services />
+        <MembershipPreview />
         <Destinations />
         <AITravelAssistant onOpenAIChat={onOpenAIChat} />
         <WhyChooseUs />

@@ -137,16 +137,16 @@ export function DestinationDetailPage({
 
   return (
     <main className="min-h-screen overflow-hidden bg-[var(--color-bg)] text-[var(--color-text)]">
-      <section className="relative overflow-hidden px-4 py-4 sm:px-5 md:px-6 lg:px-8">
+      <section className="relative overflow-hidden px-3 py-4 sm:px-5 md:px-6 lg:px-8">
         <img
           src={destination.heroImage}
           alt={`${destination.name}, ${destination.country}`}
-          className="absolute inset-x-0 top-0 h-[330px] w-full object-cover sm:h-[360px] md:h-[380px] lg:h-[420px] xl:h-[48vh]"
+          className="absolute inset-x-0 top-0 h-[300px] w-full object-cover sm:h-[350px] md:h-[390px] lg:h-[430px] xl:h-[48vh]"
           loading="eager"
           decoding="async"
         />
 
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.28)_0%,rgba(2,4,10,0.52)_28%,var(--color-bg)_44%,var(--color-bg)_100%)] md:bg-[linear-gradient(180deg,rgba(2,4,10,0.24)_0%,rgba(2,4,10,0.48)_30%,var(--color-bg)_48%,var(--color-bg)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.34)_0%,rgba(2,4,10,0.56)_30%,var(--color-bg)_48%,var(--color-bg)_100%)] md:bg-[linear-gradient(180deg,rgba(2,4,10,0.24)_0%,rgba(2,4,10,0.48)_30%,var(--color-bg)_48%,var(--color-bg)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_16%,rgba(243,201,121,0.18),transparent_28%),radial-gradient(circle_at_84%_10%,rgba(224,247,255,0.12),transparent_28%)]" />
 
         <div className="relative z-10 mx-auto w-[min(100%,1500px)]">
@@ -163,8 +163,8 @@ export function DestinationDetailPage({
               </span>
 
               <span>
-                <strong className="block text-sm tracking-[0.28em] text-[var(--color-primary-soft)] md:text-base lg:text-lg lg:tracking-[0.35em]">
-                  TRAVELUXE
+                <strong className="block text-sm tracking-[0.22em] text-[var(--color-primary-soft)] sm:tracking-[0.28em] md:text-base lg:text-lg lg:tracking-[0.35em]">
+                  DIA FESTIVO
                 </strong>
                 <small className="mt-1 hidden text-[8px] uppercase tracking-[0.28em] text-[var(--color-text-muted)] sm:block lg:tracking-[0.32em]">
                   Destination Experience
@@ -173,18 +173,18 @@ export function DestinationDetailPage({
             </Link>
           </header>
 
-          <div className="grid content-start gap-6 pt-8 md:grid-cols-[0.86fr_1.14fr] md:gap-6 md:pt-10 lg:gap-8 lg:pt-12">
+          <div className="grid content-start gap-5 pt-8 md:grid-cols-[0.86fr_1.14fr] md:gap-6 md:pt-10 lg:gap-8 lg:pt-12">
             <div className="max-w-4xl">
-              <p className="flex items-center gap-3 text-[9px] font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)] md:text-[10px] md:tracking-[0.34em]">
-                <span className="h-px w-10 bg-gradient-to-r from-transparent to-[var(--color-primary)]/80 md:w-14" />
+              <p className="flex items-center gap-3 text-[8px] font-semibold uppercase tracking-[0.24em] text-[var(--color-primary)] sm:text-[9px] md:text-[10px] md:tracking-[0.34em]">
+                <span className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--color-primary)]/80 sm:w-10 md:w-14" />
                 Incredible {destination.country}
               </p>
 
-              <h1 className="mt-4 text-[clamp(3rem,15vw,5.3rem)] font-semibold leading-[0.82] tracking-[-0.08em] text-[var(--color-text)] md:text-[clamp(3.5rem,7vw,6.2rem)] lg:text-[clamp(4.5rem,8vw,8rem)] xl:text-[clamp(4.8rem,12vw,9.5rem)]">
+              <h1 className="mt-4 text-[clamp(2.8rem,15vw,5.2rem)] font-semibold leading-[0.84] tracking-[-0.08em] text-[var(--color-text)] md:text-[clamp(3.4rem,7vw,6.2rem)] lg:text-[clamp(4.4rem,8vw,8rem)] xl:text-[clamp(4.8rem,12vw,9.5rem)]">
                 {destination.name}, {destination.country}
               </h1>
 
-              <h2 className="mt-4 text-[clamp(1.15rem,5vw,1.6rem)] font-medium tracking-[-0.04em] text-[var(--color-primary)] md:text-[clamp(1.15rem,2.5vw,1.75rem)] lg:text-[clamp(1.35rem,3vw,2.35rem)]">
+              <h2 className="mt-4 text-[clamp(1.05rem,5vw,1.5rem)] font-medium tracking-[-0.04em] text-[var(--color-primary)] md:text-[clamp(1.15rem,2.5vw,1.75rem)] lg:text-[clamp(1.35rem,3vw,2.35rem)]">
                 Where Luxury Meets Experience
               </h2>
 
@@ -193,8 +193,8 @@ export function DestinationDetailPage({
               </p>
             </div>
 
-            <div className="relative self-end md:pt-16 lg:pt-20 xl:pt-24">
-              <div className="ml-auto w-full max-w-[540px] overflow-hidden rounded-[1.45rem] border border-[color:var(--color-primary)]/22 bg-[var(--color-glass)] p-4 shadow-[var(--shadow-card)] backdrop-blur-2xl md:max-w-[430px] md:rounded-[1.5rem] md:p-4 lg:max-w-[500px] lg:rounded-[1.8rem] lg:p-5 xl:max-w-[540px] xl:rounded-[2rem]">
+            <div className="relative self-end md:pt-14 lg:pt-20 xl:pt-24">
+              <div className="ml-auto w-full overflow-hidden rounded-[1.25rem] border border-[color:var(--color-primary)]/22 bg-[var(--color-glass)] p-4 shadow-[var(--shadow-card)] backdrop-blur-2xl sm:rounded-[1.45rem] md:max-w-[430px] md:rounded-[1.5rem] lg:max-w-[500px] lg:rounded-[1.8rem] lg:p-5 xl:max-w-[540px] xl:rounded-[2rem]">
                 <div className="pointer-events-none absolute inset-0">
                   <div className="absolute -right-20 -top-20 size-52 rounded-full bg-[color:var(--color-primary)]/12 blur-3xl md:size-56 xl:size-60" />
                   <div className="absolute -bottom-20 left-10 size-44 rounded-full bg-[color:var(--color-secondary)]/8 blur-3xl md:size-48 xl:size-52" />
@@ -202,16 +202,16 @@ export function DestinationDetailPage({
                 </div>
 
                 <div className="relative">
-                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[color:var(--color-primary)]/22 bg-[color:rgba(243,201,121,0.09)] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--color-primary)] md:text-[10px] xl:px-4 xl:py-2 xl:text-xs">
+                  <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[color:var(--color-primary)]/22 bg-[color:rgba(243,201,121,0.09)] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] md:text-[10px] xl:px-4 xl:py-2 xl:text-xs">
                     <Sparkles size={14} />
                     Personalize This Trip
                   </div>
 
-                  <h3 className="text-xl font-semibold leading-tight tracking-[-0.055em] text-[var(--color-text)] md:text-xl lg:text-2xl xl:text-3xl">
+                  <h3 className="text-lg font-semibold leading-tight tracking-[-0.055em] text-[var(--color-text)] sm:text-xl lg:text-2xl xl:text-3xl">
                     Create your perfect {destination.name} escape
                   </h3>
 
-                  <p className="mt-3 text-xs leading-5 text-[var(--color-text-muted)] md:text-xs md:leading-5 lg:text-sm lg:leading-6">
+                  <p className="mt-3 text-xs leading-5 text-[var(--color-text-muted)] lg:text-sm lg:leading-6">
                     Get a custom itinerary with hotels, places, food experiences,
                     photo spots, and budget-friendly options.
                   </p>
@@ -233,20 +233,19 @@ export function DestinationDetailPage({
             </div>
           </div>
 
-          <div className="mt-7 grid gap-6 pb-5 md:mt-8 md:gap-6 lg:gap-7">
+          <div className="mt-7 grid gap-5 pb-5 sm:gap-6 md:mt-8 lg:gap-7">
             <section className="grid gap-5">
-              <div className="grid gap-5 md:grid-cols-[0.22fr_0.78fr] lg:grid-cols-[0.2fr_0.8fr]">
+              <div className="grid gap-5 lg:grid-cols-[0.22fr_0.78fr] xl:grid-cols-[0.2fr_0.8fr]">
                 <SectionIntro
                   eyebrow="Where You'll Stay"
                   title="Stay in destinations designed for unforgettable luxury"
                   description="Curated luxury stays with breathtaking views, world-class service, and unforgettable experiences."
-                  
                 />
 
                 <ManualCardRail>
                   {({ scrollRef, scrollCards }) => (
                     <>
-                      <div className="mb-4 flex items-center justify-end gap-4">
+                      <div className="mb-4 flex items-center justify-between gap-3 sm:justify-end sm:gap-4">
                         <p className="text-xs font-semibold text-[var(--color-primary)] transition hover:text-[var(--color-primary-soft)] lg:text-sm">
                           View all stays →
                         </p>
@@ -285,7 +284,7 @@ export function DestinationDetailPage({
               </div>
             </section>
 
-            <section className="grid gap-5 md:grid-cols-[0.56fr_0.44fr]">
+            <section className="grid gap-5 lg:grid-cols-[0.56fr_0.44fr]">
               <ManualSection
                 eyebrow="Places To Explore"
                 action="View all places"
@@ -303,24 +302,27 @@ export function DestinationDetailPage({
                 ))}
               </ManualSection>
 
-              <section className="rounded-[1.25rem] border border-[color:var(--color-primary)]/18 bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card)] backdrop-blur-xl md:rounded-[1.35rem] md:p-4 lg:rounded-[1.5rem] lg:p-5 xl:rounded-[1.6rem]">
-                <SectionTitle eyebrow="Signature Experiences" icon={<Sparkles size={16} />} />
+              <section className="rounded-[1.2rem] border border-[color:var(--color-primary)]/18 bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card)] backdrop-blur-xl sm:rounded-[1.35rem] lg:rounded-[1.5rem] lg:p-5 xl:rounded-[1.6rem]">
+                <SectionTitle
+                  eyebrow="Signature Experiences"
+                  icon={<Sparkles size={16} />}
+                />
 
-                <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6 md:grid-cols-3 md:gap-3 lg:grid-cols-6 lg:gap-4">
+                <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6 lg:grid-cols-3 xl:grid-cols-6 xl:gap-4">
                   {experiences.map((experience) => {
                     const Icon = experience.icon;
 
                     return (
                       <div key={experience.title} className="text-center">
-                        <div className="mx-auto grid size-10 place-items-center rounded-xl border border-[color:var(--color-primary)]/18 bg-[color:rgba(243,201,121,0.08)] text-[var(--color-primary)] md:size-10 lg:size-12 lg:rounded-2xl">
-                          <Icon size={20} className="lg:size-[23px]" />
+                        <div className="mx-auto grid size-10 place-items-center rounded-xl border border-[color:var(--color-primary)]/18 bg-[color:rgba(243,201,121,0.08)] text-[var(--color-primary)] lg:size-11 xl:size-12 xl:rounded-2xl">
+                          <Icon size={20} className="xl:size-[23px]" />
                         </div>
 
-                        <h4 className="mt-2 text-[10px] font-semibold text-[var(--color-text)] md:text-[10px] lg:mt-3 lg:text-sm">
+                        <h4 className="mt-2 text-[10px] font-semibold text-[var(--color-text)] xl:mt-3 xl:text-sm">
                           {experience.title}
                         </h4>
 
-                        <p className="mt-1 hidden text-[9px] leading-4 text-[var(--color-text-muted)] sm:block md:hidden lg:block lg:text-xs lg:leading-5">
+                        <p className="mt-1 hidden text-[9px] leading-4 text-[var(--color-text-muted)] sm:block lg:hidden xl:block xl:text-xs xl:leading-5">
                           {experience.description}
                         </p>
                       </div>
@@ -335,34 +337,37 @@ export function DestinationDetailPage({
               photos={galleryPhotos}
             />
 
-            <section className="grid gap-5 md:grid-cols-[1fr_220px] lg:grid-cols-[1fr_240px] xl:grid-cols-[1fr_260px]">
+            <section className="grid gap-5 lg:grid-cols-[1fr_240px] xl:grid-cols-[1fr_260px]">
               <div>
                 <div className="mb-4 flex items-center gap-3">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-primary)] md:tracking-[0.28em]">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)] sm:tracking-[0.24em] md:tracking-[0.28em]">
                     Suggested Itinerary
                   </p>
                   <span className="h-px flex-1 bg-gradient-to-r from-[var(--color-primary)]/65 to-transparent" />
                 </div>
 
                 <div className="relative">
-                  <div className="absolute left-0 right-0 top-4 hidden h-px bg-gradient-to-r from-[var(--color-primary)]/70 via-[var(--color-primary)]/25 to-transparent md:block" />
+                  <div className="absolute left-0 right-0 top-4 hidden h-px bg-gradient-to-r from-[var(--color-primary)]/70 via-[var(--color-primary)]/25 to-transparent lg:block" />
 
-                  <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-5 md:gap-3">
+                  <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 xl:gap-3">
                     {destination.itinerary.slice(0, 5).map((item, index) => (
-                      <article key={item.day} className="relative">
+                      <article
+                        key={item.day}
+                        className="relative rounded-2xl border border-[color:var(--color-border-soft)] bg-[var(--color-surface-soft)] p-4 lg:border-0 lg:bg-transparent lg:p-0"
+                      >
                         <span className="relative z-10 grid size-9 place-items-center rounded-full border border-[color:var(--color-primary)]/35 bg-[var(--color-bg-soft)] text-xs font-bold text-[var(--color-primary)]">
                           {index + 1}
                         </span>
 
-                        <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-primary)] md:mt-4 md:text-[10px] lg:text-xs">
+                        <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--color-primary)] md:mt-4 lg:text-xs">
                           {item.day}
                         </p>
 
-                        <h3 className="mt-2 text-xs font-semibold text-[var(--color-secondary)] md:text-[11px] lg:text-sm">
+                        <h3 className="mt-2 text-xs font-semibold text-[var(--color-secondary)] lg:text-sm">
                           {item.title}
                         </h3>
 
-                        <p className="mt-2 text-[10px] leading-4 text-[var(--color-text-muted)] md:text-[9px] lg:text-xs lg:leading-5">
+                        <p className="mt-2 text-[10px] leading-4 text-[var(--color-text-muted)] lg:text-xs lg:leading-5">
                           {item.description}
                         </p>
                       </article>
@@ -371,20 +376,18 @@ export function DestinationDetailPage({
                 </div>
               </div>
 
-              <div className="rounded-[1.2rem] border border-[color:var(--color-primary)]/20 bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card)] backdrop-blur-xl md:p-4 lg:rounded-[1.3rem] lg:p-5">
-                <p className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)] md:text-xs lg:text-sm">
+              <div className="rounded-[1.2rem] border border-[color:var(--color-primary)]/20 bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card)] backdrop-blur-xl lg:rounded-[1.3rem] lg:p-5">
+                <p className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)] lg:text-sm">
                   <Sparkles size={18} />
                   This is just a sample
                 </p>
 
-                <p className="mt-3 text-xs leading-6 text-[var(--color-text-muted)] md:text-[10px] md:leading-5 lg:text-sm lg:leading-6">
+                <p className="mt-3 text-xs leading-6 text-[var(--color-text-muted)] lg:text-sm lg:leading-6">
                   Every itinerary is crafted just for you based on your budget,
                   travel style, hotel preference, and dates.
                 </p>
               </div>
             </section>
-
-      
 
             <div className="grid gap-3 border-t border-[color:var(--color-border-soft)] pt-5 sm:grid-cols-2 lg:grid-cols-4">
               <FooterMiniCard
@@ -423,20 +426,20 @@ function PhotoCollageSection({
   photos: GalleryPhoto[];
 }) {
   return (
-    <section className="destination-photo-section grid gap-5 lg:grid-cols-[0.24fr_0.56fr_0.2fr]">
-      <div className="destination-photo-intro relative overflow-hidden rounded-[1.6rem] border border-[color:var(--color-border-soft)] bg-[var(--color-surface-soft)] p-5 shadow-[var(--shadow-card)] backdrop-blur-xl">
+    <section className="destination-photo-section grid gap-5 xl:grid-cols-[0.24fr_0.56fr_0.2fr]">
+      <div className="destination-photo-intro relative overflow-hidden rounded-[1.3rem] border border-[color:var(--color-border-soft)] bg-[var(--color-surface-soft)] p-4 shadow-[var(--shadow-card)] backdrop-blur-xl sm:rounded-[1.6rem] sm:p-5">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -bottom-24 -left-16 size-64 rounded-full bg-[color:var(--color-primary)]/8 blur-3xl" />
           <div className="absolute bottom-6 left-6 h-px w-24 rotate-[-8deg] bg-gradient-to-r from-[var(--color-primary)]/60 to-transparent" />
         </div>
 
         <div className="relative">
-          <div className="mb-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+          <div className="mb-4 inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--color-primary)] sm:text-[10px] sm:tracking-[0.28em]">
             <Camera size={16} />
             Picture-perfect {destinationName}
           </div>
 
-          <h2 className="text-[clamp(2rem,5vw,3.6rem)] font-semibold leading-[0.95] tracking-[-0.07em] text-[var(--color-text)]">
+          <h2 className="text-[clamp(1.8rem,7vw,3.6rem)] font-semibold leading-[0.95] tracking-[-0.07em] text-[var(--color-text)]">
             Where Every Corner Becomes a{" "}
             <span className="bg-[image:var(--gradient-primary)] bg-clip-text text-transparent">
               Memory
@@ -448,19 +451,19 @@ function PhotoCollageSection({
             <Sparkles size={15} className="text-[var(--color-primary)]" />
           </div>
 
-          <p className="mt-6 text-sm leading-7 text-[var(--color-text-soft)]">
+          <p className="mt-5 text-xs leading-6 text-[var(--color-text-soft)] sm:mt-6 sm:text-sm sm:leading-7">
             From golden-hour beaches and heritage corners to hidden cafés,
             viewpoints, and local colors — every frame tells a story worth
             keeping.
           </p>
 
-          <div
-            
-            className="group mt-7 inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.06)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.11)]"
-          >
+          <div className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.06)] px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--color-primary)] transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.11)] sm:mt-7 sm:text-xs sm:tracking-[0.18em]">
             <Camera size={17} />
             Explore Photo Spots
-            <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+            <ArrowRight
+              size={16}
+              className="transition group-hover:translate-x-1"
+            />
           </div>
         </div>
       </div>
@@ -473,7 +476,11 @@ function PhotoCollageSection({
               index % 9 === 1 || index % 9 === 6 || index % 9 === 8
                 ? "destination-photo-tile-wide"
                 : ""
-            } ${index % 7 === 0 || index % 11 === 4 ? "destination-photo-tile-large" : ""}`}
+            } ${
+              index % 7 === 0 || index % 11 === 4
+                ? "destination-photo-tile-large"
+                : ""
+            }`}
           >
             <img
               src={photo.image}
@@ -483,26 +490,22 @@ function PhotoCollageSection({
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-
-            <span className="absolute left-3 top-3 grid size-8 place-items-center rounded-full bg-[var(--color-bg)]/85 text-xs font-semibold text-[var(--color-primary)] backdrop-blur-xl">
-              {index + 1}
-            </span>
           </article>
         ))}
       </div>
 
-      <aside className="destination-photo-tips relative overflow-hidden rounded-[1.6rem] border border-[color:var(--color-primary)]/22 bg-[var(--color-surface)] p-5 shadow-[var(--shadow-card)] backdrop-blur-xl">
+      <aside className="destination-photo-tips relative overflow-hidden rounded-[1.3rem] border border-[color:var(--color-primary)]/22 bg-[var(--color-surface)] p-4 shadow-[var(--shadow-card)] backdrop-blur-xl sm:rounded-[1.6rem] sm:p-5">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -right-20 top-0 size-56 rounded-full bg-[color:var(--color-primary)]/8 blur-3xl" />
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_42%,rgba(243,201,121,0.045))]" />
         </div>
 
         <div className="relative">
-          <div className="mx-auto grid size-20 place-items-center rounded-3xl border border-[color:var(--color-primary)]/20 bg-[color:rgba(243,201,121,0.07)] text-[var(--color-primary)]">
-            <Camera size={42} strokeWidth={1.4} />
+          <div className="mx-auto grid size-16 place-items-center rounded-2xl border border-[color:var(--color-primary)]/20 bg-[color:rgba(243,201,121,0.07)] text-[var(--color-primary)] sm:size-20 sm:rounded-3xl">
+            <Camera size={34} strokeWidth={1.4} className="sm:size-[42px]" />
           </div>
 
-          <h3 className="mt-5 text-center text-3xl font-semibold leading-tight tracking-[-0.055em] text-[var(--color-text)]">
+          <h3 className="mt-5 text-center text-2xl font-semibold leading-tight tracking-[-0.055em] text-[var(--color-text)] sm:text-3xl">
             Photographer’s Picks
           </h3>
 
@@ -512,14 +515,14 @@ function PhotoCollageSection({
             <span className="h-px flex-1 bg-gradient-to-r from-[var(--color-primary)]/60 to-transparent" />
           </div>
 
-          <div className="mt-7 grid gap-5">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-1 xl:gap-5">
             {photographerTips.map((tip) => {
               const Icon = tip.icon;
 
               return (
                 <div key={tip.title} className="flex gap-4">
-                  <div className="grid size-11 shrink-0 place-items-center rounded-2xl border border-[color:var(--color-primary)]/16 bg-[color:rgba(243,201,121,0.07)] text-[var(--color-primary)]">
-                    <Icon size={23} strokeWidth={1.5} />
+                  <div className="grid size-10 shrink-0 place-items-center rounded-2xl border border-[color:var(--color-primary)]/16 bg-[color:rgba(243,201,121,0.07)] text-[var(--color-primary)] sm:size-11">
+                    <Icon size={22} strokeWidth={1.5} />
                   </div>
 
                   <div>
@@ -535,13 +538,13 @@ function PhotoCollageSection({
             })}
           </div>
 
-          <div
-           
-            className="group mt-7 inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.06)] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.11)]"
-          >
+          <div className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-xl border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.06)] px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--color-primary)] transition hover:border-[color:var(--color-primary)]/60 hover:bg-[color:rgba(243,201,121,0.11)] sm:mt-7 sm:text-xs sm:tracking-[0.18em]">
             <MapPin size={17} />
             View Map
-            <ArrowRight size={15} className="transition group-hover:translate-x-1" />
+            <ArrowRight
+              size={15}
+              className="transition group-hover:translate-x-1"
+            />
           </div>
         </div>
       </aside>
@@ -552,8 +555,9 @@ function PhotoCollageSection({
 function buildGalleryPhotos(destination: ReturnType<typeof getDestinationBySlug>) {
   if (!destination) return [];
 
-  const customGallery = (destination as unknown as { galleryImages?: GalleryPhoto[] })
-    .galleryImages;
+  const customGallery = (destination as unknown as {
+    galleryImages?: GalleryPhoto[];
+  }).galleryImages;
 
   if (customGallery && customGallery.length > 0) {
     return customGallery;
@@ -577,11 +581,7 @@ function buildGalleryPhotos(destination: ReturnType<typeof getDestinationBySlug>
     })),
   ];
 
-  return [
-    ...generatedPhotos,
-    ...generatedPhotos,
-    ...generatedPhotos,
-  ].slice(0, 24);
+  return [...generatedPhotos, ...generatedPhotos, ...generatedPhotos].slice(0, 24);
 }
 
 function ManualCardRail({
@@ -704,16 +704,15 @@ function SectionIntro({
     <div>
       <SectionTitle eyebrow={eyebrow} />
 
-      <h2 className="max-w-xs text-[clamp(1.35rem,6vw,2rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-[var(--color-text)] md:text-[clamp(1.15rem,2.4vw,1.65rem)] lg:text-[clamp(1.4rem,3vw,2.1rem)] xl:text-[clamp(1.55rem,4vw,2.35rem)]">
+      <h2 className="max-w-xl text-[clamp(1.35rem,6vw,2rem)] font-semibold leading-[0.98] tracking-[-0.06em] text-[var(--color-text)] lg:max-w-xs lg:text-[clamp(1.4rem,3vw,2.1rem)] xl:text-[clamp(1.55rem,4vw,2.35rem)]">
         {title}
       </h2>
 
       <div className="mt-3 h-px w-14 bg-[var(--color-primary)] md:mt-4 md:w-16" />
 
-      <p className="mt-3 max-w-sm text-xs leading-5 text-[var(--color-text-muted)] md:text-[10px] md:leading-5 lg:text-xs lg:leading-6 xl:text-sm">
+      <p className="mt-3 max-w-sm text-xs leading-5 text-[var(--color-text-muted)] lg:text-xs lg:leading-6 xl:text-sm">
         {description}
       </p>
-
     </div>
   );
 }
@@ -761,15 +760,15 @@ function DestinationCard({
     <article
       className={`group shrink-0 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[var(--color-surface)] shadow-[0_18px_60px_rgba(0,0,0,0.3)] backdrop-blur-xl transition hover:border-[color:var(--color-primary)]/40 ${
         wide
-          ? "w-[235px] sm:w-[275px] md:w-[220px] lg:w-[270px] xl:w-[320px]"
-          : "w-[205px] sm:w-[235px] md:w-[190px] lg:w-[220px] xl:w-[255px]"
+          ? "w-[220px] sm:w-[265px] md:w-[280px] lg:w-[300px] xl:w-[320px]"
+          : "w-[200px] sm:w-[230px] md:w-[240px] lg:w-[245px] xl:w-[255px]"
       }`}
     >
       <div
         className={
           wide
-            ? "relative h-36 overflow-hidden sm:h-40 md:h-32 lg:h-36 xl:h-38"
-            : "relative h-32 overflow-hidden md:h-28 lg:h-32"
+            ? "relative h-32 overflow-hidden sm:h-40 lg:h-36 xl:h-38"
+            : "relative h-30 overflow-hidden sm:h-32 lg:h-32"
         }
       >
         <img
@@ -782,7 +781,7 @@ function DestinationCard({
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/76 via-black/14 to-transparent" />
 
-        <span className="absolute left-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.16em] text-white/82 backdrop-blur-xl md:text-[8px] lg:text-[9px]">
+        <span className="absolute left-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.16em] text-white/82 backdrop-blur-xl lg:text-[9px]">
           {label}
         </span>
       </div>

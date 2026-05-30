@@ -8,24 +8,41 @@ import {
   Phone,
   ShieldCheck,
   Trophy,
+  UserRound,
+  FileText,
+  Crown,
 } from "lucide-react";
 
 const footerColumns = [
   {
     title: "Explore",
-    links: ["Destinations", "International Tours", "Luxury Experiences", "Weekend Getaways"],
+    links: [
+      "All Destinations",
+      "Membership",
+      "Luxury Experiences",
+      "Weekend Getaways",
+    ],
   },
   {
     title: "Services",
-    links: ["AI Trip Planning", "Flight Bookings", "Hotel Bookings", "Airport Transfers"],
+    links: [
+      "AI Trip Planning",
+      "Flight Bookings",
+      "Hotel Bookings",
+      "Airport Transfers",
+    ],
   },
   {
     title: "Company",
-    links: ["About Us", "Our Story", "Careers", "Contact Us"],
+    links: ["About Us", "Our Story", "Careers"],
   },
   {
     title: "Support",
-    links: ["Help Center", "Booking Guide", "Terms & Conditions", "Privacy Policy"],
+    links: [
+      "Help Center",
+      "Booking Guide",
+      "Privacy Policy",
+    ],
   },
 ];
 
@@ -49,8 +66,8 @@ const trustItems = [
     accent: "gold",
   },
   {
-    title: "Trusted by 50K+",
-    description: "4.9/5 Rating",
+    title: "Trusted by Members",
+    description: "Premium travel care",
     icon: Globe2,
     accent: "ice",
   },
@@ -64,29 +81,32 @@ const socialLinks = [
   { label: "LinkedIn", short: "in" },
 ];
 
-const payments = ["VISA", "MC", "AMEX", "PayPal", "G Pay", "Apple Pay"];
+const payments = ["VISA", "MC", "AMEX", "UPI", "G Pay", "NetBanking"];
 
 function footerLinkTarget(link: string) {
   const map: Record<string, string> = {
-    Destinations: "#destinations",
-    "International Tours": "#destinations",
-    "Luxury Experiences": "#services",
-    "Weekend Getaways": "#destinations",
-    "AI Trip Planning": "#ai-travel-assistant",
-    "Flight Bookings": "#services",
-    "Hotel Bookings": "#services",
-    "Airport Transfers": "#services",
-    "About Us": "#why-choose-us",
-    "Our Story": "#why-choose-us",
-    Careers: "#contact",
-    "Contact Us": "#contact",
-    "Help Center": "#contact",
-    "Booking Guide": "#services",
-    "Terms & Conditions": "#contact",
-    "Privacy Policy": "#contact",
+    "All Destinations": "/destinations",
+    Membership: "/membership",
+    "Luxury Experiences": "/#services",
+    "Weekend Getaways": "/destinations",
+
+    "AI Trip Planning": "/#ai-travel-assistant",
+    "Flight Bookings": "/#services",
+    "Hotel Bookings": "/#services",
+    "Airport Transfers": "/#services",
+
+    "About Us": "/about-us",
+    "Our Story": "/#why-choose-us",
+    Careers: "/#contact",
+    "Employee Login": "/employee-login",
+
+    "Help Center": "/#contact",
+    "Booking Guide": "/#services",
+    "Cancellation & Refund Policy": "/refund-policy",
+    "Privacy Policy": "/#contact",
   };
 
-  return map[link] ?? "#";
+  return map[link] ?? "/";
 }
 
 export function Footer() {
@@ -106,32 +126,90 @@ export function Footer() {
       <div className="relative mx-auto w-[min(100%,1280px)]">
         <div className="grid gap-8 md:grid-cols-[0.95fr_2.05fr] md:gap-6 lg:grid-cols-[1.05fr_2.25fr] lg:gap-8 xl:grid-cols-[1.15fr_2.4fr] xl:gap-10">
           <div className="min-w-0">
-            <a href="/" className="inline-flex items-center gap-3" aria-label="Traveluxe home">
+            <a
+              href="/"
+              className="inline-flex items-center gap-3"
+              aria-label="Dia Festivo home"
+            >
               <span className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full border border-[color:var(--color-primary)]/35 bg-[color:rgba(243,201,121,0.1)] text-[var(--color-primary-soft)] shadow-[var(--shadow-primary)] md:size-11 lg:size-12 xl:size-14">
                 <span className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.2),transparent_36%)]" />
-                <Globe2 size={24} strokeWidth={1.5} className="relative md:size-[24px] lg:size-[26px] xl:size-[30px]" />
+                <Crown
+                  size={24}
+                  strokeWidth={1.5}
+                  className="relative md:size-[24px] lg:size-[26px] xl:size-[30px]"
+                />
               </span>
 
               <span className="min-w-0">
-                <strong className="block text-base tracking-[0.24em] text-[var(--color-text)] md:text-base md:tracking-[0.22em] lg:text-lg lg:tracking-[0.26em] xl:text-2xl xl:tracking-[0.28em]">
-                  TRAVELUXE
+                <strong className="block text-base tracking-[0.22em] text-[var(--color-text)] md:text-base md:tracking-[0.2em] lg:text-lg lg:tracking-[0.24em] xl:text-2xl xl:tracking-[0.26em]">
+                  DIA FESTIVO
                 </strong>
-                <small className="mt-1 block text-[8px] tracking-[0.22em] text-[var(--color-text-muted)] md:text-[8px] lg:text-[9px] xl:text-[10px] xl:tracking-[0.36em]">
-                  JOURNEYS BEYOND LIMITS
+                <small className="mt-1 block text-[8px] tracking-[0.2em] text-[var(--color-text-muted)] md:text-[8px] lg:text-[9px] xl:text-[10px] xl:tracking-[0.32em]">
+                  DISCOVER MORE. LIVE MORE.
                 </small>
               </span>
             </a>
 
             <p className="mt-4 max-w-md text-xs leading-6 text-[var(--color-text-soft)] md:max-w-sm md:text-[11px] md:leading-5 lg:mt-5 lg:text-xs lg:leading-6 xl:mt-6 xl:text-sm xl:leading-7">
               Crafting unforgettable journeys with luxury precision, AI support,
-              and human care.
+              membership benefits, and human care.
             </p>
 
             <div className="mt-5 grid gap-3 text-xs leading-5 text-[var(--color-text-soft)] md:mt-5 md:gap-2 md:text-[10px] md:leading-4 lg:mt-6 lg:gap-3 lg:text-xs lg:leading-5 xl:mt-7 xl:gap-4 xl:text-sm">
-              <FooterContact icon={<MapPin size={14} />} text="123 Travel Street, New Delhi" />
-              <FooterContact icon={<Phone size={14} />} text="+91 98765 43210" href="tel:+919876543210" />
-              <FooterContact icon={<Mail size={14} />} text="hello@traveluxe.com" href="mailto:hello@traveluxe.com" />
-              <FooterContact icon={<Clock3 size={14} />} text="Mon – Sat: 9 AM – 7 PM" />
+              <FooterContact
+                icon={<MapPin size={14} />}
+                text="Dia Festivo Leisure Pvt Ltd"
+              />
+              <FooterContact
+                icon={<Phone size={14} />}
+                text="+91 22 6805 6000"
+                href="tel:+912268056000"
+              />
+              <FooterContact
+                icon={<Mail size={14} />}
+                text="support@diafestivo.com"
+                href="mailto:support@diafestivo.com"
+              />
+              <FooterContact
+                icon={<Clock3 size={14} />}
+                text="Mon – Sat: 9 AM – 7 PM"
+              />
+            </div>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+              <a
+                href="/refund-policy"
+                className="group flex items-center gap-3 rounded-2xl border border-[color:var(--color-primary)]/18 bg-[color:rgba(243,201,121,0.06)] p-3 transition hover:border-[color:var(--color-primary)]/45 hover:bg-[color:rgba(243,201,121,0.1)]"
+              >
+                <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-[color:var(--color-primary)]/20 text-[var(--color-primary)]">
+                  <FileText size={18} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-semibold text-[var(--color-text)]">
+                    Cancellation Policy
+                  </span>
+                  <span className="mt-0.5 block text-[10px] text-[var(--color-text-muted)]">
+                    Refund terms & conditions
+                  </span>
+                </span>
+              </a>
+
+              <a
+                href="/employee-login"
+                className="group flex items-center gap-3 rounded-2xl border border-[color:var(--color-border)] bg-[var(--color-surface-soft)] p-3 transition hover:border-[color:var(--color-primary)]/35 hover:bg-[color:rgba(243,201,121,0.07)]"
+              >
+                <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-[color:var(--color-primary)]/18 text-[var(--color-primary)]">
+                  <UserRound size={18} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-semibold text-[var(--color-text)]">
+                    Employee Login
+                  </span>
+                  <span className="mt-0.5 block text-[10px] text-[var(--color-text-muted)]">
+                    Internal secure access
+                  </span>
+                </span>
+              </a>
             </div>
           </div>
 
@@ -145,16 +223,41 @@ export function Footer() {
                 <div className="mt-2 h-px w-10 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] md:w-9 lg:w-12 xl:mt-3 xl:w-16" />
 
                 <ul className="mt-4 space-y-2.5 md:mt-4 md:space-y-2 lg:mt-5 lg:space-y-3 xl:mt-6 xl:space-y-4">
-                  {column.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href={footerLinkTarget(link)}
-                        className="block truncate text-xs text-[var(--color-text-muted)] transition hover:text-[var(--color-primary)] md:text-[10px] lg:text-xs xl:text-sm"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  ))}
+                  {column.links.map((link) => {
+                    const isPolicy = link === "Cancellation & Refund Policy";
+                    const isEmployee = link === "Employee Login";
+
+                    return (
+                      <li key={link}>
+                        <a
+                          href={footerLinkTarget(link)}
+                          className={`group flex items-center gap-2 truncate text-xs transition md:text-[10px] lg:text-xs xl:text-sm ${
+                            isPolicy
+                              ? "font-semibold text-[var(--color-primary-soft)] hover:text-[var(--color-primary)]"
+                              : isEmployee
+                                ? "text-[var(--color-text-soft)] hover:text-[var(--color-primary)]"
+                                : "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]"
+                          }`}
+                        >
+                          {isPolicy && (
+                            <FileText
+                              size={13}
+                              className="shrink-0 text-[var(--color-primary)]"
+                            />
+                          )}
+
+                          {isEmployee && (
+                            <UserRound
+                              size={13}
+                              className="shrink-0 text-[var(--color-primary)]"
+                            />
+                          )}
+
+                          <span className="truncate">{link}</span>
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
@@ -179,7 +282,11 @@ export function Footer() {
                         : "border-[color:var(--color-primary)]/25 text-[var(--color-primary)] shadow-[var(--shadow-primary)]"
                     }`}
                   >
-                    <Icon size={18} strokeWidth={1.55} className="md:size-[18px] lg:size-[22px] xl:size-[26px]" />
+                    <Icon
+                      size={18}
+                      strokeWidth={1.55}
+                      className="md:size-[18px] lg:size-[22px] xl:size-[26px]"
+                    />
                   </div>
 
                   <div className="min-w-0">
@@ -198,9 +305,26 @@ export function Footer() {
 
         <div className="mt-6 border-t border-[color:var(--color-border-soft)] pt-5 md:mt-7 md:pt-6 xl:mt-10 xl:pt-8">
           <div className="grid gap-5 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-3">
-            <p className="order-3 text-center text-xs text-[var(--color-text-muted)] md:order-1 md:text-left md:text-[10px] lg:text-xs xl:text-sm">
-              © 2025 Traveluxe. All rights reserved.
-            </p>
+            <div className="order-3 text-center md:order-1 md:text-left">
+              <p className="text-xs text-[var(--color-text-muted)] md:text-[10px] lg:text-xs xl:text-sm">
+                © 2026 Dia Festivo Leisure Pvt Ltd. All rights reserved.
+              </p>
+
+              <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] text-[var(--color-text-faint)] md:justify-start lg:text-xs">
+                <a
+                  href="/refund-policy"
+                  className="transition hover:text-[var(--color-primary)]"
+                >
+                  Cancellation Policy
+                </a>
+                <a
+                  href="/employee-login"
+                  className="transition hover:text-[var(--color-primary)]"
+                >
+                  Employee Login
+                </a>
+              </div>
+            </div>
 
             <div className="order-1 text-center md:order-2">
               <p className="mb-2 text-xs font-semibold text-[var(--color-text-soft)] md:text-[10px] lg:text-xs xl:text-sm">
@@ -249,7 +373,9 @@ function FooterContact({
 }) {
   const content = (
     <>
-      <span className="mt-0.5 shrink-0 text-[var(--color-primary)]/70">{icon}</span>
+      <span className="mt-0.5 shrink-0 text-[var(--color-primary)]/70">
+        {icon}
+      </span>
       <span className="min-w-0">{text}</span>
     </>
   );
