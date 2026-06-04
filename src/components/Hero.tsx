@@ -7,7 +7,7 @@ const imageModules = import.meta.glob("../assets/destinations/*.{jpg,jpeg,png,we
   import: "default",
 });
 
-const AUTOPLAY_DURATION = 5000;
+const AUTOPLAY_DURATION = 3000;
 const BACKGROUND_FADE_DURATION = 900;
 
 const destinations = Object.entries(imageModules)
@@ -32,10 +32,12 @@ const destinations = Object.entries(imageModules)
 function getDestinationLocation(title: string) {
   const locations: Record<string, string> = {
     Andaman: "India",
-    Goa: "India",
-    Digha: "West Bengal, India",
-    Dubai: "United Arab Emirates",
     Kashmir: "India",
+    Lakshadweep: "India",
+    Dubai: "United Arab Emirates",
+    Bali: "Indonesia",
+    Bandipur: "Karnataka, India",
+    Greece: "Europe",
   };
 
   return locations[title] ?? "Luxury Escape";
@@ -45,14 +47,18 @@ function getDestinationDescription(title: string) {
   const descriptions: Record<string, string> = {
     Andaman:
       "Crystal blue water, quiet beaches, island luxury, and unforgettable tropical escapes.",
-    Goa:
-      "Golden beaches, boutique stays, nightlife, seafood, and relaxed coastal luxury.",
-    Digha:
-      "A peaceful seaside escape with soft waves, family moments, and relaxing ocean views.",
-    Dubai:
-      "Iconic skylines, desert luxury, premium shopping, and world-class travel experiences.",
     Kashmir:
       "Snow peaks, valleys, houseboats, gardens, and breathtaking Himalayan beauty.",
+    Lakshadweep:
+      "Turquoise lagoons, coral islands, white sand beaches, and untouched tropical calm.",
+    Dubai:
+      "Iconic skylines, desert luxury, premium shopping, and world-class travel experiences.",
+    Bali:
+      "Temples, rice terraces, beach clubs, waterfalls, and romantic island escapes.",
+    Bandipur:
+      "Wild forests, safari trails, peaceful resorts, and unforgettable wildlife moments.",
+    Greece:
+      "Blue-domed villages, island sunsets, ancient heritage, and luxury Mediterranean escapes.",
   };
 
   return (

@@ -292,14 +292,7 @@ export function AITravelAssistant({ onOpenAIChat }: AITravelAssistantProps) {
                 })}
               </div>
 
-              <button
-                type="button"
-                onClick={onOpenAIChat}
-                className="group mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[image:var(--gradient-primary)] px-4 py-3 text-xs font-semibold text-[#140d04] shadow-[var(--shadow-primary)] transition hover:scale-[1.01] md:mt-4 md:py-2.5 lg:py-3 xl:mt-5 xl:rounded-2xl xl:px-5 xl:text-sm"
-              >
-                Open AI Chat
-                <ArrowRight size={16} className="transition group-hover:translate-x-1" />
-              </button>
+              
 
               <div className="mt-3 rounded-xl border border-[color:var(--color-border)] bg-black/18 p-3 md:mt-3 md:p-2.5 xl:mt-4 xl:rounded-2xl xl:p-3">
                 <div className="flex items-center gap-2 text-[10px] text-[var(--color-text-muted)] md:text-[9px] lg:text-[10px] xl:text-xs">

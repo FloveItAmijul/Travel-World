@@ -298,24 +298,28 @@ function PartnerLogo({
 
   return (
     <div className="partner-logo-card group">
-      {partner.logo ? (
-        <img
-          src={partner.logo}
-          alt={partner.name}
-          className="max-h-10 max-w-[105px] object-contain opacity-100 transition duration-300 sm:max-h-12 sm:max-w-[125px] md:max-h-10 md:max-w-[112px] lg:max-h-12 lg:max-w-[135px] xl:max-h-16 xl:max-w-[170px]"
-          loading="eager"
-          decoding="async"
-          draggable={false}
-        />
-      ) : (
-        <span
-          className={`text-sm font-semibold tracking-tight opacity-90 sm:text-base md:text-sm lg:text-base xl:text-xl ${
-            isIce ? "text-[var(--color-secondary)]" : "text-[var(--color-primary-soft)]"
-          }`}
-        >
-          {partner.name}
-        </span>
-      )}
+      <div className="partner-logo-plate">
+        {partner.logo ? (
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            className="partner-logo-image"
+            loading="eager"
+            decoding="async"
+            draggable={false}
+          />
+        ) : (
+          <span
+            className={`partner-logo-text ${
+              isIce
+                ? "text-[var(--color-secondary)]"
+                : "text-[var(--color-primary-soft)]"
+            }`}
+          >
+            {partner.name}
+          </span>
+        )}
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import {
   MapPin,
   Navigation,
   Star,
-  TrendingUp,
+//  TrendingUp,
 } from "lucide-react";
 import { useNavigate } from "react-router";
 
@@ -42,26 +42,26 @@ const destinations = [
     accent: "gold",
   },
   {
-    slug: "goa",
-    name: "Goa",
+    slug: "lakshadweep",
+    name: "Lakshadweep",
     country: "India",
-    image: imagesByName.goa,
-    rating: "4.7",
-    reviews: "280+",
-    tag: "Trending",
-    tagIcon: TrendingUp,
-    accent: "gold",
+    image: imagesByName.lakshadweep,
+    rating: "4.9",
+    reviews: "260+",
+    tag: "Island",
+    tagIcon: Leaf,
+    accent: "ice",
   },
   {
-    slug: "digha",
-    name: "Digha",
-    country: "India",
-    image: imagesByName.digha,
-    rating: "4.6",
-    reviews: "210+",
-    tag: "Best Seller",
-    tagIcon: Star,
-    accent: "ice",
+    slug: "greece",
+    name: "Greece",
+    country: "Greece",
+    image: imagesByName.greece,
+    rating: "4.9",
+    reviews: "390+",
+    tag: "Luxury",
+    tagIcon: Crown,
+    accent: "gold",
   },
   {
     slug: "dubai",
@@ -86,7 +86,6 @@ const destinations = [
     accent: "ice",
   },
 ];
-
 export function Destinations() {
   const navigate = useNavigate();
 

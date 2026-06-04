@@ -383,13 +383,28 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "United Kingdom",
     tags: ["City", "Heritage", "Family"],
   },
+
   {
-    name: "Greece",
-    slug: "greece",
-    category: "international",
-    country: "Greece",
-    tags: ["Beach", "Heritage", "Honeymoon", "Luxury"],
-  },
+  name: "Lakshadweep",
+  slug: "lakshadweep",
+  category: "india",
+  country: "India",
+  tags: ["Beach", "Nature", "Honeymoon", "Luxury"],
+  featured: true,
+  hasDetailPage: true,
+},
+
+
+{
+  name: "Greece",
+  slug: "greece",
+  category: "international",
+  country: "Greece",
+  tags: ["Beach", "Heritage", "Honeymoon", "Luxury"],
+  featured: true,
+  hasDetailPage: true,
+},
+
 ];
 
 export function getLocationCountByFilter(filter: string) {

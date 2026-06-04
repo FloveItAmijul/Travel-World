@@ -90,9 +90,9 @@ const snapshotItems = [
 const contactItems = [
   {
     title: "Email Support",
-    description: "support@diafestivo.com",
+    description: "info@diafestivoindia.com",
     icon: Mail,
-    href: "mailto:support@diafestivo.com",
+    href: "mailto:info@diafestivoindia.com",
   },
   {
     title: "Call Us",

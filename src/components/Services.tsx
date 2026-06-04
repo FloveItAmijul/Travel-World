@@ -55,7 +55,7 @@ const services = [
   },
   {
     title: "Fitness & Dance Classes",
-    items: ["Yoga", "Zumba", "Dance", "Aerobic"],
+    items: ["Yoga", "Zumba", "Dance", "Aerobic", "Gym"],
     icon: UsersRound,
     image: "group",
     accent: "ice",

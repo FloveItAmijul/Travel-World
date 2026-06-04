@@ -63,6 +63,13 @@ import kashmirStay1 from "../assets/destination-details/kashmir/stay-1.png";
 import kashmirStay2 from "../assets/destination-details/kashmir/stay-2.png";
 import kashmirStay3 from "../assets/destination-details/kashmir/stay-3.png";
 
+
+import lakshadweepHero from "../assets/destination-details/lakshadweep/hero.webp";
+
+
+import greeceHero from "../assets/destination-details/greece/hero.webp";
+
+
 export type DestinationGalleryImage = {
   title: string;
   image: string;
@@ -773,6 +780,255 @@ export const destinationDetails: DestinationDetail[] = [
       },
     ],
   },
+
+{
+  slug: "lakshadweep",
+  name: "Lakshadweep",
+  country: "India",
+  tagline: "Untouched islands, turquoise lagoons, and serene luxury.",
+  description:
+    "Lakshadweep is a peaceful island escape known for crystal-clear lagoons, coral reefs, white sand beaches, and slow tropical beauty. It is ideal for couples, families, and travelers who want a calm premium beach holiday away from crowds.",
+  heroImage: lakshadweepHero,
+  duration: "4 Nights / 5 Days",
+  bestTime: "October to March",
+  idealFor: "Couples, Honeymoon, Family, Beach Lovers",
+  rating: "4.9",
+  startingFrom: "₹29,999",
+  highlights: [
+    "Turquoise lagoons",
+    "Coral reef experiences",
+    "Peaceful island stays",
+    "Water activities",
+    "Premium beach escapes",
+  ],
+  stays: [
+    {
+      title: "Beachfront Island Resort",
+      type: "Premium Stay",
+      description:
+        "Wake up to ocean views, soft beaches, and calm island mornings.",
+      image: "",
+    },
+    {
+      title: "Lagoon View Cottage",
+      type: "Couple Friendly",
+      description:
+        "A peaceful stay close to turquoise water and quiet sunset points.",
+      image: "",
+    },
+    {
+      title: "Luxury Island Retreat",
+      type: "Luxury Stay",
+      description:
+        "A private island-style experience with comfort and curated service.",
+      image: "",
+    },
+  ],
+  places: [
+    {
+      title: "Agatti Island",
+      description:
+        "Known for its blue lagoons, coral views, and beautiful beach landscapes.",
+      image: "",
+    },
+    {
+      title: "Bangaram Island",
+      description:
+        "A peaceful island loved for privacy, clear water, and premium beach moments.",
+      image: "",
+    },
+    {
+      title: "Minicoy Island",
+      description:
+        "A charming island with lighthouse views, local culture, and scenic coastlines.",
+      image: "",
+    },
+  ],
+  selfieSpots: [
+    {
+      title: "Lagoon Sandbar",
+      description:
+        "Perfect for clean blue-water photos and tropical vacation portraits.",
+      image: "",
+    },
+    {
+      title: "Beach Sunset Point",
+      description:
+        "Golden-hour island photos with soft sand and calm waves.",
+      image: "",
+    },
+    {
+      title: "Lighthouse View",
+      description:
+        "A scenic frame for wide ocean views and travel memories.",
+      image: "",
+    },
+  ],
+  itinerary: [
+    {
+      day: "Day 1",
+      title: "Arrival & Island Leisure",
+      description:
+        "Arrive, check in, relax by the beach, and enjoy a peaceful sunset.",
+    },
+    {
+      day: "Day 2",
+      title: "Lagoon & Water Activities",
+      description:
+        "Enjoy lagoon views, snorkeling, glass-bottom boating, or beach time.",
+    },
+    {
+      day: "Day 3",
+      title: "Island Exploration",
+      description:
+        "Explore nearby islands, local culture, beach cafés, and viewpoints.",
+    },
+    {
+      day: "Day 4",
+      title: "Relaxed Luxury Day",
+      description:
+        "Enjoy resort facilities, photography, beach walks, and private dining.",
+    },
+    {
+      day: "Day 5",
+      title: "Departure",
+      description:
+        "Have breakfast, capture final memories, and depart with island moments.",
+    },
+  ],
+},
+
+
+{
+  slug: "greece",
+  name: "Greece",
+  country: "Greece",
+  tagline: "Whitewashed islands, blue domes, sunsets, and Mediterranean luxury.",
+  description:
+    "Greece is a dream destination filled with iconic islands, historic towns, turquoise seas, cliffside views, and romantic sunsets. It is perfect for honeymooners, luxury travelers, families, and culture lovers.",
+  heroImage: greeceHero,
+  duration: "6 Nights / 7 Days",
+  bestTime: "April to October",
+  idealFor: "Couples, Honeymoon, Luxury, Heritage",
+  rating: "4.9",
+  startingFrom: "₹1,49,999",
+  highlights: [
+    "Santorini sunsets",
+    "Mykonos beach clubs",
+    "Athens heritage",
+    "Mediterranean food",
+    "Luxury island stays",
+  ],
+  stays: [
+    {
+      title: "Santorini Cliffside Suite",
+      type: "Luxury Stay",
+      description:
+        "A premium cave-style suite with caldera views and sunset moments.",
+      image: "",
+    },
+    {
+      title: "Mykonos Beach Resort",
+      type: "Beach Luxury",
+      description:
+        "A stylish beachside stay close to nightlife, cafés, and blue water.",
+      image: "",
+    },
+    {
+      title: "Athens Boutique Hotel",
+      type: "Heritage Stay",
+      description:
+        "A refined city stay near heritage landmarks and premium dining.",
+      image: "",
+    },
+  ],
+  places: [
+    {
+      title: "Santorini",
+      description:
+        "Famous for whitewashed homes, blue domes, caldera views, and sunsets.",
+      image: "",
+    },
+    {
+      title: "Mykonos",
+      description:
+        "Known for luxury beach clubs, nightlife, cafés, and stylish island energy.",
+      image: "",
+    },
+    {
+      title: "Athens",
+      description:
+        "A historic city with ancient landmarks, museums, food, and culture.",
+      image: "",
+    },
+  ],
+  selfieSpots: [
+    {
+      title: "Santorini Blue Domes",
+      description:
+        "The most iconic photo frame with white walls and deep blue domes.",
+      image: "",
+    },
+    {
+      title: "Oia Sunset View",
+      description:
+        "A romantic golden-hour viewpoint for unforgettable travel photos.",
+      image: "",
+    },
+    {
+      title: "Mykonos Windmills",
+      description:
+        "A classic island backdrop with coastal charm and Mediterranean style.",
+      image: "",
+    },
+  ],
+  itinerary: [
+    {
+      day: "Day 1",
+      title: "Arrival in Athens",
+      description:
+        "Arrive, check in, explore nearby cafés, and enjoy a relaxed city evening.",
+    },
+    {
+      day: "Day 2",
+      title: "Athens Heritage Tour",
+      description:
+        "Visit iconic landmarks, museums, old streets, and local dining spots.",
+    },
+    {
+      day: "Day 3",
+      title: "Santorini Arrival",
+      description:
+        "Travel to Santorini, check in, and enjoy caldera views and sunset.",
+    },
+    {
+      day: "Day 4",
+      title: "Santorini Island Day",
+      description:
+        "Explore Oia, blue domes, beaches, viewpoints, and romantic dining.",
+    },
+    {
+      day: "Day 5",
+      title: "Mykonos Experience",
+      description:
+        "Travel to Mykonos and enjoy beaches, cafés, nightlife, and windmills.",
+    },
+    {
+      day: "Day 6",
+      title: "Luxury Leisure Day",
+      description:
+        "Relax at the resort, enjoy shopping, food, beach clubs, or a cruise.",
+    },
+    {
+      day: "Day 7",
+      title: "Departure",
+      description:
+        "Have breakfast, capture final photos, and depart with Mediterranean memories.",
+    },
+  ],
+},
+
+
 ];
 
 export function getDestinationBySlug(slug: string | undefined) {
