@@ -136,7 +136,26 @@ export function Partners() {
     });
   }, []);
 
-  return (
+
+  useEffect(() => {
+    function handleVisibilityChange() {
+      document.documentElement.classList.toggle(
+        "is-tab-hidden",
+        document.hidden
+      );
+    }
+
+    handleVisibilityChange();
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.documentElement.classList.remove("is-tab-hidden");
+    };
+  }, []);
+
+    return (
     <section
       id="partners"
       ref={ref}

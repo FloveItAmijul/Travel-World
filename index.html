@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,6 +8,65 @@
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html> -->
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>DIA Festivo | Premium Travel Agency & AI Trip Planner</title>
+
+    <meta
+      name="description"
+      content="Plan premium holidays with DIA Festivo. Explore curated destinations, luxury stays, flights, hotels, custom packages, and AI-powered trip planning."
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#02040a" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="icon" type="image/svg+xml" href="/logosvg.svg" />
+    <link rel="apple-touch-icon" href="/logosvg.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DIA Festivo | Premium Travel Agency" />
+    <meta
+      property="og:description"
+      content="Discover curated destinations, premium stays, flights, hotels, custom packages, and AI-powered travel planning with DIA Festivo."
+    />
+    <meta property="og:site_name" content="DIA Festivo" />
+    <meta property="og:image" content="/logosvg.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DIA Festivo | Premium Travel Agency" />
+    <meta
+      name="twitter:description"
+      content="Plan premium holidays with curated destinations, luxury stays, and AI-powered trip planning."
+    />
+    <meta name="twitter:image" content="/logosvg.svg" />
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to experience the DIA Festivo travel website.
+    </noscript>
+
+    <div id="root"></div>
+
+    <script type="module">
+      import RefreshRuntime from "/@react-refresh";
+
+      RefreshRuntime.injectIntoGlobalHook(window);
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+      window.__vite_plugin_react_preamble_installed__ = true;
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

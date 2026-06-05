@@ -1,67 +1,67 @@
-import andamanHero from "../assets/destination-details/andaman/hero.png";
-import andamanPlace1 from "../assets/destination-details/andaman/place-1.png";
-import andamanPlace2 from "../assets/destination-details/andaman/place-2.png";
-import andamanPlace3 from "../assets/destination-details/andaman/place-3.png";
-import andamanPlace4 from "../assets/destination-details/andaman/place-4.png";
-import andamanSelfie1 from "../assets/destination-details/andaman/selfie-1.png";
-import andamanSelfie2 from "../assets/destination-details/andaman/selfie-2.png";
-import andamanSelfie3 from "../assets/destination-details/andaman/selfie-3.png";
-import andamanSelfie4 from "../assets/destination-details/andaman/selfie-4.png";
-import andamanStay1 from "../assets/destination-details/andaman/stay-1.png";
-import andamanStay2 from "../assets/destination-details/andaman/stay-2.png";
-import andamanStay3 from "../assets/destination-details/andaman/stay-3.png";
+import andamanHero from "../assets/destination-details/andaman/hero.webp";
+import andamanPlace1 from "../assets/destination-details/andaman/place-1.webp";
+import andamanPlace2 from "../assets/destination-details/andaman/place-2.webp";
+import andamanPlace3 from "../assets/destination-details/andaman/place-3.webp";
+import andamanPlace4 from "../assets/destination-details/andaman/place-4.webp";
+import andamanSelfie1 from "../assets/destination-details/andaman/selfie-1.webp";
+import andamanSelfie2 from "../assets/destination-details/andaman/selfie-2.webp";
+import andamanSelfie3 from "../assets/destination-details/andaman/selfie-3.webp";
+import andamanSelfie4 from "../assets/destination-details/andaman/selfie-4.webp";
+import andamanStay1 from "../assets/destination-details/andaman/stay-1.webp";
+import andamanStay2 from "../assets/destination-details/andaman/stay-2.webp";
+import andamanStay3 from "../assets/destination-details/andaman/stay-3.webp";
 
-import dighaHero from "../assets/destination-details/digha/hero.png";
-import dighaPlace1 from "../assets/destination-details/digha/place-1.png";
-import dighaPlace2 from "../assets/destination-details/digha/place-2.png";
-import dighaPlace3 from "../assets/destination-details/digha/place-3.png";
-import dighaPlace4 from "../assets/destination-details/digha/place-4.png";
-import dighaSelfie1 from "../assets/destination-details/digha/selfie-1.png";
-import dighaSelfie2 from "../assets/destination-details/digha/selfie-2.png";
-import dighaSelfie3 from "../assets/destination-details/digha/selfie-3.png";
-import dighaSelfie4 from "../assets/destination-details/digha/selfie-4.png";
-import dighaStay1 from "../assets/destination-details/digha/stay-1.png";
-import dighaStay2 from "../assets/destination-details/digha/stay-2.png";
-import dighaStay3 from "../assets/destination-details/digha/stay-3.png";
+import dighaHero from "../assets/destination-details/digha/hero.webp";
+import dighaPlace1 from "../assets/destination-details/digha/place-1.webp";
+import dighaPlace2 from "../assets/destination-details/digha/place-2.webp";
+import dighaPlace3 from "../assets/destination-details/digha/place-3.webp";
+import dighaPlace4 from "../assets/destination-details/digha/place-4.webp";
+import dighaSelfie1 from "../assets/destination-details/digha/selfie-1.webp";
+import dighaSelfie2 from "../assets/destination-details/digha/selfie-2.webp";
+import dighaSelfie3 from "../assets/destination-details/digha/selfie-3.webp";
+import dighaSelfie4 from "../assets/destination-details/digha/selfie-4.webp";
+import dighaStay1 from "../assets/destination-details/digha/stay-1.webp";
+import dighaStay2 from "../assets/destination-details/digha/stay-2.webp";
+import dighaStay3 from "../assets/destination-details/digha/stay-3.webp";
 
-import dubaiHero from "../assets/destination-details/dubai/hero.png";
-import dubaiPlace1 from "../assets/destination-details/dubai/place-1.png";
-import dubaiPlace2 from "../assets/destination-details/dubai/place-2.png";
-import dubaiPlace3 from "../assets/destination-details/dubai/place-3.png";
-import dubaiPlace4 from "../assets/destination-details/dubai/place-4.png";
-import dubaiSelfie1 from "../assets/destination-details/dubai/selfie-1.png";
-import dubaiSelfie2 from "../assets/destination-details/dubai/selfie-2.png";
-import dubaiSelfie3 from "../assets/destination-details/dubai/selfie-3.png";
-import dubaiSelfie4 from "../assets/destination-details/dubai/selfie-4.png";
-import dubaiStay1 from "../assets/destination-details/dubai/stay-1.png";
-import dubaiStay2 from "../assets/destination-details/dubai/stay-2.png";
-import dubaiStay3 from "../assets/destination-details/dubai/stay-3.png";
+import dubaiHero from "../assets/destination-details/dubai/hero.webp";
+import dubaiPlace1 from "../assets/destination-details/dubai/place-1.webp";
+import dubaiPlace2 from "../assets/destination-details/dubai/place-2.webp";
+import dubaiPlace3 from "../assets/destination-details/dubai/place-3.webp";
+import dubaiPlace4 from "../assets/destination-details/dubai/place-4.webp";
+import dubaiSelfie1 from "../assets/destination-details/dubai/selfie-1.webp";
+import dubaiSelfie2 from "../assets/destination-details/dubai/selfie-2.webp";
+import dubaiSelfie3 from "../assets/destination-details/dubai/selfie-3.webp";
+import dubaiSelfie4 from "../assets/destination-details/dubai/selfie-4.webp";
+import dubaiStay1 from "../assets/destination-details/dubai/stay-1.webp";
+import dubaiStay2 from "../assets/destination-details/dubai/stay-2.webp";
+import dubaiStay3 from "../assets/destination-details/dubai/stay-3.webp";
 
-import goaHero from "../assets/destination-details/goa/hero.png";
-import goaPlace1 from "../assets/destination-details/goa/place-1.png";
-import goaPlace2 from "../assets/destination-details/goa/place-2.png";
-import goaPlace3 from "../assets/destination-details/goa/place-3.png";
-import goaPlace4 from "../assets/destination-details/goa/place-4.png";
-import goaSelfie1 from "../assets/destination-details/goa/selfie-1.png";
-import goaSelfie2 from "../assets/destination-details/goa/selfie-2.png";
-import goaSelfie3 from "../assets/destination-details/goa/selfie-3.png";
-import goaSelfie4 from "../assets/destination-details/goa/selfie-4.png";
-import goaStay1 from "../assets/destination-details/goa/stay-1.png";
-import goaStay2 from "../assets/destination-details/goa/stay-2.png";
-import goaStay3 from "../assets/destination-details/goa/stay-3.png";
+import goaHero from "../assets/destination-details/goa/hero.webp";
+import goaPlace1 from "../assets/destination-details/goa/place-1.webp";
+import goaPlace2 from "../assets/destination-details/goa/place-2.webp";
+import goaPlace3 from "../assets/destination-details/goa/place-3.webp";
+import goaPlace4 from "../assets/destination-details/goa/place-4.webp";
+import goaSelfie1 from "../assets/destination-details/goa/selfie-1.webp";
+import goaSelfie2 from "../assets/destination-details/goa/selfie-2.webp";
+import goaSelfie3 from "../assets/destination-details/goa/selfie-3.webp";
+import goaSelfie4 from "../assets/destination-details/goa/selfie-4.webp";
+import goaStay1 from "../assets/destination-details/goa/stay-1.webp";
+import goaStay2 from "../assets/destination-details/goa/stay-2.webp";
+import goaStay3 from "../assets/destination-details/goa/stay-3.webp";
 
-import kashmirHero from "../assets/destination-details/kashmir/hero.png";
-import kashmirPlace1 from "../assets/destination-details/kashmir/place-1.png";
-import kashmirPlace2 from "../assets/destination-details/kashmir/place-2.png";
-import kashmirPlace3 from "../assets/destination-details/kashmir/place-3.png";
-import kashmirPlace4 from "../assets/destination-details/kashmir/place-4.png";
-import kashmirSelfie1 from "../assets/destination-details/kashmir/selfie-1.png";
-import kashmirSelfie2 from "../assets/destination-details/kashmir/selfie-2.png";
-import kashmirSelfie3 from "../assets/destination-details/kashmir/selfie-3.png";
-import kashmirSelfie4 from "../assets/destination-details/kashmir/selfie-4.png";
-import kashmirStay1 from "../assets/destination-details/kashmir/stay-1.png";
-import kashmirStay2 from "../assets/destination-details/kashmir/stay-2.png";
-import kashmirStay3 from "../assets/destination-details/kashmir/stay-3.png";
+import kashmirHero from "../assets/destination-details/kashmir/hero.webp";
+import kashmirPlace1 from "../assets/destination-details/kashmir/place-1.webp";
+import kashmirPlace2 from "../assets/destination-details/kashmir/place-2.webp";
+import kashmirPlace3 from "../assets/destination-details/kashmir/place-3.webp";
+import kashmirPlace4 from "../assets/destination-details/kashmir/place-4.webp";
+import kashmirSelfie1 from "../assets/destination-details/kashmir/selfie-1.webp";
+import kashmirSelfie2 from "../assets/destination-details/kashmir/selfie-2.webp";
+import kashmirSelfie3 from "../assets/destination-details/kashmir/selfie-3.webp";
+import kashmirSelfie4 from "../assets/destination-details/kashmir/selfie-4.webp";
+import kashmirStay1 from "../assets/destination-details/kashmir/stay-1.webp";
+import kashmirStay2 from "../assets/destination-details/kashmir/stay-2.webp";
+import kashmirStay3 from "../assets/destination-details/kashmir/stay-3.webp";
 
 
 import lakshadweepHero from "../assets/destination-details/lakshadweep/hero.webp";
@@ -113,7 +113,7 @@ export type DestinationDetail = {
 };
 
 const galleryModules = import.meta.glob(
-  "../assets/destination-details/*/gallery/*.{png,jpeg,png,webp}",
+  "../assets/destination-details/*/gallery/*.{webp,jpeg,webp,webp}",
   {
     eager: true,
     query: "?url",

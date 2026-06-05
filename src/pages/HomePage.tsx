@@ -21,7 +21,7 @@ export function HomePage({ onOpenAIChat }: HomePageProps) {
 
   useEffect(() => {
     updateSeo({
-      title: "Traveluxe | Premium Travel Planning & AI Trip Planner",
+      title: "Dia-festivo | Premium Travel Planner",
       description:
         "Plan premium holidays with Traveluxe. Explore luxury destinations, hotels, flights, AI trip planning, and personalized travel experiences.",
       });

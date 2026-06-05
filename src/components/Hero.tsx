@@ -158,13 +158,39 @@ export function Hero() {
   useEffect(() => {
     if (destinations.length <= 1) return;
 
-    const timer = window.setInterval(() => {
-      if (document.hidden) return;
-      goNext();
-    }, AUTOPLAY_DURATION);
+    let timer: number | null = null;
+
+    function stopAutoplay() {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    function startAutoplay() {
+      if (timer || document.hidden) return;
+
+      timer = window.setInterval(() => {
+        goNext();
+      }, AUTOPLAY_DURATION);
+    }
+
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        stopAutoplay();
+        return;
+      }
+
+      startAutoplay();
+    }
+
+    startAutoplay();
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      window.clearInterval(timer);
+      stopAutoplay();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
 
       if (fadeCleanupRef.current) {
         window.clearTimeout(fadeCleanupRef.current);
@@ -249,9 +275,11 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.58)_0%,rgba(2,4,10,0.42)_42%,rgba(2,4,10,0.86)_100%)] md:bg-[linear-gradient(90deg,rgba(2,4,10,0.84)_0%,rgba(2,4,10,0.54)_46%,rgba(2,4,10,0.12)_100%)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-black/24" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_20%,rgba(243,201,121,0.15),transparent_28%),radial-gradient(circle_at_18%_76%,rgba(224,247,255,0.1),transparent_32%)]" />
+     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.34)_0%,rgba(2,4,10,0.24)_46%,rgba(2,4,10,0.48)_100%)] md:bg-[linear-gradient(90deg,rgba(2,4,10,0.54)_0%,rgba(2,4,10,0.32)_44%,rgba(2,4,10,0.08)_100%)]" />
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-black/10" />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_20%,rgba(243,201,121,0.10),transparent_28%),radial-gradient(circle_at_18%_76%,rgba(224,247,255,0.06),transparent_32%)]" />
 
       <div className="relative z-10 mx-auto flex w-[min(100%-28px,1360px)] flex-col pb-8 sm:w-[min(100%-40px,1360px)] md:min-h-[calc(640px-96px)] md:justify-center lg:min-h-[calc(720px-96px)] xl:min-h-[calc(100vh-96px)]">
         <div className="grid items-center gap-7 md:grid-cols-[0.42fr_0.58fr] md:gap-6 lg:gap-8 xl:gap-10">

@@ -44,7 +44,6 @@ button {
   object-fit: cover;
   transform: translateZ(0);
   backface-visibility: hidden;
-  will-change: opacity;
 }
 
 .hero-bg-active {
@@ -62,7 +61,7 @@ button {
   transition:
     transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 720ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform, opacity;
+  
   backface-visibility: hidden;
   contain: layout paint;
 }
@@ -164,7 +163,7 @@ button {
     transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 300ms ease;
-  will-change: transform, opacity;
+
   backface-visibility: hidden;
   contain: layout paint;
 }
@@ -458,136 +457,6 @@ button {
 
 
 
-
-
-/* =========================================================
-   09. PARTNERS LOGO MARQUEE
-   ========================================================= */
-
-.partner-marquee-mask {
-  position: relative;
-  overflow: hidden;
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    black 7%,
-    black 93%,
-    transparent 100%
-  );
-}
-
-.partner-marquee-track {
-  display: flex;
-  width: max-content;
-  gap: 14px;
-  will-change: transform;
-}
-
-.partner-marquee-forward {
-  animation: partnerScrollLeft 34s linear infinite;
-}
-
-.partner-marquee-reverse {
-  animation: partnerScrollRight 36s linear infinite;
-}
-
-.partner-row:hover .partner-marquee-track {
-  animation-play-state: paused;
-}
-
-.partner-logo-card {
-  display: grid;
-  width: 174px;
-  height: 82px;
-  flex: 0 0 auto;
-  place-items: center;
-  padding: 14px 18px;
-  border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
-  border-radius: 20px;
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, white 7%, transparent),
-      transparent 44%
-    ),
-    color-mix(in srgb, var(--color-surface) 80%, transparent);
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
-  transition:
-    transform 260ms ease,
-    border-color 260ms ease,
-    background 260ms ease,
-    box-shadow 260ms ease;
-}
-
-.partner-logo-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, white 9%, transparent),
-      transparent 44%
-    ),
-    color-mix(in srgb, var(--color-surface-strong) 78%, transparent);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
-}
-
-.partner-logo-card img {
-  filter: none !important;
-  opacity: 1 !important;
-}
-
-@keyframes partnerScrollLeft {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-33.333%, 0, 0);
-  }
-}
-
-@keyframes partnerScrollRight {
-  from {
-    transform: translate3d(-33.333%, 0, 0);
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@media (max-width: 639px) {
-  .partner-marquee-track {
-    gap: 10px;
-  }
-
-  .partner-logo-card {
-    width: 124px;
-    height: 62px;
-    padding: 10px 12px;
-    border-radius: 16px;
-  }
-
-  .partner-marquee-forward {
-    animation-duration: 26s;
-  }
-
-  .partner-marquee-reverse {
-    animation-duration: 28s;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .partner-marquee-track {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  .partner-logo-card {
-    transition: none !important;
-  }
-}
 
 
 
@@ -1158,8 +1027,9 @@ button {
   animation: partnerScrollRight 46s linear infinite;
 }
 
-.partner-marquee-mask:hover .partner-marquee-track {
-  animation-play-state: paused;
+.partner-marquee-mask:hover .partner-marquee-track,
+.is-tab-hidden .partner-marquee-track {
+  animation-play-state: paused !important;
 }
 
 .partner-logo-card {

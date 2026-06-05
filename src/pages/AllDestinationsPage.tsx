@@ -20,6 +20,29 @@ import {
   type LocationTag,
 } from "../data/locationCatalog";
 
+const locationImageModules = import.meta.glob(
+  "../assets/destination-details/*/hero.{jpg,jpeg,png,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  }
+);
+
+
+const locationImagesBySlug = Object.entries(locationImageModules).reduce<
+  Record<string, string>
+>((acc, [path, image]) => {
+  const parts = path.split("/");
+  const folderName = parts[parts.length - 2];
+
+  if (folderName) {
+    acc[folderName.toLowerCase()] = image as string;
+  }
+
+  return acc;
+}, {});
+
 type AllDestinationsPageProps = {
   onOpenAIChat: () => void;
 };
@@ -292,11 +315,10 @@ export function AllDestinationsPage({ onOpenAIChat }: AllDestinationsPageProps) 
             src={destinationDetails.find((item) => item.slug === "kashmir")?.heroImage}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover opacity-45"
+            className="absolute inset-0 h-full w-full object-cover opacity-90"
           />
 
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.72)_0%,rgba(2,4,10,0.64)_46%,var(--color-bg)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_4%,rgba(243,201,121,0.16),transparent_34%)]" />
+<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.38)_0%,rgba(2,4,10,0.36)_48%,rgba(2,4,10,0.82)_100%)]" />          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_4%,rgba(243,201,121,0.16),transparent_34%)]" />
           <div className="absolute bottom-0 left-1/2 h-px w-[min(960px,86vw)] -translate-x-1/2 bg-gradient-to-r from-transparent via-[var(--color-primary)]/55 to-transparent" />
 
           <div className="relative mx-auto max-w-4xl">
@@ -486,7 +508,7 @@ function LocationCard({
   const detail = destinationDetails.find((item) => item.slug === location.slug);
   const meta = destinationMeta[location.slug];
 
-  const image = detail?.heroImage;
+  const image = detail?.heroImage ?? locationImagesBySlug[location.slug];
   const tag = meta?.tag ?? location.tags[0] ?? "Curated";
   const rating = meta?.rating ?? "4.7";
   const description =
@@ -518,7 +540,7 @@ function LocationCard({
           </div>
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-black/16 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/5 to-transparent" />
 
         <span className="absolute left-2.5 top-2.5 inline-flex items-center gap-1 rounded-md bg-[var(--color-primary-soft)] px-2 py-1 text-[9px] font-semibold text-[#140d04] sm:left-4 sm:top-4 sm:px-3 sm:py-1.5 sm:text-xs">
           <Star size={11} className="fill-current sm:size-[13px]" />

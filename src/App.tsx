@@ -1,20 +1,55 @@
-
-
-
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router";
-import { useEffect, useState } from "react";
 import { scrollToSectionById } from "./utils/scrollToSection";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
-import { AIChatModal } from "./components/AIChatModal";
-import { DestinationDetailPage } from "./pages/DestinationDetailPage";
-import { HomePage } from "./pages/HomePage";
-import { AllDestinationsPage } from "./pages/AllDestinationsPage";
-import { MembershipPage } from "./pages/MembershipPage";
-import { EmployeeLoginPage } from "./pages/EmployeeLoginPage";
-import { RefundPolicyPage } from "./pages/RefundPolicyPage";
-import { AboutUsPage } from "./pages/AboutUsPage";
+const HomePage = lazy(() =>
+  import("./pages/HomePage").then((module) => ({
+    default: module.HomePage,
+  }))
+);
 
+const AllDestinationsPage = lazy(() =>
+  import("./pages/AllDestinationsPage").then((module) => ({
+    default: module.AllDestinationsPage,
+  }))
+);
 
+const DestinationDetailPage = lazy(() =>
+  import("./pages/DestinationDetailPage").then((module) => ({
+    default: module.DestinationDetailPage,
+  }))
+);
+
+const MembershipPage = lazy(() =>
+  import("./pages/MembershipPage").then((module) => ({
+    default: module.MembershipPage,
+  }))
+);
+
+const EmployeeLoginPage = lazy(() =>
+  import("./pages/EmployeeLoginPage").then((module) => ({
+    default: module.EmployeeLoginPage,
+  }))
+);
+
+const RefundPolicyPage = lazy(() =>
+  import("./pages/RefundPolicyPage").then((module) => ({
+    default: module.RefundPolicyPage,
+  }))
+);
+
+const AboutUsPage = lazy(() =>
+  import("./pages/AboutUsPage").then((module) => ({
+    default: module.AboutUsPage,
+  }))
+);
+
+const AIChatModal = lazy(() =>
+  import("./components/AIChatModal").then((module) => ({
+    default: module.AIChatModal,
+  }))
+);
 
 function App() {
   const [isAIChatOpen, setIsAIChatOpen] = useState(false);
@@ -25,7 +60,7 @@ function App() {
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: "instant",
+        behavior: "auto",
       });
       return;
     }
@@ -53,45 +88,57 @@ function App() {
 
   return (
     <>
-      <Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<HomePage onOpenAIChat={openAIChat} />} />
 
+          <Route
+            path="/destinations"
+            element={<AllDestinationsPage onOpenAIChat={openAIChat} />}
+          />
 
-        <Route path="/" element={<HomePage onOpenAIChat={openAIChat} />} />
+          <Route
+            path="/destinations/:slug"
+            element={<DestinationDetailPage onOpenAIChat={openAIChat} />}
+          />
 
-        <Route 
-          path="/destinations"
-          element={<AllDestinationsPage onOpenAIChat={openAIChat} />} />
+          <Route path="/membership" element={<MembershipPage />} />
 
-        <Route
-          path="/destinations/:slug"
-          element={<DestinationDetailPage onOpenAIChat={openAIChat} />}
-        />
+          <Route path="/employee-login" element={<EmployeeLoginPage />} />
 
-        <Route
-          path="/membership"
-          element={<MembershipPage  />}
-        />
+          <Route path="/refund-policy" element={<RefundPolicyPage />} />
 
-        <Route
-          path="/employee-login"
-          element={<EmployeeLoginPage/>} />
+          <Route path="/about-us" element={<AboutUsPage />} />
 
-        <Route 
-          path="/refund-policy" 
-          element={<RefundPolicyPage />} />
+          <Route path="*" element={<NotFoundPage onOpenAIChat={openAIChat} />} />
+        </Routes>
+      </Suspense>
 
-        <Route 
-          path="/about-us"
-          element={<AboutUsPage />} />
-
-
-
-      </Routes>
-
-      <AIChatModal isOpen={isAIChatOpen} onClose={closeAIChat} />
+      {isAIChatOpen && (
+        <Suspense fallback={null}>
+          <AIChatModal isOpen={isAIChatOpen} onClose={closeAIChat} />
+        </Suspense>
+      )}
     </>
   );
 }
 
+function PageLoader() {
+  return (
+    <main className="grid min-h-screen place-items-center bg-[var(--color-bg)] px-6 text-[var(--color-text)]">
+      <div className="text-center">
+        <div className="mx-auto size-12 animate-spin rounded-full border border-[color:var(--color-border)] border-t-[var(--color-primary)]" />
+
+        <p className="mt-5 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-primary)]">
+          Loading
+        </p>
+
+        <p className="mt-2 text-sm text-[var(--color-text-muted)]">
+          Preparing your travel experience...
+        </p>
+      </div>
+    </main>
+  );
+}
 
 export default App;
