@@ -277,8 +277,7 @@ export function Hero() {
 
      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,4,10,0.34)_0%,rgba(2,4,10,0.24)_46%,rgba(2,4,10,0.48)_100%)] md:bg-[linear-gradient(90deg,rgba(2,4,10,0.54)_0%,rgba(2,4,10,0.32)_44%,rgba(2,4,10,0.08)_100%)]" />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-black/10" />
-
+      <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-t from-black/42 via-black/16 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_20%,rgba(243,201,121,0.10),transparent_28%),radial-gradient(circle_at_18%_76%,rgba(224,247,255,0.06),transparent_32%)]" />
 
       <div className="relative z-10 mx-auto flex w-[min(100%-28px,1360px)] flex-col pb-8 sm:w-[min(100%-40px,1360px)] md:min-h-[calc(640px-96px)] md:justify-center lg:min-h-[calc(720px-96px)] xl:min-h-[calc(100vh-96px)]">
