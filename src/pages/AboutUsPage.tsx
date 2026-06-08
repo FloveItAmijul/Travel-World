@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -15,6 +16,8 @@ import {
   UserRound,
 } from "lucide-react";
 import { Link } from "react-router";
+import { updateSeo } from "../utils/seo";
+
 
 const stats = [
   {
@@ -81,6 +84,16 @@ const values = [
 ];
 
 export function AboutUsPage() {
+
+  useEffect(() => {
+    updateSeo({
+      title: "About Us | DIA FESTIVO",
+      description:
+        "Learn about DIA FESTIVO Leisure Pvt. Ltd., a premium travel company creating refined global journeys, curated holidays, luxury stays, flight bookings, visa assistance, cruise bookings, and personalized travel experiences.",
+      canonicalPath: "/about-us",
+    });
+  }, []);
+  
   return (
     <main className="min-h-screen overflow-hidden bg-black text-[var(--color-text)]">
       <section className="relative overflow-hidden px-3 py-4 sm:px-5 sm:py-5 md:px-6 lg:px-8">

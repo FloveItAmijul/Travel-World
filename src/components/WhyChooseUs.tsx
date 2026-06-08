@@ -71,7 +71,7 @@ const stats = [
     accent: "ice",
   },
   {
-    value: "120+",
+    value: "200+",
     label: "Destinations",
     icon: MapPin,
     accent: "gold",

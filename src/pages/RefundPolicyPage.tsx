@@ -16,6 +16,10 @@ import {
   Wallet,
 } from "lucide-react";
 import { Link } from "react-router";
+import { useEffect } from "react";
+import { updateSeo } from "../utils/seo";
+
+
 
 const policySections = [
   {
@@ -109,6 +113,17 @@ const contactItems = [
 ];
 
 export function RefundPolicyPage() {
+
+  useEffect(() => {
+  updateSeo({
+    title: "Refund Policy | DIA FESTIVO",
+    description:
+      "Read the DIA FESTIVO refund policy for travel bookings, memberships, cancellations, processing timelines, and service-related refund terms.",
+    canonicalPath: "/refund-policy",
+  });
+}, []);
+
+
   return (
     <main className="min-h-screen overflow-hidden bg-black text-[var(--color-text)]">
       <section className="relative overflow-hidden px-3 py-3 sm:px-4 lg:px-5">

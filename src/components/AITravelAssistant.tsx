@@ -182,20 +182,8 @@ export function AITravelAssistant({ onOpenAIChat }: AITravelAssistantProps) {
           </button>
 
           <div className="mt-5 flex items-center gap-3 md:mt-5 xl:mt-7">
-            <div className="flex -space-x-3">
-              {[imagesByName.andaman, imagesByName.goa, imagesByName.kashmir].map((image, index) => (
-                <div
-                  key={index}
-                  className="size-8 overflow-hidden rounded-full border-2 border-[var(--color-bg)] bg-[var(--color-surface)] md:size-8 xl:size-10"
-                >
-                  {image ? (
-                    <img src={image} alt="" className="h-full w-full object-cover" />
-                  ) : null}
-                </div>
-              ))}
-            </div>
-
-            <div>
+            
+           
               <div className="flex items-center gap-1 text-[var(--color-primary)]">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Star key={index} size={12} className="fill-current md:size-[12px] xl:size-[14px]" />
@@ -206,7 +194,7 @@ export function AITravelAssistant({ onOpenAIChat }: AITravelAssistantProps) {
               </p>
             </div>
           </div>
-        </div>
+  
 
         <div
           className="premium-reveal-card min-w-0"

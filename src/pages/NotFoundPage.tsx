@@ -8,6 +8,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Link } from "react-router";
+import { useEffect } from "react";
+import { updateSeo } from "../utils/seo";
+
 
 type NotFoundPageProps = {
   onOpenAIChat: () => void;
@@ -17,6 +20,17 @@ type NotFoundPageProps = {
 
 
 export function NotFoundPage({ onOpenAIChat }: NotFoundPageProps) {
+
+  useEffect(() => {
+  updateSeo({
+    title: "Page Not Found | DIA FESTIVO",
+    description:
+      "The page you are looking for could not be found. Return to DIA FESTIVO and explore premium travel experiences and destinations.",
+    canonicalPath: window.location.pathname,
+  });
+}, []);
+
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[var(--color-bg)] text-[var(--color-text)]">
       <div className="pointer-events-none absolute inset-0">

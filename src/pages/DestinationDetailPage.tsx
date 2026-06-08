@@ -96,17 +96,19 @@ export function DestinationDetailPage({
 
   useEffect(() => {
     if (!destination) {
-      updateSeo({
-        title: "Destination Not Found | Traveluxe",
+        updateSeo({
+        title: "Destination Not Found | DIA FESTIVO",
         description:
-          "This destination is not available yet. Explore premium travel experiences with Traveluxe.",
+          "This destination is not available yet. Explore premium travel experiences with DIA FESTIVO.",
       });
       return;
     }
 
     updateSeo({
-      title: `${destination.name}, ${destination.country} Travel Guide | Traveluxe`,
-      description: `${destination.description} Explore stays, places, photo spots, itinerary ideas, and premium travel planning.`,
+      title: `${destination.name}, ${destination.country} Travel Guide | DIA FESTIVO`,
+      description: `${destination.description} Explore stays, places, photo spots, itinerary ideas, and premium travel planning with DIA FESTIVO.`,
+      canonicalPath: `/destinations/${destination.slug}`,
+      image: destination.heroImage,
     });
   }, [destination]);
 
@@ -273,7 +275,7 @@ export function DestinationDetailPage({
                             }
                             title={stay.title}
                             description={stay.description}
-                            meta={stay.type}
+                            meta={stay.type ?? "Premium Stay"}
                             wide
                           />
                         ))}

@@ -1,4 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { updateSeo } from "../utils/seo";
+
 import {
   ArrowRight,
   ChevronDown,
@@ -265,6 +267,15 @@ export function AllDestinationsPage({ onOpenAIChat }: AllDestinationsPageProps) 
   const [activeFilter, setActiveFilter] = useState("All Destinations");
   const [sortBy, setSortBy] = useState("Popular");
 
+    useEffect(() => {
+    updateSeo({
+      title: "All Destinations | DIA FESTIVO",
+      description:
+        "Explore all DIA FESTIVO destinations across India and international locations with premium stays, curated experiences, family trips, honeymoon packages, and AI-powered trip planning.",
+      canonicalPath: "/destinations",
+    });
+  }, []);
+  
   const visibleDestinations = useMemo(() => {
     const filtered = locationCatalog.filter((location) => {
       if (activeFilter === "All Destinations") return true;

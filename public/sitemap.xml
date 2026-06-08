@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+  <url>
+    <loc>https://diafestivoindia.com/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://diafestivoindia.com/destinations</loc>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://diafestivoindia.com/about-us</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://diafestivoindia.com/membership</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://diafestivoindia.com/refund-policy</loc>
+    <priority>0.50</priority>
+  </url>
+
+
+
+  <!-- India Destinations -->
+  <url><loc>https://diafestivoindia.com/destinations/goa</loc><priority>0.90</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/andaman</loc><priority>0.90</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/kashmir</loc><priority>0.90</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/digha</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/manali</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/kerala</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/ladakh</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/ooty</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/rajasthan</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/gangtok</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/shillong</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/mussoorie</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/bandipur</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/dooars</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/spiti-valley</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/puri</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/hampi</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/amritsar</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/tirupati</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/arunachal</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/jim-corbett</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/kanha</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/uttarakhand</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/delhi</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/lakshadweep</loc><priority>0.85</priority></url>
+
+  <!-- International Destinations -->
+  <url><loc>https://diafestivoindia.com/destinations/dubai</loc><priority>0.90</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/singapore</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/malaysia</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/maldives</loc><priority>0.90</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/thailand</loc><priority>0.90</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/indonesia</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/vietnam</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/japan</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/turkey</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/switzerland</loc><priority>0.90</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/australia</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/sri-lanka</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/abu-dhabi</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/philippines</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/laos</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/oman</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/egypt</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/europe</loc><priority>0.85</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/venice</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/canada</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/new-zealand</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/usa</loc><priority>0.80</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/uk</loc><priority>0.75</priority></url>
+  <url><loc>https://diafestivoindia.com/destinations/greece</loc><priority>0.85</priority></url>
+</urlset>

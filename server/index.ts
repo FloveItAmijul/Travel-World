@@ -21,8 +21,9 @@ const allowedOrigins = [
   "http://localhost:4173",
   "http://localhost:5174",
   "https://travel-world-wheat-five.vercel.app",
+  "https://diafestivoindia.com",
+  "https://www.diafestivoindia.com",
 ];
-
 
 app.use(
   cors({
@@ -63,7 +64,7 @@ app.post("/api/travel-chat", async (req, res) => {
     }
 
     const prompt = `
-You are Traveluxe AI Travel Planner.
+You are DIA FESTIVO AI Travel Planner.
 
 Your job:
 - Help users plan trips.

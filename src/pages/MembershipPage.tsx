@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   ArrowLeft,
   BriefcaseBusiness,
@@ -14,6 +15,7 @@ import {
   TicketCheck,
 } from "lucide-react";
 import { Link } from "react-router";
+import { updateSeo } from "../utils/seo";
 
 const membershipPlans = [
   {
@@ -113,6 +115,17 @@ const steps = [
 ];
 
 export function MembershipPage() {
+
+    useEffect(() => {
+    updateSeo({
+      title: "Premium Travel Membership | DIA FESTIVO",
+      description:
+        "Explore DIA FESTIVO premium travel membership plans with annual vacations, 4-star stays, complimentary transfers, exclusive member events, and personalized travel assistance.",
+      canonicalPath: "/membership",
+    });
+  }, []);
+
+
   return (
     <main className="min-h-screen overflow-hidden bg-black text-[var(--color-text)]">
       <section className="relative overflow-hidden px-4 pb-10 pt-4 sm:px-6 lg:px-8">

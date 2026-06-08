@@ -197,31 +197,27 @@ button {
 .service-bg-andaman {
   background-image:
     linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
-    url("/src/assets/destinations/andaman.jpg");
+    url("/src/assets/destinations/andaman.webp");
 }
 
 .service-bg-hotel {
   background-image:
     linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
-    url("/src/assets/destinations/dubai.jpg");
+    url("/src/assets/destinations/dubai.webp");
 }
 
-.service-bg-flight {
-  background-image:
-    linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
-    url("/src/assets/destinations/goa.jpg");
-}
+
 
 .service-bg-honeymoon {
   background-image:
     linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
-    url("/src/assets/destinations/andaman.jpg");
+    url("/src/assets/destinations/andaman.webp");
 }
 
 .service-bg-group {
   background-image:
     linear-gradient(rgba(2, 4, 10, 0.2), rgba(2, 4, 10, 0.2)),
-    url("/src/assets/destinations/kashmir.jpg");
+    url("/src/assets/destinations/kashmir.webp");
 }
 
 .service-bg-ai {

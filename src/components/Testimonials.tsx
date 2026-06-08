@@ -185,18 +185,30 @@ export function Testimonials() {
   });
 
   useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
     let animationFrame = 0;
     let lastTime = performance.now();
 
+    function stopAutoScrollFrame() {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+      }
+    }
+
     function autoScroll(currentTime: number) {
+      const slider = sliderRef.current;
+
+      if (!slider) {
+        stopAutoScrollFrame();
+        return;
+      }
+
       const delta = currentTime - lastTime;
       lastTime = currentTime;
 
-      if (slider && !isPausedRef.current && !document.hidden) {
+      if (!isPausedRef.current) {
         const speed = 0.026;
+
         slider.scrollLeft += delta * speed;
 
         const reachedEnd =
@@ -213,10 +225,29 @@ export function Testimonials() {
       animationFrame = requestAnimationFrame(autoScroll);
     }
 
-    animationFrame = requestAnimationFrame(autoScroll);
+    function startAutoScrollFrame() {
+      if (animationFrame || document.hidden) return;
+
+      lastTime = performance.now();
+      animationFrame = requestAnimationFrame(autoScroll);
+    }
+
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        stopAutoScrollFrame();
+        return;
+      }
+
+      startAutoScrollFrame();
+    }
+
+    startAutoScrollFrame();
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      cancelAnimationFrame(animationFrame);
+      stopAutoScrollFrame();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
 
       if (resumeTimerRef.current) {
         window.clearTimeout(resumeTimerRef.current);

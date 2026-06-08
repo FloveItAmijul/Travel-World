@@ -13,6 +13,9 @@ import {
   UserRound,
 } from "lucide-react";
 import { Link } from "react-router";
+import { useEffect } from "react";
+import { updateSeo } from "../utils/seo";
+
 
 const accessFeatures = [
   {
@@ -33,6 +36,17 @@ const accessFeatures = [
 ];
 
 export function EmployeeLoginPage() {
+
+  useEffect(() => {
+  updateSeo({
+    title: "Employee Login | DIA FESTIVO",
+    description:
+      "Employee login page for DIA FESTIVO internal access and travel operations support.",
+    canonicalPath: "/employee-login",
+  });
+}, []);
+
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-black px-3 py-4 text-[var(--color-text)] sm:px-5 sm:py-5 lg:px-8">
       <div className="pointer-events-none absolute inset-0">

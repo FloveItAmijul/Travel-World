@@ -68,6 +68,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "India",
     tags: ["Mountains", "Adventure", "Family", "Honeymoon"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Kerala",
@@ -76,6 +77,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "India",
     tags: ["Nature", "Family", "Honeymoon", "Luxury"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Ladakh",
@@ -84,6 +86,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "India",
     tags: ["Mountains", "Adventure", "Nature"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Ooty",
@@ -92,6 +95,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "India",
     tags: ["Mountains", "Nature", "Family", "Honeymoon"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Rajasthan",
@@ -100,6 +104,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "India",
     tags: ["Heritage", "Family", "Luxury"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Gangtok",
@@ -108,6 +113,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "India",
     tags: ["Mountains", "Nature", "Family"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Shillong",
@@ -116,6 +122,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "India",
     tags: ["Mountains", "Nature", "Family"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Mussoorie",
@@ -123,6 +130,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Mountains", "Family", "Honeymoon"],
+    hasDetailPage: true,
   },
   {
     name: "Bandipur",
@@ -130,6 +138,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Wildlife", "Nature", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Dooars",
@@ -137,6 +146,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Nature", "Wildlife", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Spiti Valley",
@@ -144,6 +154,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Mountains", "Adventure", "Nature"],
+    hasDetailPage: true,
   },
   {
     name: "Puri",
@@ -151,6 +162,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Beach", "Spiritual", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Hampi",
@@ -158,6 +170,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Heritage", "Adventure", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Amritsar",
@@ -165,6 +178,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Heritage", "Spiritual", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Tirupati",
@@ -172,6 +186,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Spiritual", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Arunachal",
@@ -179,6 +194,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Mountains", "Nature", "Adventure"],
+    hasDetailPage: true,
   },
   {
     name: "Jim Corbett",
@@ -186,6 +202,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Wildlife", "Nature", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Kanha",
@@ -193,6 +210,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Wildlife", "Nature", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Uttarakhand",
@@ -200,6 +218,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["Mountains", "Spiritual", "Adventure", "Nature"],
+    hasDetailPage: true,
   },
   {
     name: "Delhi",
@@ -207,6 +226,16 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "india",
     country: "India",
     tags: ["City", "Heritage", "Family"],
+    hasDetailPage: true,
+  },
+  {
+    name: "Lakshadweep",
+    slug: "lakshadweep",
+    category: "india",
+    country: "India",
+    tags: ["Beach", "Nature", "Honeymoon", "Luxury"],
+    featured: true,
+    hasDetailPage: true,
   },
 
   // International
@@ -226,6 +255,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Singapore",
     tags: ["City", "Family", "Luxury"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Malaysia",
@@ -234,6 +264,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Malaysia",
     tags: ["Family", "Nature", "City", "Beach"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Maldives",
@@ -242,6 +273,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Maldives",
     tags: ["Beach", "Luxury", "Honeymoon", "Nature"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Thailand",
@@ -250,6 +282,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Thailand",
     tags: ["Beach", "Family", "Adventure", "Luxury"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Indonesia",
@@ -258,6 +291,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Indonesia",
     tags: ["Beach", "Nature", "Honeymoon", "Adventure"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Vietnam",
@@ -266,6 +300,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Vietnam",
     tags: ["Nature", "Heritage", "Family", "Adventure"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Japan",
@@ -274,6 +309,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Japan",
     tags: ["City", "Heritage", "Family", "Luxury"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Turkey",
@@ -282,6 +318,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Turkey",
     tags: ["Heritage", "City", "Family", "Honeymoon"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Switzerland",
@@ -290,6 +327,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Switzerland",
     tags: ["Mountains", "Luxury", "Honeymoon", "Family"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Australia",
@@ -298,6 +336,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     country: "Australia",
     tags: ["Adventure", "Family", "Nature", "City"],
     featured: true,
+    hasDetailPage: true,
   },
   {
     name: "Sri Lanka",
@@ -305,6 +344,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Sri Lanka",
     tags: ["Beach", "Nature", "Heritage", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Abu Dhabi",
@@ -312,6 +352,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "UAE",
     tags: ["Luxury", "City", "Family"],
+    hasDetailPage: true,
   },
   {
     name: "Philippines",
@@ -319,6 +360,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Philippines",
     tags: ["Beach", "Nature", "Adventure"],
+    hasDetailPage: true,
   },
   {
     name: "Laos",
@@ -326,6 +368,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Laos",
     tags: ["Nature", "Heritage", "Adventure"],
+    hasDetailPage: true,
   },
   {
     name: "Oman",
@@ -333,6 +376,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Oman",
     tags: ["Luxury", "Nature", "Adventure", "Heritage"],
+    hasDetailPage: true,
   },
   {
     name: "Egypt",
@@ -340,6 +384,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Egypt",
     tags: ["Heritage", "Family", "Adventure"],
+    hasDetailPage: true,
   },
   {
     name: "Europe",
@@ -347,6 +392,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Europe",
     tags: ["Luxury", "Heritage", "Family", "Honeymoon"],
+    hasDetailPage: true,
   },
   {
     name: "Venice",
@@ -354,6 +400,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Italy",
     tags: ["Heritage", "Honeymoon", "Luxury"],
+    hasDetailPage: true,
   },
   {
     name: "Canada",
@@ -361,6 +408,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "Canada",
     tags: ["Nature", "Mountains", "Family", "Adventure"],
+    hasDetailPage: true,
   },
   {
     name: "New Zealand",
@@ -368,6 +416,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "New Zealand",
     tags: ["Nature", "Adventure", "Honeymoon"],
+    hasDetailPage: true,
   },
   {
     name: "USA",
@@ -375,6 +424,7 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "USA",
     tags: ["City", "Family", "Adventure", "Luxury"],
+    hasDetailPage: true,
   },
   {
     name: "UK",
@@ -382,29 +432,17 @@ export const locationCatalog: LocationCatalogItem[] = [
     category: "international",
     country: "United Kingdom",
     tags: ["City", "Heritage", "Family"],
+    hasDetailPage: true,
   },
-
   {
-  name: "Lakshadweep",
-  slug: "lakshadweep",
-  category: "india",
-  country: "India",
-  tags: ["Beach", "Nature", "Honeymoon", "Luxury"],
-  featured: true,
-  hasDetailPage: true,
-},
-
-
-{
-  name: "Greece",
-  slug: "greece",
-  category: "international",
-  country: "Greece",
-  tags: ["Beach", "Heritage", "Honeymoon", "Luxury"],
-  featured: true,
-  hasDetailPage: true,
-},
-
+    name: "Greece",
+    slug: "greece",
+    category: "international",
+    country: "Greece",
+    tags: ["Beach", "Heritage", "Honeymoon", "Luxury"],
+    featured: true,
+    hasDetailPage: true,
+  },
 ];
 
 export function getLocationCountByFilter(filter: string) {

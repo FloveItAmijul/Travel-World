@@ -1,84 +1,59 @@
-import andamanHero from "../assets/destination-details/andaman/hero.webp";
-import andamanPlace1 from "../assets/destination-details/andaman/place-1.webp";
-import andamanPlace2 from "../assets/destination-details/andaman/place-2.webp";
-import andamanPlace3 from "../assets/destination-details/andaman/place-3.webp";
-import andamanPlace4 from "../assets/destination-details/andaman/place-4.webp";
-import andamanSelfie1 from "../assets/destination-details/andaman/selfie-1.webp";
-import andamanSelfie2 from "../assets/destination-details/andaman/selfie-2.webp";
-import andamanSelfie3 from "../assets/destination-details/andaman/selfie-3.webp";
-import andamanSelfie4 from "../assets/destination-details/andaman/selfie-4.webp";
-import andamanStay1 from "../assets/destination-details/andaman/stay-1.webp";
-import andamanStay2 from "../assets/destination-details/andaman/stay-2.webp";
-import andamanStay3 from "../assets/destination-details/andaman/stay-3.webp";
+export type LocationCategory = "india" | "international";
 
-import dighaHero from "../assets/destination-details/digha/hero.webp";
-import dighaPlace1 from "../assets/destination-details/digha/place-1.webp";
-import dighaPlace2 from "../assets/destination-details/digha/place-2.webp";
-import dighaPlace3 from "../assets/destination-details/digha/place-3.webp";
-import dighaPlace4 from "../assets/destination-details/digha/place-4.webp";
-import dighaSelfie1 from "../assets/destination-details/digha/selfie-1.webp";
-import dighaSelfie2 from "../assets/destination-details/digha/selfie-2.webp";
-import dighaSelfie3 from "../assets/destination-details/digha/selfie-3.webp";
-import dighaSelfie4 from "../assets/destination-details/digha/selfie-4.webp";
-import dighaStay1 from "../assets/destination-details/digha/stay-1.webp";
-import dighaStay2 from "../assets/destination-details/digha/stay-2.webp";
-import dighaStay3 from "../assets/destination-details/digha/stay-3.webp";
+export type LocationTag =
+  | "Beach"
+  | "Mountains"
+  | "Adventure"
+  | "Family"
+  | "Honeymoon"
+  | "Heritage"
+  | "Wildlife"
+  | "Spiritual"
+  | "Luxury"
+  | "City"
+  | "Nature";
 
-import dubaiHero from "../assets/destination-details/dubai/hero.webp";
-import dubaiPlace1 from "../assets/destination-details/dubai/place-1.webp";
-import dubaiPlace2 from "../assets/destination-details/dubai/place-2.webp";
-import dubaiPlace3 from "../assets/destination-details/dubai/place-3.webp";
-import dubaiPlace4 from "../assets/destination-details/dubai/place-4.webp";
-import dubaiSelfie1 from "../assets/destination-details/dubai/selfie-1.webp";
-import dubaiSelfie2 from "../assets/destination-details/dubai/selfie-2.webp";
-import dubaiSelfie3 from "../assets/destination-details/dubai/selfie-3.webp";
-import dubaiSelfie4 from "../assets/destination-details/dubai/selfie-4.webp";
-import dubaiStay1 from "../assets/destination-details/dubai/stay-1.webp";
-import dubaiStay2 from "../assets/destination-details/dubai/stay-2.webp";
-import dubaiStay3 from "../assets/destination-details/dubai/stay-3.webp";
+export type LocationCatalogItem = {
+  name: string;
+  slug: string;
+  category: LocationCategory;
+  country: string;
+  tags: LocationTag[];
+  featured?: boolean;
+  hasDetailPage?: boolean;
+};
 
-import goaHero from "../assets/destination-details/goa/hero.webp";
-import goaPlace1 from "../assets/destination-details/goa/place-1.webp";
-import goaPlace2 from "../assets/destination-details/goa/place-2.webp";
-import goaPlace3 from "../assets/destination-details/goa/place-3.webp";
-import goaPlace4 from "../assets/destination-details/goa/place-4.webp";
-import goaSelfie1 from "../assets/destination-details/goa/selfie-1.webp";
-import goaSelfie2 from "../assets/destination-details/goa/selfie-2.webp";
-import goaSelfie3 from "../assets/destination-details/goa/selfie-3.webp";
-import goaSelfie4 from "../assets/destination-details/goa/selfie-4.webp";
-import goaStay1 from "../assets/destination-details/goa/stay-1.webp";
-import goaStay2 from "../assets/destination-details/goa/stay-2.webp";
-import goaStay3 from "../assets/destination-details/goa/stay-3.webp";
+export type DestinationImageCard = {
+  title: string;
+  type?: string;
+  description: string;
+  image: string;
+};
 
-import kashmirHero from "../assets/destination-details/kashmir/hero.webp";
-import kashmirPlace1 from "../assets/destination-details/kashmir/place-1.webp";
-import kashmirPlace2 from "../assets/destination-details/kashmir/place-2.webp";
-import kashmirPlace3 from "../assets/destination-details/kashmir/place-3.webp";
-import kashmirPlace4 from "../assets/destination-details/kashmir/place-4.webp";
-import kashmirSelfie1 from "../assets/destination-details/kashmir/selfie-1.webp";
-import kashmirSelfie2 from "../assets/destination-details/kashmir/selfie-2.webp";
-import kashmirSelfie3 from "../assets/destination-details/kashmir/selfie-3.webp";
-import kashmirSelfie4 from "../assets/destination-details/kashmir/selfie-4.webp";
-import kashmirStay1 from "../assets/destination-details/kashmir/stay-1.webp";
-import kashmirStay2 from "../assets/destination-details/kashmir/stay-2.webp";
-import kashmirStay3 from "../assets/destination-details/kashmir/stay-3.webp";
-
-
-import lakshadweepHero from "../assets/destination-details/lakshadweep/hero.webp";
-
-
-import greeceHero from "../assets/destination-details/greece/hero.webp";
-
+export type DestinationPlaceCard = {
+  title: string;
+  description: string;
+  image: string;
+};
 
 export type DestinationGalleryImage = {
   title: string;
+  description?: string;
   image: string;
+};
+
+export type DestinationItineraryItem = {
+  day: string;
+  title: string;
+  description: string;
 };
 
 export type DestinationDetail = {
   slug: string;
   name: string;
+  category: LocationCategory;
   country: string;
+  tags: LocationTag[];
   tagline: string;
   description: string;
   heroImage: string;
@@ -88,32 +63,15 @@ export type DestinationDetail = {
   rating: string;
   startingFrom: string;
   highlights: string[];
-  stays: {
-    title: string;
-    type: string;
-    description: string;
-    image: string;
-  }[];
-  places: {
-    title: string;
-    description: string;
-    image: string;
-  }[];
-  selfieSpots: {
-    title: string;
-    description: string;
-    image: string;
-  }[];
-  galleryImages?: DestinationGalleryImage[];
-  itinerary: {
-    day: string;
-    title: string;
-    description: string;
-  }[];
+  stays: DestinationImageCard[];
+  places: DestinationPlaceCard[];
+  selfieSpots: DestinationPlaceCard[];
+  galleryImages: DestinationGalleryImage[];
+  itinerary: DestinationItineraryItem[];
 };
 
-const galleryModules = import.meta.glob(
-  "../assets/destination-details/*/gallery/*.{webp,jpeg,webp,webp}",
+const detailImageModules = import.meta.glob(
+  "../assets/destination-details/**/*.{webp,jpg,jpeg,png}",
   {
     eager: true,
     query: "?url",
@@ -121,28 +79,580 @@ const galleryModules = import.meta.glob(
   }
 );
 
+const destinationPreviewModules = import.meta.glob(
+  "../assets/destinations/*.{webp,jpg,jpeg,png}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  }
+);
+
+const rawLocationCatalog: LocationCatalogItem[] = [
+  // India
+  {
+    name: "Goa",
+    slug: "goa",
+    category: "india",
+    country: "India",
+    tags: ["Beach", "Adventure", "Family", "Honeymoon", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Andaman",
+    slug: "andaman",
+    category: "india",
+    country: "India",
+    tags: ["Beach", "Nature", "Honeymoon", "Adventure", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Kashmir",
+    slug: "kashmir",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Nature", "Family", "Honeymoon", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Digha",
+    slug: "digha",
+    category: "india",
+    country: "India",
+    tags: ["Beach", "Family"],
+    featured: true,
+  },
+  {
+    name: "Manali",
+    slug: "manali",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Adventure", "Family", "Honeymoon"],
+    featured: true,
+  },
+  {
+    name: "Kerala",
+    slug: "kerala",
+    category: "india",
+    country: "India",
+    tags: ["Nature", "Family", "Honeymoon", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Ladakh",
+    slug: "ladakh",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Adventure", "Nature"],
+    featured: true,
+  },
+  {
+    name: "Ooty",
+    slug: "ooty",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Nature", "Family", "Honeymoon"],
+    featured: true,
+  },
+  {
+    name: "Rajasthan",
+    slug: "rajasthan",
+    category: "india",
+    country: "India",
+    tags: ["Heritage", "Family", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Gangtok",
+    slug: "gangtok",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Nature", "Family"],
+    featured: true,
+  },
+  {
+    name: "Shillong",
+    slug: "shillong",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Nature", "Family"],
+    featured: true,
+  },
+  {
+    name: "Mussoorie",
+    slug: "mussoorie",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Family", "Honeymoon"],
+  },
+  {
+    name: "Bandipur",
+    slug: "bandipur",
+    category: "india",
+    country: "India",
+    tags: ["Wildlife", "Nature", "Family"],
+  },
+  {
+    name: "Dooars",
+    slug: "dooars",
+    category: "india",
+    country: "India",
+    tags: ["Nature", "Wildlife", "Family"],
+  },
+  {
+    name: "Spiti Valley",
+    slug: "spiti-valley",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Adventure", "Nature"],
+  },
+  {
+    name: "Puri",
+    slug: "puri",
+    category: "india",
+    country: "India",
+    tags: ["Beach", "Spiritual", "Family"],
+  },
+  {
+    name: "Hampi",
+    slug: "hampi",
+    category: "india",
+    country: "India",
+    tags: ["Heritage", "Adventure", "Family"],
+  },
+  {
+    name: "Amritsar",
+    slug: "amritsar",
+    category: "india",
+    country: "India",
+    tags: ["Heritage", "Spiritual", "Family"],
+  },
+  {
+    name: "Tirupati",
+    slug: "tirupati",
+    category: "india",
+    country: "India",
+    tags: ["Spiritual", "Family"],
+  },
+  {
+    name: "Arunachal",
+    slug: "arunachal",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Nature", "Adventure"],
+  },
+  {
+    name: "Jim Corbett",
+    slug: "jim-corbett",
+    category: "india",
+    country: "India",
+    tags: ["Wildlife", "Nature", "Family"],
+  },
+  {
+    name: "Kanha",
+    slug: "kanha",
+    category: "india",
+    country: "India",
+    tags: ["Wildlife", "Nature", "Family"],
+  },
+  {
+    name: "Uttarakhand",
+    slug: "uttarakhand",
+    category: "india",
+    country: "India",
+    tags: ["Mountains", "Spiritual", "Adventure", "Nature"],
+  },
+  {
+    name: "Delhi",
+    slug: "delhi",
+    category: "india",
+    country: "India",
+    tags: ["City", "Heritage", "Family"],
+  },
+  {
+    name: "Lakshadweep",
+    slug: "lakshadweep",
+    category: "india",
+    country: "India",
+    tags: ["Beach", "Nature", "Honeymoon", "Luxury"],
+    featured: true,
+  },
+
+  // International
+  {
+    name: "Dubai",
+    slug: "dubai",
+    category: "international",
+    country: "UAE",
+    tags: ["Luxury", "City", "Family", "Honeymoon", "Adventure"],
+    featured: true,
+  },
+  {
+    name: "Singapore",
+    slug: "singapore",
+    category: "international",
+    country: "Singapore",
+    tags: ["City", "Family", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Malaysia",
+    slug: "malaysia",
+    category: "international",
+    country: "Malaysia",
+    tags: ["Family", "Nature", "City", "Beach"],
+    featured: true,
+  },
+  {
+    name: "Maldives",
+    slug: "maldives",
+    category: "international",
+    country: "Maldives",
+    tags: ["Beach", "Luxury", "Honeymoon", "Nature"],
+    featured: true,
+  },
+  {
+    name: "Thailand",
+    slug: "thailand",
+    category: "international",
+    country: "Thailand",
+    tags: ["Beach", "Family", "Adventure", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Indonesia",
+    slug: "indonesia",
+    category: "international",
+    country: "Indonesia",
+    tags: ["Beach", "Nature", "Honeymoon", "Adventure"],
+    featured: true,
+  },
+  {
+    name: "Vietnam",
+    slug: "vietnam",
+    category: "international",
+    country: "Vietnam",
+    tags: ["Nature", "Heritage", "Family", "Adventure"],
+    featured: true,
+  },
+  {
+    name: "Japan",
+    slug: "japan",
+    category: "international",
+    country: "Japan",
+    tags: ["City", "Heritage", "Family", "Luxury"],
+    featured: true,
+  },
+  {
+    name: "Turkey",
+    slug: "turkey",
+    category: "international",
+    country: "Turkey",
+    tags: ["Heritage", "City", "Family", "Honeymoon"],
+    featured: true,
+    hasDetailPage: true,
+  },
+  {
+    name: "Switzerland",
+    slug: "switzerland",
+    category: "international",
+    country: "Switzerland",
+    tags: ["Mountains", "Luxury", "Honeymoon", "Family"],
+    featured: true,
+  },
+  {
+    name: "Australia",
+    slug: "australia",
+    category: "international",
+    country: "Australia",
+    tags: ["Adventure", "Family", "Nature", "City"],
+    featured: true,
+  },
+  {
+    name: "Sri Lanka",
+    slug: "sri-lanka",
+    category: "international",
+    country: "Sri Lanka",
+    tags: ["Beach", "Nature", "Heritage", "Family"],
+  },
+  {
+    name: "Abu Dhabi",
+    slug: "abu-dhabi",
+    category: "international",
+    country: "UAE",
+    tags: ["Luxury", "City", "Family"],
+  },
+  {
+    name: "Philippines",
+    slug: "philippines",
+    category: "international",
+    country: "Philippines",
+    tags: ["Beach", "Nature", "Adventure"],
+  },
+  {
+    name: "Laos",
+    slug: "laos",
+    category: "international",
+    country: "Laos",
+    tags: ["Nature", "Heritage", "Adventure"],
+  },
+  {
+    name: "Oman",
+    slug: "oman",
+    category: "international",
+    country: "Oman",
+    tags: ["Luxury", "Nature", "Adventure", "Heritage"],
+  },
+  {
+    name: "Egypt",
+    slug: "egypt",
+    category: "international",
+    country: "Egypt",
+    tags: ["Heritage", "Family", "Adventure"],
+  },
+  {
+    name: "Europe",
+    slug: "europe",
+    category: "international",
+    country: "Europe",
+    tags: ["Luxury", "Heritage", "Family", "Honeymoon"],
+  },
+  {
+    name: "Venice",
+    slug: "venice",
+    category: "international",
+    country: "Italy",
+    tags: ["Heritage", "Honeymoon", "Luxury"],
+  },
+  {
+    name: "Canada",
+    slug: "canada",
+    category: "international",
+    country: "Canada",
+    tags: ["Nature", "Mountains", "Family", "Adventure"],
+  },
+  {
+    name: "New Zealand",
+    slug: "new-zealand",
+    category: "international",
+    country: "New Zealand",
+    tags: ["Nature", "Adventure", "Honeymoon"],
+  },
+  {
+    name: "USA",
+    slug: "usa",
+    category: "international",
+    country: "USA",
+    tags: ["City", "Family", "Adventure", "Luxury"],
+  },
+  {
+    name: "UK",
+    slug: "uk",
+    category: "international",
+    country: "United Kingdom",
+    tags: ["City", "Heritage", "Family"],
+  },
+  {
+    name: "Greece",
+    slug: "greece",
+    category: "international",
+    country: "Greece",
+    tags: ["Beach", "Heritage", "Honeymoon", "Luxury"],
+    featured: true,
+  },
+];
+
+export const locationCatalog: LocationCatalogItem[] = rawLocationCatalog.map(
+  (location) => ({
+    ...location,
+    hasDetailPage: true,
+  })
+);
+
+export const destinationDetails: DestinationDetail[] = locationCatalog.map(
+  createDestinationDetail
+);
+
+export function getDestinationBySlug(slug: string | undefined) {
+  if (!slug) return undefined;
+
+  return destinationDetails.find((destination) => destination.slug === slug);
+}
+
+export function getLocationCountByFilter(filter: string) {
+  if (filter === "All Destinations") {
+    return locationCatalog.length;
+  }
+
+  if (filter === "India") {
+    return locationCatalog.filter((item) => item.category === "india").length;
+  }
+
+  if (filter === "International") {
+    return locationCatalog.filter((item) => item.category === "international")
+      .length;
+  }
+
+  return locationCatalog.filter((item) => item.tags.includes(filter as LocationTag))
+    .length;
+}
+
+function createDestinationDetail(location: LocationCatalogItem): DestinationDetail {
+  const heroImage =
+    getDetailImage(location.slug, "hero") ||
+    getPreviewImage(location.slug) ||
+    getFirstAvailableDetailImage(location.slug) ||
+    "";
+
+  const stays = createStayCards(location, heroImage);
+  const places = createPlaceCards(location, heroImage);
+  const selfieSpots = createSelfieSpotCards(location, heroImage);
+
+  const customGallery = getGalleryImages(location.slug);
+  const fallbackGallery = createFallbackGallery([
+    ...selfieSpots,
+    ...places,
+    ...stays.map((stay) => ({
+      title: stay.title,
+      description: stay.description,
+      image: stay.image,
+    })),
+  ]);
+
+  return {
+    slug: location.slug,
+    name: location.name,
+    category: location.category,
+    country: location.country,
+    tags: location.tags,
+    tagline: createTagline(location),
+    description: createDescription(location),
+    heroImage,
+    duration: createDuration(location),
+    bestTime: createBestTime(location),
+    idealFor: createIdealFor(location),
+    rating: "4.8",
+    startingFrom: createStartingPrice(location),
+    highlights: createHighlights(location),
+    stays,
+    places,
+    selfieSpots,
+    galleryImages: customGallery.length > 0 ? customGallery : fallbackGallery,
+    itinerary: createItinerary(location),
+  };
+}
+
+function createStayCards(
+  location: LocationCatalogItem,
+  fallbackImage: string
+): DestinationImageCard[] {
+  return [1, 2, 3].map((number) => ({
+    title:
+      number === 1
+        ? "Signature Luxury Stay"
+        : number === 2
+          ? "Premium Comfort Stay"
+          : "Boutique Experience Stay",
+    type:
+      number === 1
+        ? "Luxury Stay"
+        : number === 2
+          ? "Premium Stay"
+          : "Boutique Stay",
+    description: createStayDescription(location, number),
+    image: getDetailImage(location.slug, `stay-${number}`) || fallbackImage,
+  }));
+}
+
+function createPlaceCards(
+  location: LocationCatalogItem,
+  fallbackImage: string
+): DestinationPlaceCard[] {
+  return [1, 2, 3, 4].map((number) => ({
+    title: createPlaceTitle(location, number),
+    description: createPlaceDescription(location),
+    image: getDetailImage(location.slug, `place-${number}`) || fallbackImage,
+  }));
+}
+
+function createSelfieSpotCards(
+  location: LocationCatalogItem,
+  fallbackImage: string
+): DestinationPlaceCard[] {
+  return [1, 2, 3].map((number) => ({
+    title: createSelfieTitle(location, number),
+    description: createSelfieDescription(location),
+    image: getDetailImage(location.slug, `selfie-${number}`) || fallbackImage,
+  }));
+}
+
+function getDetailImage(slug: string, imageNameWithoutExtension: string) {
+  
+
+  const imageEntry = Object.entries(detailImageModules).find(([path]) => {
+    const normalizedPath = normalizePath(path);
+
+    return normalizedPath.includes(
+      `/destination-details/${slug}/${imageNameWithoutExtension}.`
+    );
+  });
+
+  return imageEntry?.[1] as string | undefined;
+}
+
+function getFirstAvailableDetailImage(slug: string) {
+  
+
+  const imageEntry = Object.entries(detailImageModules)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .find(([path]) => {
+      const normalizedPath = normalizePath(path);
+
+      return (
+        normalizedPath.includes(`/destination-details/${slug}/`) &&
+        !normalizedPath.includes(`/destination-details/${slug}/gallery/`)
+      );
+    });
+
+  return imageEntry?.[1] as string | undefined;
+}
+
 function getGalleryImages(slug: string): DestinationGalleryImage[] {
-  return Object.entries(galleryModules)
-    .filter(([path]) => path.includes(`/destination-details/${slug}/gallery/`))
-    .sort(([a], [b]) => {
-      const numberA = getImageNumber(a);
-      const numberB = getImageNumber(b);
+  
 
-      if (numberA !== numberB) return numberA - numberB;
+  return Object.entries(detailImageModules)
+    .filter(([path]) => {
+      const normalizedPath = normalizePath(path);
 
-      return a.localeCompare(b);
+      return normalizedPath.includes(
+        `/destination-details/${slug}/gallery/`
+      );
     })
+    .sort(([a], [b]) => a.localeCompare(b))
     .map(([path, image], index) => ({
       title: createGalleryTitle(path, index),
+      description: "A captured travel memory from this destination.",
       image: image as string,
     }));
 }
 
-function getImageNumber(path: string) {
-  const fileName = path.split("/").pop() ?? "";
-  const match = fileName.match(/(\d+)/);
+function getPreviewImage(slug: string) {
+  
 
-  return match ? Number(match[1]) : 9999;
+  const imageEntry = Object.entries(destinationPreviewModules).find(([path]) => {
+    const normalizedPath = normalizePath(path);
+    const fileName = normalizedPath.split("/").pop()?.split(".")[0];
+
+    return fileName === slug;
+  });
+
+  return imageEntry?.[1] as string | undefined;
+}
+
+
+
+function normalizePath(path: string) {
+  return path.replaceAll("\\", "/").toLowerCase();
 }
 
 function createGalleryTitle(path: string, index: number) {
@@ -162,875 +672,177 @@ function createGalleryTitle(path: string, index: number) {
   return cleanName.replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-export const destinationDetails: DestinationDetail[] = [
-  {
-    slug: "goa",
-    name: "Goa",
-    country: "India",
-    tagline:
-      "Luxury beaches, sunset escapes, heritage streets, and unforgettable coastal moments.",
-    description:
-      "Goa is a premium coastal escape where golden beaches, boutique stays, local food, nightlife, heritage streets, and scenic viewpoints come together for a relaxed yet memorable journey.",
-    heroImage: goaHero,
-    duration: "3 Nights / 4 Days",
-    bestTime: "Oct – Mar",
-    idealFor: "Couples, Friends, Families",
-    rating: "4.9",
-    startingFrom: "₹18,999",
-    highlights: [
-      "Beachfront luxury stays",
-      "Sunset cruise experiences",
-      "Portuguese heritage streets",
-      "Waterfalls and scenic viewpoints",
-      "Premium cafes and seafood dining",
-    ],
-    stays: [
-      {
-        title: "Beachfront Luxury Resort",
-        type: "Premium Stay",
-        description:
-          "Wake up to sea views, private beach access, poolside dining, and calm coastal luxury.",
-        image: goaStay1,
-      },
-      {
-        title: "Private Villa Escape",
-        type: "Luxury Villa",
-        description:
-          "A private villa experience with spacious rooms, peaceful ambience, and personalized service.",
-        image: goaStay2,
-      },
-      {
-        title: "Boutique Heritage Stay",
-        type: "Heritage Comfort",
-        description:
-          "Stay close to Goa’s cultural charm with boutique interiors and warm local hospitality.",
-        image: goaStay3,
-      },
-    ],
-    places: [
-      {
-        title: "Baga Beach",
-        description:
-          "A lively beach for water sports, cafes, nightlife, and classic Goa beach energy.",
-        image: goaPlace1,
-      },
-      {
-        title: "Fontainhas",
-        description:
-          "Colorful Portuguese lanes, art corners, cafes, and beautiful heritage photo spots.",
-        image: goaPlace2,
-      },
-      {
-        title: "Dudhsagar Falls",
-        description:
-          "A dramatic waterfall surrounded by greenery, perfect for nature lovers and adventure seekers.",
-        image: goaPlace3,
-      },
-      {
-        title: "Chapora Fort",
-        description:
-          "A scenic sunset viewpoint with panoramic views of the coastline and hills.",
-        image: goaPlace4,
-      },
-    ],
-    selfieSpots: [
-      {
-        title: "Palolem Beach",
-        description: "Soft sand, calm water, and postcard-style beach photos.",
-        image: goaSelfie1,
-      },
-      {
-        title: "Cabo de Rama Cliff",
-        description: "A dramatic viewpoint for cinematic sea and cliff photos.",
-        image: goaSelfie2,
-      },
-      {
-        title: "Fontainhas Streets",
-        description:
-          "Colorful walls, charming lanes, and aesthetic street portraits.",
-        image: goaSelfie3,
-      },
-      {
-        title: "Sunset Lighthouse View",
-        description: "Golden-hour photos with wide coastal views.",
-        image: goaSelfie4,
-      },
-    ],
-    galleryImages: getGalleryImages("goa"),
-    itinerary: [
-      {
-        day: "Day 1",
-        title: "Arrival, Beach Check-in & Sunset Dinner",
-        description:
-          "Arrive in Goa, check into your stay, relax by the beach, and enjoy a curated sunset dinner.",
-      },
-      {
-        day: "Day 2",
-        title: "North Goa Beaches, Cafes & Nightlife",
-        description:
-          "Explore popular beaches, premium cafes, beach clubs, forts, and the energetic nightlife.",
-      },
-      {
-        day: "Day 3",
-        title: "South Goa, Cruise & Scenic Escape",
-        description:
-          "Enjoy calmer beaches, a private cruise experience, scenic viewpoints, and peaceful coastal moments.",
-      },
-      {
-        day: "Day 4",
-        title: "Slow Breakfast & Departure",
-        description:
-          "Enjoy a relaxed breakfast, capture final memories, and depart with a smooth transfer.",
-      },
-    ],
-  },
+function createFallbackGallery(
+  images: { title: string; description: string; image: string }[]
+): DestinationGalleryImage[] {
+  const validImages = images.filter((item) => item.image);
 
-  {
-    slug: "andaman",
-    name: "Andaman",
-    country: "India",
-    tagline:
-      "Blue lagoons, private beaches, island stays, coral views, and peaceful tropical luxury.",
-    description:
-      "Andaman is a serene island escape known for crystal-clear waters, white sand beaches, marine adventures, romantic sunsets, and premium resorts surrounded by nature.",
-    heroImage: andamanHero,
-    duration: "4 Nights / 5 Days",
-    bestTime: "Oct – May",
-    idealFor: "Couples, Honeymoon, Families",
-    rating: "4.8",
-    startingFrom: "₹24,999",
-    highlights: [
-      "Crystal-clear island beaches",
-      "Snorkeling and scuba experiences",
-      "Romantic sunset views",
-      "Luxury beach resorts",
-      "Peaceful tropical surroundings",
-    ],
-    stays: [
-      {
-        title: "Island Beach Resort",
-        type: "Luxury Beach Stay",
-        description:
-          "Relax close to turquoise water with elegant rooms, beach access, and calm island ambience.",
-        image: andamanStay1,
-      },
-      {
-        title: "Sea View Villa",
-        type: "Premium Villa",
-        description:
-          "Enjoy privacy, sea views, warm hospitality, and quiet romantic moments.",
-        image: andamanStay2,
-      },
-      {
-        title: "Tropical Boutique Stay",
-        type: "Island Comfort",
-        description:
-          "A cozy stay surrounded by palms, beaches, and island-style comfort.",
-        image: andamanStay3,
-      },
-    ],
-    places: [
-      {
-        title: "Radhanagar Beach",
-        description:
-          "One of India’s most beautiful beaches with white sand, turquoise water, and magical sunsets.",
-        image: andamanPlace1,
-      },
-      {
-        title: "Cellular Jail",
-        description:
-          "A historic landmark that tells powerful stories of India’s freedom struggle.",
-        image: andamanPlace2,
-      },
-      {
-        title: "Ross Island",
-        description:
-          "A scenic heritage island with ruins, sea views, deer, and photo-friendly corners.",
-        image: andamanPlace3,
-      },
-      {
-        title: "Elephant Beach",
-        description:
-          "A popular spot for snorkeling, water activities, coral views, and blue-water memories.",
-        image: andamanPlace4,
-      },
-    ],
-    selfieSpots: [
-      {
-        title: "Radhanagar Sunset",
-        description: "Golden-hour beach frames with soft sand and glowing skies.",
-        image: andamanSelfie1,
-      },
-      {
-        title: "Havelock Jetty",
-        description: "Blue water, boats, and perfect island arrival shots.",
-        image: andamanSelfie2,
-      },
-      {
-        title: "Coral Beach Point",
-        description: "Bright ocean colors and tropical photo backdrops.",
-        image: andamanSelfie3,
-      },
-      {
-        title: "Island Viewpoint",
-        description: "Wide scenic frames with sea, palms, and sky.",
-        image: andamanSelfie4,
-      },
-    ],
-    galleryImages: getGalleryImages("andaman"),
-    itinerary: [
-      {
-        day: "Day 1",
-        title: "Arrival & Beachside Relaxation",
-        description:
-          "Reach Port Blair or Havelock, check into your stay, and enjoy a peaceful beach evening.",
-      },
-      {
-        day: "Day 2",
-        title: "Radhanagar Beach & Sunset",
-        description:
-          "Spend the day around Radhanagar Beach, swim, relax, and enjoy a beautiful sunset.",
-      },
-      {
-        day: "Day 3",
-        title: "Snorkeling & Island Adventure",
-        description:
-          "Visit Elephant Beach for snorkeling, water activities, and coral experiences.",
-      },
-      {
-        day: "Day 4",
-        title: "Heritage & Island Views",
-        description:
-          "Explore Cellular Jail, Ross Island, and enjoy scenic viewpoints and local food.",
-      },
-      {
-        day: "Day 5",
-        title: "Slow Morning & Departure",
-        description:
-          "Enjoy a calm breakfast, capture final island memories, and depart smoothly.",
-      },
-    ],
-  },
+  return validImages.map((item) => ({
+    title: item.title,
+    description: item.description,
+    image: item.image,
+  }));
+}
 
-  {
-    slug: "dubai",
-    name: "Dubai",
-    country: "UAE",
-    tagline:
-      "Iconic skylines, desert luxury, shopping, nightlife, and world-class city experiences.",
-    description:
-      "Dubai blends futuristic architecture, premium hotels, desert adventures, luxury shopping, beach clubs, and global entertainment into one high-end travel experience.",
-    heroImage: dubaiHero,
-    duration: "4 Nights / 5 Days",
-    bestTime: "Nov – Mar",
-    idealFor: "Couples, Families, Luxury Travel",
-    rating: "4.9",
-    startingFrom: "₹39,999",
-    highlights: [
-      "Burj Khalifa and skyline views",
-      "Luxury hotels and resorts",
-      "Desert safari with dinner",
-      "Premium shopping experiences",
-      "Marina nightlife and cruises",
-    ],
-    stays: [
-      {
-        title: "Luxury Skyline Hotel",
-        type: "City Luxury",
-        description:
-          "Stay near Dubai’s iconic landmarks with skyline views and premium hospitality.",
-        image: dubaiStay1,
-      },
-      {
-        title: "Desert Resort Escape",
-        type: "Luxury Desert Stay",
-        description:
-          "Experience Arabian desert charm, private dinners, and peaceful golden landscapes.",
-        image: dubaiStay2,
-      },
-      {
-        title: "Marina View Hotel",
-        type: "Premium Marina Stay",
-        description:
-          "Enjoy waterfront views, dining, nightlife, and easy access to Dubai Marina.",
-        image: dubaiStay3,
-      },
-    ],
-    places: [
-      {
-        title: "Burj Khalifa",
-        description:
-          "Dubai’s iconic tower with breathtaking observation deck views and city skyline moments.",
-        image: dubaiPlace1,
-      },
-      {
-        title: "Desert Safari",
-        description:
-          "Dune drives, sunset photos, cultural shows, and Arabian dinner experiences.",
-        image: dubaiPlace2,
-      },
-      {
-        title: "Dubai Marina",
-        description:
-          "A stylish waterfront area with cruises, cafes, restaurants, and night views.",
-        image: dubaiPlace3,
-      },
-      {
-        title: "Palm Jumeirah",
-        description:
-          "Luxury resorts, beach clubs, viewpoints, and one of Dubai’s most famous landmarks.",
-        image: dubaiPlace4,
-      },
-    ],
-    selfieSpots: [
-      {
-        title: "Burj Khalifa View",
-        description: "Iconic skyline photos with Dubai’s tallest landmark.",
-        image: dubaiSelfie1,
-      },
-      {
-        title: "Desert Dunes",
-        description: "Golden dune portraits during sunset and safari moments.",
-        image: dubaiSelfie2,
-      },
-      {
-        title: "Marina Night View",
-        description: "Sparkling city lights and waterfront travel photos.",
-        image: dubaiSelfie3,
-      },
-      {
-        title: "Palm Viewpoint",
-        description: "Luxury landmark views and premium Dubai memories.",
-        image: dubaiSelfie4,
-      },
-    ],
-    galleryImages: getGalleryImages("dubai"),
-    itinerary: [
-      {
-        day: "Day 1",
-        title: "Arrival, Marina Evening & Dinner",
-        description:
-          "Arrive in Dubai, check into your hotel, and enjoy a relaxed evening at Dubai Marina.",
-      },
-      {
-        day: "Day 2",
-        title: "Burj Khalifa, Mall & Fountain Show",
-        description:
-          "Explore Downtown Dubai, visit Burj Khalifa, shop, and enjoy the evening fountain show.",
-      },
-      {
-        day: "Day 3",
-        title: "Desert Safari & Arabian Dinner",
-        description:
-          "Experience dune bashing, desert sunset photos, cultural performances, and dinner.",
-      },
-      {
-        day: "Day 4",
-        title: "Palm Jumeirah & Luxury Beach Time",
-        description:
-          "Visit Palm Jumeirah, beach clubs, premium cafes, and enjoy a stylish Dubai evening.",
-      },
-      {
-        day: "Day 5",
-        title: "Shopping & Departure",
-        description:
-          "Enjoy last-minute shopping and depart with smooth airport transfer support.",
-      },
-    ],
-  },
+function createTagline(location: LocationCatalogItem) {
+  if (location.tags.includes("Beach")) {
+    return `Golden shores, beautiful stays, scenic photo spots, and a relaxed ${location.name} escape.`;
+  }
 
-  {
-    slug: "kashmir",
-    name: "Kashmir",
-    country: "India",
-    tagline:
-      "Snow peaks, valleys, houseboats, gardens, pine forests, and timeless Himalayan beauty.",
-    description:
-      "Kashmir is a breathtaking mountain escape filled with Dal Lake views, snow adventures, romantic stays, scenic valleys, gardens, and peaceful Himalayan moments.",
-    heroImage: kashmirHero,
-    duration: "4 Nights / 5 Days",
-    bestTime: "Mar – Aug / Dec – Feb",
-    idealFor: "Couples, Families, Nature Lovers",
-    rating: "4.8",
-    startingFrom: "₹18,999",
-    highlights: [
-      "Dal Lake shikara rides",
-      "Houseboat and mountain stays",
-      "Snow activities in Gulmarg",
-      "Scenic valleys and gardens",
-      "Romantic Himalayan views",
-    ],
-    stays: [
-      {
-        title: "Luxury Houseboat",
-        type: "Lake Stay",
-        description:
-          "Stay on Dal Lake with traditional charm, warm hospitality, and mountain views.",
-        image: kashmirStay1,
-      },
-      {
-        title: "Mountain Resort",
-        type: "Premium Resort",
-        description:
-          "Relax in a scenic resort surrounded by pine forests, valleys, and fresh mountain air.",
-        image: kashmirStay2,
-      },
-      {
-        title: "Wooden Cottage",
-        type: "Cozy Retreat",
-        description:
-          "A warm and peaceful cottage stay for couples, families, and nature lovers.",
-        image: kashmirStay3,
-      },
-    ],
-    places: [
-      {
-        title: "Dal Lake",
-        description:
-          "A peaceful lake experience with shikara rides, houseboats, and mountain reflections.",
-        image: kashmirPlace1,
-      },
-      {
-        title: "Gulmarg",
-        description:
-          "Snow landscapes, gondola rides, skiing, and beautiful mountain adventure moments.",
-        image: kashmirPlace2,
-      },
-      {
-        title: "Pahalgam",
-        description:
-          "A scenic valley with rivers, pine forests, meadows, and calming natural beauty.",
-        image: kashmirPlace3,
-      },
-      {
-        title: "Sonmarg",
-        description:
-          "Golden meadows, glaciers, high mountains, and dramatic Himalayan landscapes.",
-        image: kashmirPlace4,
-      },
-    ],
-    selfieSpots: [
-      {
-        title: "Shikara Ride",
-        description: "Classic Kashmir photos on Dal Lake with mountain views.",
-        image: kashmirSelfie1,
-      },
-      {
-        title: "Snow Viewpoint",
-        description: "White landscapes and cinematic winter portraits.",
-        image: kashmirSelfie2,
-      },
-      {
-        title: "Valley View",
-        description: "Wide green valley frames and peaceful travel photos.",
-        image: kashmirSelfie3,
-      },
-      {
-        title: "Mughal Garden",
-        description: "Flowers, fountains, mountains, and elegant photo corners.",
-        image: kashmirSelfie4,
-      },
-    ],
-    galleryImages: getGalleryImages("kashmir"),
-    itinerary: [
-      {
-        day: "Day 1",
-        title: "Arrival, Dal Lake & Houseboat",
-        description:
-          "Reach Srinagar, check into your stay, enjoy a shikara ride, and relax by the lake.",
-      },
-      {
-        day: "Day 2",
-        title: "Srinagar Gardens & Local Charm",
-        description:
-          "Explore Mughal gardens, local markets, cafes, and beautiful city viewpoints.",
-      },
-      {
-        day: "Day 3",
-        title: "Gulmarg Snow & Gondola",
-        description:
-          "Enjoy snow views, gondola rides, adventure activities, and mountain landscapes.",
-      },
-      {
-        day: "Day 4",
-        title: "Pahalgam Valley Escape",
-        description:
-          "Visit rivers, valleys, meadows, and enjoy a peaceful nature-focused day.",
-      },
-      {
-        day: "Day 5",
-        title: "Breakfast & Departure",
-        description:
-          "Enjoy a slow breakfast, final photos, and depart with beautiful memories.",
-      },
-    ],
-  },
+  if (location.tags.includes("Mountains")) {
+    return `Mountain views, peaceful stays, scenic roads, and unforgettable moments in ${location.name}.`;
+  }
 
-  {
-    slug: "digha",
-    name: "Digha",
-    country: "India",
-    tagline:
-      "A peaceful seaside escape with sunrise views, family moments, beaches, and easy coastal comfort.",
-    description:
-      "Digha is a relaxing beach destination for families, couples, and weekend travelers who want sea views, calm walks, local food, beach markets, and simple coastal memories.",
-    heroImage: dighaHero,
-    duration: "2 Nights / 3 Days",
-    bestTime: "Oct – Feb",
-    idealFor: "Families, Couples, Weekend Trips",
-    rating: "4.6",
-    startingFrom: "₹8,999",
-    highlights: [
-      "Easy weekend beach escape",
-      "Sunrise and sea-view stays",
-      "Family-friendly attractions",
-      "Beach markets and seafood",
-      "Nearby quiet beaches",
-    ],
-    stays: [
-      {
-        title: "Sea View Hotel",
-        type: "Beach Stay",
-        description:
-          "Stay close to the sea with comfortable rooms and relaxing ocean views.",
-        image: dighaStay1,
-      },
-      {
-        title: "Family Beach Resort",
-        type: "Family Comfort",
-        description:
-          "A comfortable stay option with family-friendly facilities and beach access.",
-        image: dighaStay2,
-      },
-      {
-        title: "Premium Coastal Stay",
-        type: "Weekend Comfort",
-        description:
-          "A peaceful stay for short trips, couples, and relaxed weekend breaks.",
-        image: dighaStay3,
-      },
-    ],
-    places: [
-      {
-        title: "New Digha Beach",
-        description:
-          "A popular beach area for sea walks, family time, local food, and sunrise moments.",
-        image: dighaPlace1,
-      },
-      {
-        title: "Marine Aquarium",
-        description:
-          "An educational and family-friendly stop to explore marine life and local biodiversity.",
-        image: dighaPlace2,
-      },
-      {
-        title: "Udaipur Beach",
-        description:
-          "A quieter beach nearby with scenic views, peaceful ambience, and local activities.",
-        image: dighaPlace3,
-      },
-      {
-        title: "Shankarpur Beach",
-        description:
-          "A calm coastal spot with fishing boats, sea views, and relaxed photography points.",
-        image: dighaPlace4,
-      },
-    ],
-    selfieSpots: [
-      {
-        title: "Beach Sunrise",
-        description: "Soft morning light and beautiful sea-view photos.",
-        image: dighaSelfie1,
-      },
-      {
-        title: "Sea Wall Walk",
-        description: "Classic Digha sea frames and casual travel portraits.",
-        image: dighaSelfie2,
-      },
-      {
-        title: "Casuarina Coast",
-        description: "Green coastal trees and peaceful photo backdrops.",
-        image: dighaSelfie3,
-      },
-      {
-        title: "Beach Market",
-        description: "Colorful local scenes and lively travel memories.",
-        image: dighaSelfie4,
-      },
-    ],
-    galleryImages: getGalleryImages("digha"),
-    itinerary: [
-      {
-        day: "Day 1",
-        title: "Arrival, Beach Walk & Local Food",
-        description:
-          "Reach Digha, check into your stay, enjoy an evening beach walk, and try local food.",
-      },
-      {
-        day: "Day 2",
-        title: "Beaches, Aquarium & Sunset",
-        description:
-          "Visit New Digha Beach, Marine Aquarium, nearby beaches, and enjoy sunset views.",
-      },
-      {
-        day: "Day 3",
-        title: "Sunrise, Shopping & Departure",
-        description:
-          "Wake up early for sunrise, explore beach markets, and depart after breakfast.",
-      },
-    ],
-  },
+  if (location.tags.includes("Wildlife")) {
+    return `Nature, safari moments, forest stays, and wild experiences curated for ${location.name}.`;
+  }
 
-{
-  slug: "lakshadweep",
-  name: "Lakshadweep",
-  country: "India",
-  tagline: "Untouched islands, turquoise lagoons, and serene luxury.",
-  description:
-    "Lakshadweep is a peaceful island escape known for crystal-clear lagoons, coral reefs, white sand beaches, and slow tropical beauty. It is ideal for couples, families, and travelers who want a calm premium beach holiday away from crowds.",
-  heroImage: lakshadweepHero,
-  duration: "4 Nights / 5 Days",
-  bestTime: "October to March",
-  idealFor: "Couples, Honeymoon, Family, Beach Lovers",
-  rating: "4.9",
-  startingFrom: "₹29,999",
-  highlights: [
-    "Turquoise lagoons",
-    "Coral reef experiences",
-    "Peaceful island stays",
-    "Water activities",
-    "Premium beach escapes",
-  ],
-  stays: [
-    {
-      title: "Beachfront Island Resort",
-      type: "Premium Stay",
-      description:
-        "Wake up to ocean views, soft beaches, and calm island mornings.",
-      image: "",
-    },
-    {
-      title: "Lagoon View Cottage",
-      type: "Couple Friendly",
-      description:
-        "A peaceful stay close to turquoise water and quiet sunset points.",
-      image: "",
-    },
-    {
-      title: "Luxury Island Retreat",
-      type: "Luxury Stay",
-      description:
-        "A private island-style experience with comfort and curated service.",
-      image: "",
-    },
-  ],
-  places: [
-    {
-      title: "Agatti Island",
-      description:
-        "Known for its blue lagoons, coral views, and beautiful beach landscapes.",
-      image: "",
-    },
-    {
-      title: "Bangaram Island",
-      description:
-        "A peaceful island loved for privacy, clear water, and premium beach moments.",
-      image: "",
-    },
-    {
-      title: "Minicoy Island",
-      description:
-        "A charming island with lighthouse views, local culture, and scenic coastlines.",
-      image: "",
-    },
-  ],
-  selfieSpots: [
-    {
-      title: "Lagoon Sandbar",
-      description:
-        "Perfect for clean blue-water photos and tropical vacation portraits.",
-      image: "",
-    },
-    {
-      title: "Beach Sunset Point",
-      description:
-        "Golden-hour island photos with soft sand and calm waves.",
-      image: "",
-    },
-    {
-      title: "Lighthouse View",
-      description:
-        "A scenic frame for wide ocean views and travel memories.",
-      image: "",
-    },
-  ],
-  itinerary: [
+  if (location.tags.includes("Heritage")) {
+    return `Historic charm, cultural walks, iconic landmarks, and premium stays in ${location.name}.`;
+  }
+
+  if (location.tags.includes("City")) {
+    return `Modern city energy, premium stays, curated sightseeing, and stylish experiences in ${location.name}.`;
+  }
+
+  return `Premium stays, beautiful places, photo-friendly moments, and smooth travel planning for ${location.name}.`;
+}
+
+function createDescription(location: LocationCatalogItem) {
+  const tagText = location.tags.slice(0, 4).join(", ").toLowerCase();
+
+  return `${location.name} is a curated ${location.category === "india" ? "Indian" : "international"} travel experience designed around ${tagText}, comfortable stays, beautiful sightseeing, memorable photo spots, and smooth travel support.`;
+}
+
+function createDuration(location: LocationCatalogItem) {
+  if (location.tags.includes("City")) return "3 Nights / 4 Days";
+  if (location.tags.includes("Beach")) return "4 Nights / 5 Days";
+  if (location.tags.includes("Mountains")) return "5 Nights / 6 Days";
+  if (location.tags.includes("Wildlife")) return "3 Nights / 4 Days";
+
+  return "4 Nights / 5 Days";
+}
+
+function createBestTime(location: LocationCatalogItem) {
+  if (location.tags.includes("Beach")) return "Oct – Mar";
+  if (location.tags.includes("Mountains")) return "Mar – Jun";
+  if (location.tags.includes("Wildlife")) return "Nov – Apr";
+  if (location.tags.includes("Heritage")) return "Oct – Feb";
+
+  return "All Year";
+}
+
+function createIdealFor(location: LocationCatalogItem) {
+  const idealTypes = location.tags.filter((tag) =>
+    ["Family", "Honeymoon", "Adventure", "Luxury"].includes(tag)
+  );
+
+  if (idealTypes.length === 0) {
+    return "Couples, Families, Friends";
+  }
+
+  return idealTypes.slice(0, 3).join(", ");
+}
+
+function createStartingPrice(location: LocationCatalogItem) {
+  if (location.category === "international") return "Contact for Price";
+  if (location.tags.includes("Luxury")) return "₹24,999";
+  if (location.tags.includes("Mountains")) return "₹18,999";
+  if (location.tags.includes("Beach")) return "₹16,999";
+
+  return "₹14,999";
+}
+
+function createHighlights(location: LocationCatalogItem) {
+  const highlights = [
+    "Handpicked stays",
+    "Beautiful sightseeing places",
+    "Photo-friendly locations",
+    "Smooth itinerary planning",
+    "Premium travel support",
+  ];
+
+  if (location.tags.includes("Beach")) {
+    highlights.unshift("Beachside experiences");
+  }
+
+  if (location.tags.includes("Mountains")) {
+    highlights.unshift("Scenic mountain views");
+  }
+
+  if (location.tags.includes("Wildlife")) {
+    highlights.unshift("Nature and safari moments");
+  }
+
+  if (location.tags.includes("Heritage")) {
+    highlights.unshift("Cultural and heritage walks");
+  }
+
+  return [...new Set(highlights)].slice(0, 6);
+}
+
+function createStayDescription(location: LocationCatalogItem, index: number) {
+  const stayType =
+    index === 1 ? "luxury" : index === 2 ? "premium comfort" : "boutique";
+
+  return `A ${stayType} stay in ${location.name} with comfort, beautiful surroundings, and a smooth travel experience.`;
+}
+
+function createPlaceTitle(location: LocationCatalogItem, index: number) {
+  const placeNamesByTag: Partial<Record<LocationTag, string[]>> = {
+    Beach: ["Beach Escape", "Sunset Point", "Coastal Walk", "Water Activity Zone"],
+    Mountains: ["Valley View", "Scenic Road", "Mountain Point", "Nature Trail"],
+    Wildlife: ["Safari Zone", "Forest Trail", "Nature Watch Point", "Wildlife View"],
+    Heritage: ["Heritage Walk", "Iconic Landmark", "Old Town View", "Cultural Point"],
+    City: ["City Landmark", "Skyline View", "Shopping District", "Evening Walk"],
+    Spiritual: ["Temple Visit", "Sacred Walk", "Prayer Point", "Local Market"],
+    Nature: ["Nature View", "Waterfall Point", "Green Trail", "Scenic Spot"],
+  };
+
+  const matchingTag = location.tags.find((tag) => placeNamesByTag[tag]);
+  const names = matchingTag ? placeNamesByTag[matchingTag] : undefined;
+
+  return names?.[index - 1] ?? `${location.name} Place ${index}`;
+}
+
+function createPlaceDescription(location: LocationCatalogItem) {
+  return `A beautiful ${location.name} attraction selected for sightseeing, memories, photography, and a premium travel experience.`;
+}
+
+function createSelfieTitle(location: LocationCatalogItem, index: number) {
+  const titleByIndex = ["Golden Photo Point", "Scenic Selfie Spot", "Memory Viewpoint"];
+
+  return titleByIndex[index - 1] ?? `${location.name} Photo Spot`;
+}
+
+function createSelfieDescription(location: LocationCatalogItem) {
+  return `A photo-friendly spot in ${location.name} perfect for selfies, reels, couple pictures, and travel memories.`;
+}
+
+function createItinerary(location: LocationCatalogItem): DestinationItineraryItem[] {
+  return [
     {
       day: "Day 1",
-      title: "Arrival & Island Leisure",
-      description:
-        "Arrive, check in, relax by the beach, and enjoy a peaceful sunset.",
+      title: "Arrival & Relaxed Check-in",
+      description: `Arrive in ${location.name}, check into your stay, settle in, and enjoy a relaxed evening.`,
     },
     {
       day: "Day 2",
-      title: "Lagoon & Water Activities",
+      title: "Sightseeing & Local Experiences",
       description:
-        "Enjoy lagoon views, snorkeling, glass-bottom boating, or beach time.",
+        "Explore top attractions, local food, scenic views, and curated experiences.",
     },
     {
       day: "Day 3",
-      title: "Island Exploration",
+      title: "Photo Spots & Leisure Time",
       description:
-        "Explore nearby islands, local culture, beach cafés, and viewpoints.",
+        "Visit beautiful photo spots, enjoy free time, and capture memorable moments.",
     },
     {
       day: "Day 4",
-      title: "Relaxed Luxury Day",
+      title: "Slow Morning & Departure",
       description:
-        "Enjoy resort facilities, photography, beach walks, and private dining.",
+        "Enjoy a calm breakfast, final shopping or sightseeing, and depart smoothly.",
     },
-    {
-      day: "Day 5",
-      title: "Departure",
-      description:
-        "Have breakfast, capture final memories, and depart with island moments.",
-    },
-  ],
-},
-
-
-{
-  slug: "greece",
-  name: "Greece",
-  country: "Greece",
-  tagline: "Whitewashed islands, blue domes, sunsets, and Mediterranean luxury.",
-  description:
-    "Greece is a dream destination filled with iconic islands, historic towns, turquoise seas, cliffside views, and romantic sunsets. It is perfect for honeymooners, luxury travelers, families, and culture lovers.",
-  heroImage: greeceHero,
-  duration: "6 Nights / 7 Days",
-  bestTime: "April to October",
-  idealFor: "Couples, Honeymoon, Luxury, Heritage",
-  rating: "4.9",
-  startingFrom: "₹1,49,999",
-  highlights: [
-    "Santorini sunsets",
-    "Mykonos beach clubs",
-    "Athens heritage",
-    "Mediterranean food",
-    "Luxury island stays",
-  ],
-  stays: [
-    {
-      title: "Santorini Cliffside Suite",
-      type: "Luxury Stay",
-      description:
-        "A premium cave-style suite with caldera views and sunset moments.",
-      image: "",
-    },
-    {
-      title: "Mykonos Beach Resort",
-      type: "Beach Luxury",
-      description:
-        "A stylish beachside stay close to nightlife, cafés, and blue water.",
-      image: "",
-    },
-    {
-      title: "Athens Boutique Hotel",
-      type: "Heritage Stay",
-      description:
-        "A refined city stay near heritage landmarks and premium dining.",
-      image: "",
-    },
-  ],
-  places: [
-    {
-      title: "Santorini",
-      description:
-        "Famous for whitewashed homes, blue domes, caldera views, and sunsets.",
-      image: "",
-    },
-    {
-      title: "Mykonos",
-      description:
-        "Known for luxury beach clubs, nightlife, cafés, and stylish island energy.",
-      image: "",
-    },
-    {
-      title: "Athens",
-      description:
-        "A historic city with ancient landmarks, museums, food, and culture.",
-      image: "",
-    },
-  ],
-  selfieSpots: [
-    {
-      title: "Santorini Blue Domes",
-      description:
-        "The most iconic photo frame with white walls and deep blue domes.",
-      image: "",
-    },
-    {
-      title: "Oia Sunset View",
-      description:
-        "A romantic golden-hour viewpoint for unforgettable travel photos.",
-      image: "",
-    },
-    {
-      title: "Mykonos Windmills",
-      description:
-        "A classic island backdrop with coastal charm and Mediterranean style.",
-      image: "",
-    },
-  ],
-  itinerary: [
-    {
-      day: "Day 1",
-      title: "Arrival in Athens",
-      description:
-        "Arrive, check in, explore nearby cafés, and enjoy a relaxed city evening.",
-    },
-    {
-      day: "Day 2",
-      title: "Athens Heritage Tour",
-      description:
-        "Visit iconic landmarks, museums, old streets, and local dining spots.",
-    },
-    {
-      day: "Day 3",
-      title: "Santorini Arrival",
-      description:
-        "Travel to Santorini, check in, and enjoy caldera views and sunset.",
-    },
-    {
-      day: "Day 4",
-      title: "Santorini Island Day",
-      description:
-        "Explore Oia, blue domes, beaches, viewpoints, and romantic dining.",
-    },
-    {
-      day: "Day 5",
-      title: "Mykonos Experience",
-      description:
-        "Travel to Mykonos and enjoy beaches, cafés, nightlife, and windmills.",
-    },
-    {
-      day: "Day 6",
-      title: "Luxury Leisure Day",
-      description:
-        "Relax at the resort, enjoy shopping, food, beach clubs, or a cruise.",
-    },
-    {
-      day: "Day 7",
-      title: "Departure",
-      description:
-        "Have breakfast, capture final photos, and depart with Mediterranean memories.",
-    },
-  ],
-},
-
-
-];
-
-export function getDestinationBySlug(slug: string | undefined) {
-  return destinationDetails.find((destination) => destination.slug === slug);
+  ];
 }

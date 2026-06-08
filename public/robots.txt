@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /employee-login
+
+Sitemap: https://diafestivoindia.com/sitemap.xml
